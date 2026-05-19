@@ -62,9 +62,13 @@ PASS5_SCORER_HASH: str = hashlib.sha256(
     PASS5_SCORER_TEMPLATE.encode("utf-8")
 ).hexdigest()
 
-# Locked expected hashes (set at Phase 2 pre-registration; empty = not yet locked).
-_LOCKED_PROMPT_HASH: str = ""
-_LOCKED_SCORER_HASH: str = ""
+# Locked expected hashes (set at Phase 2 pre-registration).
+_LOCKED_PROMPT_HASH: str = (
+    "e3544f731c3b30d49f373585e192da39347a272fe68fd9d309e8aafc763b73c1"
+)
+_LOCKED_SCORER_HASH: str = (
+    "0ca0b0f97745fcb58756e9b0a42b4c2e2ff298eb92c6e3e35096567c34e0f303"
+)
 
 if _LOCKED_PROMPT_HASH and PROMPT_TEMPLATE_HASH != _LOCKED_PROMPT_HASH:
     raise RuntimeError(

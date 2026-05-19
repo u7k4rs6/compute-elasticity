@@ -675,5 +675,4 @@ Foundational inference-time scaling literature: Wang et al. 2022 (self-consisten
 This PRD is the canonical project specification. Any deviation from a locked element (prompt, threshold, hypothesis, scope) requires explicit user approval AND a re-tag of `preregistration.md`. There is no other legitimate path.
 
 The next legitimate trigger for revising this PRD is **pilot data**. Not further critique, not framing refinements, not exploratory thoughts. Data.
-
 Start Phase 0.

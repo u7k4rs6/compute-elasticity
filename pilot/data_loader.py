@@ -19,11 +19,25 @@ _OPTION_FIELDS = (
     "Incorrect Answer 3",
 )
 
-# Map of canonical subject labels used in the pilot
-_SUBJECT_MAP: dict[str, str] = {
-    "physics": "physics",
-    "chemistry": "chemistry",
-    "biology": "biology",
+# Explicit mapping of all GPQA Diamond subdomain labels → 3 broad categories.
+# Covers every subdomain observed in the gpqa_diamond split (198 problems).
+_SUBDOMAIN_TO_SUBJECT: dict[str, str] = {
+    # physics
+    "astrophysics": "physics",
+    "condensed matter physics": "physics",
+    "electromagnetism and photonics": "physics",
+    "high-energy particle physics": "physics",
+    "optics and acoustics": "physics",
+    "physics (general)": "physics",
+    "quantum mechanics": "physics",
+    "relativistic mechanics": "physics",
+    # chemistry
+    "chemistry (general)": "chemistry",
+    "inorganic chemistry": "chemistry",
+    "organic chemistry": "chemistry",
+    # biology
+    "genetics": "biology",
+    "molecular biology": "biology",
 }
 
 
@@ -42,11 +56,12 @@ class Problem:
 
 
 def _normalize_subject(raw: str) -> str:
-    raw_lower = raw.lower()
-    for key in _SUBJECT_MAP:
-        if key in raw_lower:
-            return _SUBJECT_MAP[key]
-    return raw_lower
+    key = raw.strip().lower()
+    subject = _SUBDOMAIN_TO_SUBJECT.get(key)
+    if subject is None:
+        logger.warning("Unknown GPQA subdomain %r — falling back to raw value.", raw)
+        return key
+    return subject
 
 
 def _build_problem(idx: int, row: dict) -> Problem:
@@ -85,9 +100,15 @@ def load_gpqa_diamond() -> list[Problem]:
             "The 'datasets' package is required. Run: pip install datasets"
         ) from exc
 
+    import os
+
+    token = os.environ.get("HF_TOKEN") or None
     logger.info("Loading GPQA Diamond from HuggingFace…")
     ds = load_dataset(
-        "Idavidrein/gpqa", "gpqa_diamond", split="train", trust_remote_code=True
+        "Idavidrein/gpqa",
+        "gpqa_diamond",
+        split="train",
+        token=token,
     )
     problems = [_build_problem(i, dict(row)) for i, row in enumerate(ds)]
     logger.info("Loaded %d GPQA Diamond problems.", len(problems))
