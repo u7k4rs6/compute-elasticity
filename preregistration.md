@@ -1,3 +1,12 @@
+## v6.0.1 — single-provider amendment (2026-05-19)
+- DeepInfra fallback deferred to full study.
+- Rationale: pilot fits within Together AI budget ($15 bonus credit available);
+  fallback redundancy not justified at pilot scale.
+- Affected: removes Phase 3 parity check; sample schema provider field always "together_ai".
+- Methodology unchanged: same model, same prompts, same hypotheses, same thresholds.
+
+---
+
 # Pre-registration: Compute Elasticity in LLM Reasoning
 
 **Schema version:** v6.0-pilot  

@@ -13,7 +13,6 @@ from pathlib import Path
 MODEL = "Qwen/Qwen2.5-7B-Instruct"
 
 TOGETHER_API_BASE = "https://api.together.xyz/v1"
-DEEPINFRA_API_BASE = "https://api.deepinfra.com/v1/openai"
 
 # ---------------------------------------------------------------------------
 # Compute grid
@@ -48,16 +47,12 @@ DATA_DIR: Path = REPO_ROOT / "data"
 # ---------------------------------------------------------------------------
 # Cost guardrails
 # ---------------------------------------------------------------------------
-COST_HARD_CAP: float = 25.0  # USD; halt if cumulative cost exceeds CAP_WARN
+COST_HARD_CAP: float = 12.0  # USD; halt if cumulative cost exceeds CAP_WARN
 COST_WARN_FRACTION: float = 0.80  # warn / halt at 80% of hard cap
 
 # Together AI pricing (USD / token, 2026-05 snapshot)
 TOGETHER_INPUT_PRICE_PER_TOKEN: float = 0.18 / 1_000_000
 TOGETHER_OUTPUT_PRICE_PER_TOKEN: float = 0.18 / 1_000_000
-
-# DeepInfra pricing (USD / token)
-DEEPINFRA_INPUT_PRICE_PER_TOKEN: float = 0.07 / 1_000_000
-DEEPINFRA_OUTPUT_PRICE_PER_TOKEN: float = 0.07 / 1_000_000
 
 # ---------------------------------------------------------------------------
 # Sampling

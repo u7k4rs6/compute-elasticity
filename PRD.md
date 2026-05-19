@@ -15,7 +15,7 @@ Build a Python pilot that measures how Qwen2.5-7B-Instruct's accuracy on GPQA Di
 
 The work splits into **11 phases**. Phases 0–3 are pure code (no API spend, ~zero risk). Phase 4 onward incurs API cost — total expected pilot cost is ~$15.
 
-**Stack:** Python 3.10+, `scipy.optimize`, `sentence-transformers`, async `httpx`, `pytest`, Together AI API (primary), DeepInfra (fallback).
+**Stack:** Python 3.10+, `scipy.optimize`, `sentence-transformers`, async `httpx`, `pytest`, Together AI API (single provider; DeepInfra deferred to full study).
 
 **Hard rules** (full list in `CLAUDE.md`):
 - Locked prompt template: never modify after Day 0 (Phase 5)
@@ -171,7 +171,7 @@ One sample per line in `outputs/samples/<problem_id>.jsonl`:
   "subject": "physics|chemistry|biology",
   "ground_truth": "A",
   "model": "Qwen/Qwen2.5-7B-Instruct",
-  "provider": "together_ai|deepinfra",
+  "provider": "together_ai",
   "temperature": 0.7,
   "sample_idx": 0,
   "n_total_in_batch": 64,
@@ -302,7 +302,7 @@ def bic_weights(fit_results: Dict[str, FitResult]) -> Dict[str, float]: ...
 
 #### T1.9 — `pilot/sampling.py` (no live calls yet — interface only)
 - `class APIClient` with `async def complete(prompt, temperature, seed_hex) -> Completion`
-- `class TogetherClient(APIClient)`, `class DeepInfraClient(APIClient)` — implementations
+- `class TogetherClient(APIClient)` — implementation
 - `async def sample_problem(problem, n_total, client, output_path) -> list[Sample]` — idempotent (reads existing file, only generates new samples)
 - Backoff: exponential, max 5 retries, jitter
 
@@ -354,19 +354,16 @@ git show pre-pilot-v6.0 --stat
 
 **Deliverables:**
 - `scripts/smoke_test.py` — sends 5 simple prompts to Together AI, prints latency and token counts.
-- `scripts/api_failover_parity.py` — sends identical 5 problems × N=4 to Together AI and DeepInfra; compares output distributions. **Fail criterion:** if hash distributions of `full_response` text diverge significantly (i.e., one provider produces systematically different completions), abort and pick a different fallback (Fireworks AI, Anyscale).
 - `scripts/extraction_rate_check.py` — runs 20 actual Qwen2.5-7B completions on GPQA-diamond-flavored questions (not from the 50 sample), applies passes 1–4, reports unparseable rate.
 
 **Acceptance test:**
 ```bash
-python scripts/smoke_test.py           # exits 0, prints sane latencies
-python scripts/api_failover_parity.py  # exits 0; logs parity report
+python scripts/smoke_test.py            # exits 0, prints sane latencies
 python scripts/extraction_rate_check.py # extraction rate ≥95% on passes 1-4
 ```
 
 **Stop conditions:**
 - Extraction rate <95%: this is the ONLY phase where prompt iteration is permitted. Iterate the template until ≥95%. Document iteration in `preregistration.md` *before* the tag is finalized, or re-tag as `pre-pilot-v6.0.1` with explicit changelog. If after 3 prompt iterations the rate is still <95%, raise to the user.
-- Provider parity check fails: switch fallback provider, re-run.
 
 ---
 
@@ -422,8 +419,8 @@ python scripts/validate_data.py outputs/samples/  # zero validation errors
 ```
 
 **Stop conditions:**
-- Provider outage: switch to fallback automatically; if both fail, halt and resume next day.
-- Cost overrun beyond $25: halt and notify user.
+- Provider outage: retry with backoff (max 5 attempts); on persistent failure, halt and resume next day.
+- Cost overrun beyond $12: halt and notify user.
 
 ---
 
@@ -503,7 +500,6 @@ pytest tests/falsification.py -v
 | Gate -1 (embedder) fails | 4 | Swap embedder → if still fails, kill H3, shrink to Primary, retag |
 | Recon Red band | 5 | Pivot domain or model per fallback list, retag |
 | Extraction rate <95% after iteration | 3 | Raise to user; do not proceed |
-| Provider parity fails | 3 | Switch fallback, re-run |
 | H1 only falsified | 9 | Bump N→128 on subset, retest. Still fails → framework dead, pivot project |
 | H2 only falsified | 9 | Reframe as "universal scaling" paper |
 | H3 only falsified | 9 | Predictor track dead. Paper = Primary only, workshop-tier |
@@ -559,7 +555,6 @@ compute_elasticity_pilot/
 │
 ├── scripts/
 │   ├── smoke_test.py
-│   ├── api_failover_parity.py
 │   ├── extraction_rate_check.py
 │   ├── run_gate_minus_1.py
 │   ├── run_recon.py
@@ -589,8 +584,7 @@ compute_elasticity_pilot/
 
 All boxes must be ticked before `git tag pre-pilot-v6.0`:
 
-- [ ] Together AI account, $10 funded, key in `.env`
-- [ ] DeepInfra account, $5 funded, key in `.env`
+- [ ] Together AI account funded, key in `.env`
 - [ ] HuggingFace account, `huggingface_hub login` complete
 - [ ] GitHub repo created public, Apache 2.0
 - [ ] `preregistration.md` written and committed
@@ -608,16 +602,16 @@ All boxes must be ticked before `git tag pre-pilot-v6.0`:
 
 | Phase | Best | Realistic | Worst |
 |---|---|---|---|
-| 3 (smoke tests) | $0.50 | $1 | $3 |
+| 3 (smoke tests) | $0.10 | $0.50 | $1 |
 | 4 (Gate -1) | $0.10 | $0.20 | $0.50 |
 | 5 (recon) | $0.10 | $0.20 | $0.50 |
-| 6 (main pilot) | $4 | $8 | $15 |
-| 6 (Pass 5 scoring overhead) | $1 | $2 | $5 |
+| 6 (main pilot) | $4 | $6 | $8 |
+| 6 (Pass 5 scoring overhead) | $0.50 | $1 | $2 |
 | 7 (side test) | $0.50 | $1 | $2 |
-| Buffer | $1 | $3 | $8 |
-| **Pilot total** | **~$7** | **~$15** | **~$34** |
+| Buffer | $0.50 | $1 | $2 |
+| **Pilot total** | **~$6** | **~$10** | **~$16** |
 
-`pilot/config.py` exposes a `COST_HARD_CAP = 25.0` constant. Sampling scripts must track per-call cost (input_tokens × input_price + output_tokens × output_price) and halt if cumulative cost exceeds 80% of cap.
+`pilot/config.py` exposes a `COST_HARD_CAP = 12.0` constant. Sampling scripts must track per-call cost (input_tokens × input_price + output_tokens × output_price) and halt if cumulative cost exceeds 80% of cap ($9.60).
 
 ---
 
@@ -646,7 +640,6 @@ Target venue: ICLR 2027 main track (submission ~October 2026), fallback NeurIPS 
 | GPQA dataset | https://huggingface.co/datasets/Idavidrein/gpqa |
 | Qwen2.5-7B-Instruct | https://huggingface.co/Qwen/Qwen2.5-7B-Instruct |
 | Together AI docs | https://docs.together.ai |
-| DeepInfra docs | https://deepinfra.com/docs |
 | BGE small embedder | https://huggingface.co/BAAI/bge-small-en-v1.5 |
 | sentence-transformers | https://www.sbert.net |
 | scipy optimize | https://docs.scipy.org/doc/scipy/reference/optimize.html |

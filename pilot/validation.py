@@ -41,7 +41,7 @@ _REQUIRED_FIELDS: tuple[str, ...] = (
 
 _VALID_ANSWERS = frozenset(["A", "B", "C", "D", "UNPARSEABLE"])
 _VALID_SUBJECTS = frozenset(["physics", "chemistry", "biology"])
-_VALID_PROVIDERS = frozenset(["together_ai", "deepinfra"])
+_VALID_PROVIDERS = frozenset(["together_ai"])
 _VALID_PASS_NUMBERS = frozenset([1, 2, 3, 4, 5, 6])
 
 

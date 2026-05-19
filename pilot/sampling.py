@@ -1,4 +1,4 @@
-"""Async API clients for Together AI and DeepInfra, plus idempotent sampler.
+"""Async API client for Together AI and idempotent sampler.
 
 No live calls are made from this module during tests — mock the HTTP layer.
 All actual sampling happens via scripts/run_*.py.
@@ -20,7 +20,6 @@ from typing import Any
 import httpx
 
 from pilot.config import (
-    DEEPINFRA_API_BASE,
     MAX_RETRIES,
     MODEL,
     SCHEMA_VERSION,
@@ -173,67 +172,6 @@ class TogetherClient(APIClient):
 
 
 # ---------------------------------------------------------------------------
-# DeepInfra client
-# ---------------------------------------------------------------------------
-class DeepInfraClient(APIClient):
-    """Async client for DeepInfra (OpenAI-compatible chat API)."""
-
-    def __init__(self, api_key: str | None = None) -> None:
-        key = api_key or os.getenv("DEEPINFRA_API_KEY")
-        if not key:
-            raise ConfigError(
-                "DEEPINFRA_API_KEY env var is not set. "
-                "Add it to your .env file (see .env.example)."
-            )
-        self._key = key
-        self._base = DEEPINFRA_API_BASE
-
-    async def complete(
-        self,
-        prompt: str,
-        temperature: float = TEMPERATURE_MAIN,
-        seed_hex: str = "00000000",
-    ) -> Completion:
-        async def _call() -> Completion:
-            t0 = time.monotonic()
-            async with httpx.AsyncClient(timeout=120.0) as client:
-                resp = await client.post(
-                    f"{self._base}/chat/completions",
-                    headers={
-                        "Authorization": f"Bearer {self._key}",
-                        "Content-Type": "application/json",
-                    },
-                    json={
-                        "model": MODEL,
-                        "messages": [{"role": "user", "content": prompt}],
-                        "temperature": temperature,
-                        "max_tokens": 2048,
-                    },
-                )
-            latency_ms = (time.monotonic() - t0) * 1000
-
-            if resp.status_code in (429, 500, 502, 503, 504):
-                raise RetryableAPIError(f"HTTP {resp.status_code}")
-            if resp.status_code != 200:
-                raise APIError(f"HTTP {resp.status_code}: {resp.text[:200]}")
-
-            data = resp.json()
-            choice = data["choices"][0]
-            usage = data.get("usage", {})
-            return Completion(
-                text=choice["message"]["content"],
-                input_tokens=int(usage.get("prompt_tokens", 0)),
-                output_tokens=int(usage.get("completion_tokens", 0)),
-                latency_ms=latency_ms,
-                provider="deepinfra",
-                model=MODEL,
-                raw=data,
-            )
-
-        return await _with_retry(_call)
-
-
-# ---------------------------------------------------------------------------
 # Idempotent problem sampler
 # ---------------------------------------------------------------------------
 @dataclass(frozen=True, slots=True)
@@ -313,7 +251,7 @@ async def sample_problem(
     Args:
         problem: A Problem dataclass instance.
         n_total: Number of samples to collect (e.g. 64).
-        client: Async APIClient (Together or DeepInfra).
+        client: Async APIClient (Together AI).
         output_path: Path to the .jsonl output file.
         temperature: Sampling temperature.
 

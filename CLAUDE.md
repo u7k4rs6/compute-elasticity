@@ -30,7 +30,6 @@ pytest tests/ -v --tb=short
 
 # Phase-specific entry points
 python scripts/smoke_test.py                # Phase 3
-python scripts/api_failover_parity.py       # Phase 3
 python scripts/extraction_rate_check.py     # Phase 3
 python scripts/run_gate_minus_1.py          # Phase 4
 python scripts/run_recon.py                 # Phase 5
