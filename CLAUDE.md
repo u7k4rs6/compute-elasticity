@@ -88,6 +88,7 @@ pytest tests/falsification.py -v
 `.gitignore` must exclude:
 - `.env` (real API keys)
 - `outputs/` (all generated data; results go to releases or HF dataset, not main branch)
+  - Exception: `outputs/gate_minus_1_labels.json` is force-tracked as pre-registration evidence (human labels not regenerable).
 - `__pycache__/`, `.pytest_cache/`, `.ruff_cache/`
 - `data/` cache (HuggingFace datasets cache reproducible from code)
 - IDE files: `.vscode/`, `.idea/`

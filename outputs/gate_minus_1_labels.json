@@ -1,0 +1,179 @@
+{
+  "schema_version": "v6.0-pilot",
+  "timestamp": "2026-05-19T18:56:57.356121+00:00",
+  "model": "Qwen/Qwen2.5-7B-Instruct-Turbo",
+  "embedder": "BAAI/bge-small-en-v1.5",
+  "n_samples_per_problem": 4,
+  "gate_problems": [
+    "gpqa_diamond_0040",
+    "gpqa_diamond_0008",
+    "gpqa_diamond_0007"
+  ],
+  "quit_early": false,
+  "pairs": [
+    {
+      "pair_id": 0,
+      "problem_a": "gpqa_diamond_0040",
+      "trace_idx_a": 1,
+      "problem_b": "gpqa_diamond_0008",
+      "trace_idx_b": 2,
+      "auto_label": "different",
+      "human_label": "d",
+      "embedding_distance": 0.50279
+    },
+    {
+      "pair_id": 1,
+      "problem_a": "gpqa_diamond_0008",
+      "trace_idx_a": 1,
+      "problem_b": "gpqa_diamond_0008",
+      "trace_idx_b": 2,
+      "auto_label": "same",
+      "human_label": "s",
+      "embedding_distance": 0.029813
+    },
+    {
+      "pair_id": 2,
+      "problem_a": "gpqa_diamond_0008",
+      "trace_idx_a": 2,
+      "problem_b": "gpqa_diamond_0007",
+      "trace_idx_b": 2,
+      "auto_label": "different",
+      "human_label": "s",
+      "embedding_distance": 0.37833
+    },
+    {
+      "pair_id": 3,
+      "problem_a": "gpqa_diamond_0007",
+      "trace_idx_a": 0,
+      "problem_b": "gpqa_diamond_0007",
+      "trace_idx_b": 2,
+      "auto_label": "same",
+      "human_label": "s",
+      "embedding_distance": 0.084005
+    },
+    {
+      "pair_id": 4,
+      "problem_a": "gpqa_diamond_0040",
+      "trace_idx_a": 1,
+      "problem_b": "gpqa_diamond_0008",
+      "trace_idx_b": 3,
+      "auto_label": "different",
+      "human_label": "d",
+      "embedding_distance": 0.469135
+    },
+    {
+      "pair_id": 5,
+      "problem_a": "gpqa_diamond_0008",
+      "trace_idx_a": 1,
+      "problem_b": "gpqa_diamond_0007",
+      "trace_idx_b": 3,
+      "auto_label": "different",
+      "human_label": "s",
+      "embedding_distance": 0.42725
+    },
+    {
+      "pair_id": 6,
+      "problem_a": "gpqa_diamond_0040",
+      "trace_idx_a": 3,
+      "problem_b": "gpqa_diamond_0008",
+      "trace_idx_b": 3,
+      "auto_label": "different",
+      "human_label": "d",
+      "embedding_distance": 0.477508
+    },
+    {
+      "pair_id": 7,
+      "problem_a": "gpqa_diamond_0040",
+      "trace_idx_a": 3,
+      "problem_b": "gpqa_diamond_0007",
+      "trace_idx_b": 3,
+      "auto_label": "different",
+      "human_label": "s",
+      "embedding_distance": 0.510872
+    },
+    {
+      "pair_id": 8,
+      "problem_a": "gpqa_diamond_0040",
+      "trace_idx_a": 1,
+      "problem_b": "gpqa_diamond_0040",
+      "trace_idx_b": 3,
+      "auto_label": "same",
+      "human_label": "s",
+      "embedding_distance": 0.028597
+    },
+    {
+      "pair_id": 9,
+      "problem_a": "gpqa_diamond_0008",
+      "trace_idx_a": 0,
+      "problem_b": "gpqa_diamond_0008",
+      "trace_idx_b": 2,
+      "auto_label": "same",
+      "human_label": "s",
+      "embedding_distance": 0.038194
+    },
+    {
+      "pair_id": 10,
+      "problem_a": "gpqa_diamond_0008",
+      "trace_idx_a": 0,
+      "problem_b": "gpqa_diamond_0008",
+      "trace_idx_b": 1,
+      "auto_label": "same",
+      "human_label": "s",
+      "embedding_distance": 0.016344
+    },
+    {
+      "pair_id": 11,
+      "problem_a": "gpqa_diamond_0040",
+      "trace_idx_a": 2,
+      "problem_b": "gpqa_diamond_0040",
+      "trace_idx_b": 3,
+      "auto_label": "same",
+      "human_label": "s",
+      "embedding_distance": 0.073504
+    },
+    {
+      "pair_id": 12,
+      "problem_a": "gpqa_diamond_0007",
+      "trace_idx_a": 1,
+      "problem_b": "gpqa_diamond_0007",
+      "trace_idx_b": 3,
+      "auto_label": "same",
+      "human_label": "s",
+      "embedding_distance": 0.056558
+    },
+    {
+      "pair_id": 13,
+      "problem_a": "gpqa_diamond_0007",
+      "trace_idx_a": 0,
+      "problem_b": "gpqa_diamond_0007",
+      "trace_idx_b": 1,
+      "auto_label": "same",
+      "human_label": "s",
+      "embedding_distance": 0.107461
+    },
+    {
+      "pair_id": 14,
+      "problem_a": "gpqa_diamond_0040",
+      "trace_idx_a": 1,
+      "problem_b": "gpqa_diamond_0007",
+      "trace_idx_b": 2,
+      "auto_label": "different",
+      "human_label": "d",
+      "embedding_distance": 0.510344
+    }
+  ],
+  "stats": {
+    "n_labeled": 15,
+    "n_same": 11,
+    "n_different": 4,
+    "mean_dist_same": 0.159175,
+    "mean_dist_different": 0.489944,
+    "gap": 0.330769,
+    "mann_whitney_u": 40.0,
+    "mann_whitney_p": 0.008791,
+    "gate_pass": true
+  },
+  "total_cost_usd": 0.001623,
+  "total_input_tokens": 3928,
+  "total_output_tokens": 5090
+}

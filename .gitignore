@@ -2,7 +2,9 @@
 .env
 
 # Generated outputs (gitignored; results go to releases or HF dataset)
-outputs/
+outputs/*
+# Pre-registration evidence — force-tracked despite outputs/ exclusion
+!outputs/gate_minus_1_labels.json
 
 # Python cache
 __pycache__/
