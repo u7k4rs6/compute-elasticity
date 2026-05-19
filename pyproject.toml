@@ -27,3 +27,4 @@ testpaths = ["tests"]
 python_files = ["test_*.py", "falsification.py"]
 python_functions = ["test_*"]
 addopts = "--tb=short"
+asyncio_mode = "auto"
