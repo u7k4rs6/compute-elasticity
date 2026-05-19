@@ -17,7 +17,7 @@ def _valid_sample(**overrides) -> dict:
         "problem_id": "gpqa_diamond_0001",
         "subject": "physics",
         "ground_truth": "A",
-        "model": "Qwen/Qwen2.5-7B-Instruct",
+        "model": "Qwen/Qwen2.5-7B-Instruct-Turbo",
         "provider": "together_ai",
         "temperature": 0.7,
         "sample_idx": 0,

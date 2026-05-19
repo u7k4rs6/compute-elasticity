@@ -1,6 +1,6 @@
 # Compute Elasticity in LLM Reasoning
 
-A pilot study measuring how **Qwen2.5-7B-Instruct** accuracy on **GPQA Diamond** responds to inference-time compute via best-of-N sampling at N ∈ {1, 2, 4, 8, 16, 32, 64}.
+A pilot study measuring how **Qwen2.5-7B-Instruct-Turbo** accuracy on **GPQA Diamond** responds to inference-time compute via best-of-N sampling at N ∈ {1, 2, 4, 8, 16, 32, 64}.
 
 See `PRD.md` for the full specification and `CLAUDE.md` for repository conventions.
 

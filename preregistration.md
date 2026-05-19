@@ -1,3 +1,23 @@
+## v6.0.2 — model variant amendment (2026-05-19)
+- Switched model string from Qwen/Qwen2.5-7B-Instruct to
+  Qwen/Qwen2.5-7B-Instruct-Turbo.
+- Reason: Qwen2.5-7B-Instruct is not a serverless endpoint on Together AI.
+  The Turbo variant is FP8-quantized but otherwise equivalent (same 7.61B
+  params, same instruction tuning, same context window).
+- Methodology impact: outputs may differ slightly from canonical bf16 weights.
+  This is a confounder to note in the writeup, not a falsification of H1-H6.
+  The pilot still measures compute elasticity for the model that is actually
+  deployed at scale on this provider — which is arguably more representative
+  than the canonical weights anyway.
+- All hypotheses, thresholds, prompts, schemas unchanged.
+- Reproducibility note: requires Python ≥3.10. On Python 3.14 specifically,
+  requires dill ≥0.4, datasets ≥4.0, multiprocess ≥0.70.19 — older dill versions
+  hit a pickle._batch_setitems signature mismatch on Python 3.14 that prevents
+  datasets from loading GPQA Diamond. Tested working on Python 3.14 with these
+  minimums.
+
+---
+
 ## v6.0.1 — single-provider amendment (2026-05-19)
 - DeepInfra fallback deferred to full study.
 - Rationale: pilot fits within Together AI budget ($15 bonus credit available);
@@ -18,7 +38,7 @@
 
 ## 1. Research Question
 
-Does Qwen2.5-7B-Instruct accuracy on GPQA Diamond follow a monotonically increasing
+Does Qwen2.5-7B-Instruct-Turbo accuracy on GPQA Diamond follow a monotonically increasing
 curve as inference-time compute grows via best-of-N sampling, or does it exhibit
 saturation, plateau, or even unimodal degradation?
 
@@ -28,7 +48,7 @@ saturation, plateau, or even unimodal degradation?
 
 | Field | Value |
 |---|---|
-| Model | Qwen/Qwen2.5-7B-Instruct |
+| Model | Qwen/Qwen2.5-7B-Instruct-Turbo (FP8; see v6.0.2 amendment) |
 | Benchmark | GPQA Diamond |
 | Metric | Pass@1 accuracy (best of N samples scored independently) |
 | N values | 1, 2, 4, 8, 16, 32, 64 |

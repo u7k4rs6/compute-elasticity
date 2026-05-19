@@ -10,7 +10,7 @@ from pathlib import Path
 # ---------------------------------------------------------------------------
 # Model & providers
 # ---------------------------------------------------------------------------
-MODEL = "Qwen/Qwen2.5-7B-Instruct"
+MODEL = "Qwen/Qwen2.5-7B-Instruct-Turbo"
 
 TOGETHER_API_BASE = "https://api.together.xyz/v1"
 

@@ -8,7 +8,7 @@ This file tells Claude Code how to work inside this repository. The canonical pr
 
 ## What this project is
 
-A pilot research study characterizing how LLM reasoning accuracy responds to inference-time compute, using GPQA Diamond + Qwen2.5-7B-Instruct + best-of-N sampling. The pilot tests 6 pre-registered hypotheses (H1–H6) and produces a go/no-go decision for a larger multi-model study.
+A pilot research study characterizing how LLM reasoning accuracy responds to inference-time compute, using GPQA Diamond + Qwen2.5-7B-Instruct-Turbo + best-of-N sampling. The pilot tests 6 pre-registered hypotheses (H1–H6) and produces a go/no-go decision for a larger multi-model study.
 
 This is research code, not production code, but it is **pre-registered research code**. That means:
 - Methodology is locked before data collection.

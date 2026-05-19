@@ -11,7 +11,7 @@
 
 ## 0. Quick reference
 
-Build a Python pilot that measures how Qwen2.5-7B-Instruct's accuracy on GPQA Diamond responds to inference-time compute via best-of-N sampling at N ∈ {1, 2, 4, 8, 16, 32, 64}. Fit 5 parametric curve families per problem with BIC-weighted soft model selection. Test 6 pre-registered hypotheses (H1–H6) against locked thresholds. Produce a go/no-go decision for a larger multi-model study.
+Build a Python pilot that measures how Qwen2.5-7B-Instruct-Turbo's accuracy on GPQA Diamond responds to inference-time compute via best-of-N sampling at N ∈ {1, 2, 4, 8, 16, 32, 64}. Fit 5 parametric curve families per problem with BIC-weighted soft model selection. Test 6 pre-registered hypotheses (H1–H6) against locked thresholds. Produce a go/no-go decision for a larger multi-model study.
 
 The work splits into **11 phases**. Phases 0–3 are pure code (no API spend, ~zero risk). Phase 4 onward incurs API cost — total expected pilot cost is ~$15.
 
@@ -42,7 +42,7 @@ Never claim uniform dominance. Conditional claims only.
 ## 2. Scope
 
 ### In scope (pilot)
-- **Model:** `Qwen/Qwen2.5-7B-Instruct` only
+- **Model:** `Qwen/Qwen2.5-7B-Instruct-Turbo` only (FP8-quantized serverless endpoint; see v6.0.2 amendment in `preregistration.md`)
 - **Benchmark:** GPQA Diamond, 50 problems stratified by subject (47 main + 3 Gate-1)
 - **Strategy:** best-of-N sampling only
 - **Compute axis:** N ∈ {1, 2, 4, 8, 16, 32, 64}
@@ -170,7 +170,7 @@ One sample per line in `outputs/samples/<problem_id>.jsonl`:
   "problem_id": "gpqa_diamond_<idx>",
   "subject": "physics|chemistry|biology",
   "ground_truth": "A",
-  "model": "Qwen/Qwen2.5-7B-Instruct",
+  "model": "Qwen/Qwen2.5-7B-Instruct-Turbo",
   "provider": "together_ai",
   "temperature": 0.7,
   "sample_idx": 0,
@@ -638,7 +638,7 @@ Target venue: ICLR 2027 main track (submission ~October 2026), fallback NeurIPS 
 | Resource | URL |
 |---|---|
 | GPQA dataset | https://huggingface.co/datasets/Idavidrein/gpqa |
-| Qwen2.5-7B-Instruct | https://huggingface.co/Qwen/Qwen2.5-7B-Instruct |
+| Qwen2.5-7B-Instruct-Turbo | https://huggingface.co/Qwen/Qwen2.5-7B-Instruct-Turbo |
 | Together AI docs | https://docs.together.ai |
 | BGE small embedder | https://huggingface.co/BAAI/bge-small-en-v1.5 |
 | sentence-transformers | https://www.sbert.net |

@@ -1,6 +1,6 @@
 """Phase 3 — Extraction rate check.
 
-Runs 20 Qwen2.5-7B-Instruct completions on GPQA Diamond problems that are
+Runs 20 Qwen2.5-7B-Instruct-Turbo completions on GPQA Diamond problems that are
 NOT in the locked 50-problem sample, applies passes 1-4, and reports the
 unparseable rate.
 

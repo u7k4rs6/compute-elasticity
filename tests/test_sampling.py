@@ -47,7 +47,7 @@ def _make_completion(
         output_tokens=50,
         latency_ms=1200.0,
         provider=provider,
-        model="Qwen/Qwen2.5-7B-Instruct",
+        model="Qwen/Qwen2.5-7B-Instruct-Turbo",
         raw={},
     )
 
