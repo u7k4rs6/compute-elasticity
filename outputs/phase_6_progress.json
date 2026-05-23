@@ -1,0 +1,341 @@
+{
+  "schema_version": "v6.0-pilot",
+  "phase": "main_pilot",
+  "last_updated": "2026-05-23T16:49:37.124206+00:00",
+  "n_problems_total": 47,
+  "n_problems_complete": 5,
+  "per_problem": [
+    {
+      "problem_id": "gpqa_diamond_0010",
+      "subject": "biology",
+      "n_samples": 66,
+      "complete": true,
+      "cost_usd": 0.00946404
+    },
+    {
+      "problem_id": "gpqa_diamond_0012",
+      "subject": "chemistry",
+      "n_samples": 66,
+      "complete": true,
+      "cost_usd": 0.011080979999999999
+    },
+    {
+      "problem_id": "gpqa_diamond_0026",
+      "subject": "biology",
+      "n_samples": 66,
+      "complete": true,
+      "cost_usd": 0.00712152
+    },
+    {
+      "problem_id": "gpqa_diamond_0027",
+      "subject": "chemistry",
+      "n_samples": 66,
+      "complete": true,
+      "cost_usd": 0.01049922
+    },
+    {
+      "problem_id": "gpqa_diamond_0029",
+      "subject": "chemistry",
+      "n_samples": 71,
+      "complete": true,
+      "cost_usd": 0.00739746
+    },
+    {
+      "problem_id": "gpqa_diamond_0030",
+      "subject": "chemistry",
+      "n_samples": 2,
+      "complete": false,
+      "cost_usd": 0.0
+    },
+    {
+      "problem_id": "gpqa_diamond_0032",
+      "subject": "chemistry",
+      "n_samples": 2,
+      "complete": false,
+      "cost_usd": 0.0
+    },
+    {
+      "problem_id": "gpqa_diamond_0043",
+      "subject": "biology",
+      "n_samples": 1,
+      "complete": false,
+      "cost_usd": 0.0
+    },
+    {
+      "problem_id": "gpqa_diamond_0046",
+      "subject": "chemistry",
+      "n_samples": 1,
+      "complete": false,
+      "cost_usd": 0.0
+    },
+    {
+      "problem_id": "gpqa_diamond_0047",
+      "subject": "chemistry",
+      "n_samples": 1,
+      "complete": false,
+      "cost_usd": 0.0
+    },
+    {
+      "problem_id": "gpqa_diamond_0050",
+      "subject": "physics",
+      "n_samples": 1,
+      "complete": false,
+      "cost_usd": 0.0
+    },
+    {
+      "problem_id": "gpqa_diamond_0051",
+      "subject": "physics",
+      "n_samples": 1,
+      "complete": false,
+      "cost_usd": 0.0
+    },
+    {
+      "problem_id": "gpqa_diamond_0052",
+      "subject": "chemistry",
+      "n_samples": 1,
+      "complete": false,
+      "cost_usd": 0.0
+    },
+    {
+      "problem_id": "gpqa_diamond_0065",
+      "subject": "physics",
+      "n_samples": 1,
+      "complete": false,
+      "cost_usd": 0.0
+    },
+    {
+      "problem_id": "gpqa_diamond_0070",
+      "subject": "physics",
+      "n_samples": 1,
+      "complete": false,
+      "cost_usd": 0.0
+    },
+    {
+      "problem_id": "gpqa_diamond_0074",
+      "subject": "biology",
+      "n_samples": 1,
+      "complete": false,
+      "cost_usd": 0.0
+    },
+    {
+      "problem_id": "gpqa_diamond_0075",
+      "subject": "biology",
+      "n_samples": 1,
+      "complete": false,
+      "cost_usd": 0.0
+    },
+    {
+      "problem_id": "gpqa_diamond_0077",
+      "subject": "physics",
+      "n_samples": 1,
+      "complete": false,
+      "cost_usd": 0.0
+    },
+    {
+      "problem_id": "gpqa_diamond_0079",
+      "subject": "biology",
+      "n_samples": 1,
+      "complete": false,
+      "cost_usd": 0.0
+    },
+    {
+      "problem_id": "gpqa_diamond_0080",
+      "subject": "chemistry",
+      "n_samples": 1,
+      "complete": false,
+      "cost_usd": 0.0
+    },
+    {
+      "problem_id": "gpqa_diamond_0082",
+      "subject": "chemistry",
+      "n_samples": 1,
+      "complete": false,
+      "cost_usd": 0.0
+    },
+    {
+      "problem_id": "gpqa_diamond_0087",
+      "subject": "biology",
+      "n_samples": 1,
+      "complete": false,
+      "cost_usd": 0.0
+    },
+    {
+      "problem_id": "gpqa_diamond_0090",
+      "subject": "chemistry",
+      "n_samples": 1,
+      "complete": false,
+      "cost_usd": 0.0
+    },
+    {
+      "problem_id": "gpqa_diamond_0092",
+      "subject": "biology",
+      "n_samples": 1,
+      "complete": false,
+      "cost_usd": 0.0
+    },
+    {
+      "problem_id": "gpqa_diamond_0096",
+      "subject": "biology",
+      "n_samples": 1,
+      "complete": false,
+      "cost_usd": 0.0
+    },
+    {
+      "problem_id": "gpqa_diamond_0098",
+      "subject": "chemistry",
+      "n_samples": 1,
+      "complete": false,
+      "cost_usd": 0.0
+    },
+    {
+      "problem_id": "gpqa_diamond_0101",
+      "subject": "biology",
+      "n_samples": 1,
+      "complete": false,
+      "cost_usd": 0.0
+    },
+    {
+      "problem_id": "gpqa_diamond_0106",
+      "subject": "biology",
+      "n_samples": 1,
+      "complete": false,
+      "cost_usd": 0.0
+    },
+    {
+      "problem_id": "gpqa_diamond_0107",
+      "subject": "physics",
+      "n_samples": 1,
+      "complete": false,
+      "cost_usd": 0.0
+    },
+    {
+      "problem_id": "gpqa_diamond_0121",
+      "subject": "chemistry",
+      "n_samples": 1,
+      "complete": false,
+      "cost_usd": 0.0
+    },
+    {
+      "problem_id": "gpqa_diamond_0127",
+      "subject": "biology",
+      "n_samples": 1,
+      "complete": false,
+      "cost_usd": 0.0
+    },
+    {
+      "problem_id": "gpqa_diamond_0130",
+      "subject": "chemistry",
+      "n_samples": 1,
+      "complete": false,
+      "cost_usd": 0.0
+    },
+    {
+      "problem_id": "gpqa_diamond_0131",
+      "subject": "chemistry",
+      "n_samples": 1,
+      "complete": false,
+      "cost_usd": 0.0
+    },
+    {
+      "problem_id": "gpqa_diamond_0134",
+      "subject": "physics",
+      "n_samples": 1,
+      "complete": false,
+      "cost_usd": 0.0
+    },
+    {
+      "problem_id": "gpqa_diamond_0151",
+      "subject": "biology",
+      "n_samples": 1,
+      "complete": false,
+      "cost_usd": 0.0
+    },
+    {
+      "problem_id": "gpqa_diamond_0154",
+      "subject": "physics",
+      "n_samples": 1,
+      "complete": false,
+      "cost_usd": 0.0
+    },
+    {
+      "problem_id": "gpqa_diamond_0156",
+      "subject": "biology",
+      "n_samples": 1,
+      "complete": false,
+      "cost_usd": 0.0
+    },
+    {
+      "problem_id": "gpqa_diamond_0159",
+      "subject": "physics",
+      "n_samples": 1,
+      "complete": false,
+      "cost_usd": 0.0
+    },
+    {
+      "problem_id": "gpqa_diamond_0160",
+      "subject": "physics",
+      "n_samples": 1,
+      "complete": false,
+      "cost_usd": 0.0
+    },
+    {
+      "problem_id": "gpqa_diamond_0164",
+      "subject": "chemistry",
+      "n_samples": 1,
+      "complete": false,
+      "cost_usd": 0.0
+    },
+    {
+      "problem_id": "gpqa_diamond_0165",
+      "subject": "physics",
+      "n_samples": 1,
+      "complete": false,
+      "cost_usd": 0.0
+    },
+    {
+      "problem_id": "gpqa_diamond_0167",
+      "subject": "biology",
+      "n_samples": 1,
+      "complete": false,
+      "cost_usd": 0.0
+    },
+    {
+      "problem_id": "gpqa_diamond_0171",
+      "subject": "physics",
+      "n_samples": 1,
+      "complete": false,
+      "cost_usd": 0.0
+    },
+    {
+      "problem_id": "gpqa_diamond_0173",
+      "subject": "physics",
+      "n_samples": 1,
+      "complete": false,
+      "cost_usd": 0.0
+    },
+    {
+      "problem_id": "gpqa_diamond_0176",
+      "subject": "physics",
+      "n_samples": 1,
+      "complete": false,
+      "cost_usd": 0.0
+    },
+    {
+      "problem_id": "gpqa_diamond_0178",
+      "subject": "physics",
+      "n_samples": 1,
+      "complete": false,
+      "cost_usd": 0.0
+    },
+    {
+      "problem_id": "gpqa_diamond_0195",
+      "subject": "physics",
+      "n_samples": 1,
+      "complete": false,
+      "cost_usd": 0.0
+    }
+  ],
+  "cumulative_cost_usd": 0.045563219999999995,
+  "halted": false,
+  "halt_reason": null
+}
