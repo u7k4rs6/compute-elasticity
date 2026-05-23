@@ -1,9 +1,9 @@
 {
   "schema_version": "v6.0-pilot",
   "phase": "main_pilot",
-  "last_updated": "2026-05-23T16:49:37.124206+00:00",
+  "last_updated": "2026-05-23T17:14:46.165526+00:00",
   "n_problems_total": 47,
-  "n_problems_complete": 5,
+  "n_problems_complete": 10,
   "per_problem": [
     {
       "problem_id": "gpqa_diamond_0010",
@@ -43,37 +43,37 @@
     {
       "problem_id": "gpqa_diamond_0030",
       "subject": "chemistry",
-      "n_samples": 2,
-      "complete": false,
-      "cost_usd": 0.0
+      "n_samples": 66,
+      "complete": true,
+      "cost_usd": 0.00732672
     },
     {
       "problem_id": "gpqa_diamond_0032",
       "subject": "chemistry",
-      "n_samples": 2,
-      "complete": false,
-      "cost_usd": 0.0
+      "n_samples": 66,
+      "complete": true,
+      "cost_usd": 0.01066626
     },
     {
       "problem_id": "gpqa_diamond_0043",
       "subject": "biology",
-      "n_samples": 1,
-      "complete": false,
-      "cost_usd": 0.0
+      "n_samples": 65,
+      "complete": true,
+      "cost_usd": 0.00826362
     },
     {
       "problem_id": "gpqa_diamond_0046",
       "subject": "chemistry",
-      "n_samples": 1,
-      "complete": false,
-      "cost_usd": 0.0
+      "n_samples": 65,
+      "complete": true,
+      "cost_usd": 0.01053522
     },
     {
       "problem_id": "gpqa_diamond_0047",
       "subject": "chemistry",
-      "n_samples": 1,
-      "complete": false,
-      "cost_usd": 0.0
+      "n_samples": 65,
+      "complete": true,
+      "cost_usd": 0.0083844
     },
     {
       "problem_id": "gpqa_diamond_0050",
@@ -335,7 +335,7 @@
       "cost_usd": 0.0
     }
   ],
-  "cumulative_cost_usd": 0.045563219999999995,
+  "cumulative_cost_usd": 0.09073943999999999,
   "halted": false,
   "halt_reason": null
 }
