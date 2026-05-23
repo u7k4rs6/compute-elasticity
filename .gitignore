@@ -7,6 +7,7 @@ outputs/*
 !outputs/gate_minus_1_labels.json
 !outputs/recon_results.json
 !outputs/recon_extended_results.json
+!outputs/phase_6_progress.json
 
 # Python cache
 __pycache__/
