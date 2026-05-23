@@ -1,9 +1,9 @@
 {
   "schema_version": "v6.0-pilot",
   "phase": "main_pilot",
-  "last_updated": "2026-05-23T17:14:46.165526+00:00",
+  "last_updated": "2026-05-23T17:43:29.998913+00:00",
   "n_problems_total": 47,
-  "n_problems_complete": 10,
+  "n_problems_complete": 15,
   "per_problem": [
     {
       "problem_id": "gpqa_diamond_0010",
@@ -78,37 +78,37 @@
     {
       "problem_id": "gpqa_diamond_0050",
       "subject": "physics",
-      "n_samples": 1,
-      "complete": false,
-      "cost_usd": 0.0
+      "n_samples": 65,
+      "complete": true,
+      "cost_usd": 0.00953118
     },
     {
       "problem_id": "gpqa_diamond_0051",
       "subject": "physics",
-      "n_samples": 1,
-      "complete": false,
-      "cost_usd": 0.0
+      "n_samples": 65,
+      "complete": true,
+      "cost_usd": 0.0143019
     },
     {
       "problem_id": "gpqa_diamond_0052",
       "subject": "chemistry",
-      "n_samples": 1,
-      "complete": false,
-      "cost_usd": 0.0
+      "n_samples": 65,
+      "complete": true,
+      "cost_usd": 0.00918414
     },
     {
       "problem_id": "gpqa_diamond_0065",
       "subject": "physics",
-      "n_samples": 1,
-      "complete": false,
-      "cost_usd": 0.0
+      "n_samples": 65,
+      "complete": true,
+      "cost_usd": 0.005634
     },
     {
       "problem_id": "gpqa_diamond_0070",
       "subject": "physics",
-      "n_samples": 1,
-      "complete": false,
-      "cost_usd": 0.0
+      "n_samples": 65,
+      "complete": true,
+      "cost_usd": 0.00888876
     },
     {
       "problem_id": "gpqa_diamond_0074",
@@ -335,7 +335,7 @@
       "cost_usd": 0.0
     }
   ],
-  "cumulative_cost_usd": 0.09073943999999999,
+  "cumulative_cost_usd": 0.13827942,
   "halted": false,
   "halt_reason": null
 }
