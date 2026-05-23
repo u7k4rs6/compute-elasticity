@@ -1,0 +1,466 @@
+{
+  "schema_version": "v6.0-pilot",
+  "phase": "day_0_recon_extended",
+  "timestamp": "2026-05-23T19:04:53.631353+00:00",
+  "model": "Qwen/Qwen2.5-7B-Instruct-Turbo",
+  "temperature": 0.7,
+  "n_problems": 47,
+  "n_reused_from_prior": 7,
+  "n_newly_sampled": 40,
+  "per_problem": [
+    {
+      "problem_id": "gpqa_diamond_0010",
+      "subject": "biology",
+      "ground_truth": "D",
+      "extracted_answer": "D",
+      "extraction_pass": 1,
+      "correct": true,
+      "reused": true
+    },
+    {
+      "problem_id": "gpqa_diamond_0012",
+      "subject": "chemistry",
+      "ground_truth": "A",
+      "extracted_answer": "A",
+      "extraction_pass": 1,
+      "correct": true,
+      "reused": true
+    },
+    {
+      "problem_id": "gpqa_diamond_0026",
+      "subject": "biology",
+      "ground_truth": "B",
+      "extracted_answer": "B",
+      "extraction_pass": 1,
+      "correct": true,
+      "reused": true
+    },
+    {
+      "problem_id": "gpqa_diamond_0027",
+      "subject": "chemistry",
+      "ground_truth": "A",
+      "extracted_answer": "C",
+      "extraction_pass": 1,
+      "correct": false,
+      "reused": true
+    },
+    {
+      "problem_id": "gpqa_diamond_0029",
+      "subject": "chemistry",
+      "ground_truth": "D",
+      "extracted_answer": "A",
+      "extraction_pass": 1,
+      "correct": false,
+      "reused": true
+    },
+    {
+      "problem_id": "gpqa_diamond_0030",
+      "subject": "chemistry",
+      "ground_truth": "B",
+      "extracted_answer": "D",
+      "extraction_pass": 1,
+      "correct": false,
+      "reused": true
+    },
+    {
+      "problem_id": "gpqa_diamond_0032",
+      "subject": "chemistry",
+      "ground_truth": "D",
+      "extracted_answer": "A",
+      "extraction_pass": 1,
+      "correct": false,
+      "reused": true
+    },
+    {
+      "problem_id": "gpqa_diamond_0043",
+      "subject": "biology",
+      "ground_truth": "D",
+      "extracted_answer": "D",
+      "extraction_pass": 1,
+      "correct": true,
+      "reused": false
+    },
+    {
+      "problem_id": "gpqa_diamond_0046",
+      "subject": "chemistry",
+      "ground_truth": "D",
+      "extracted_answer": "A",
+      "extraction_pass": 1,
+      "correct": false,
+      "reused": false
+    },
+    {
+      "problem_id": "gpqa_diamond_0047",
+      "subject": "chemistry",
+      "ground_truth": "C",
+      "extracted_answer": "C",
+      "extraction_pass": 1,
+      "correct": true,
+      "reused": false
+    },
+    {
+      "problem_id": "gpqa_diamond_0050",
+      "subject": "physics",
+      "ground_truth": "A",
+      "extracted_answer": "A",
+      "extraction_pass": 1,
+      "correct": true,
+      "reused": false
+    },
+    {
+      "problem_id": "gpqa_diamond_0051",
+      "subject": "physics",
+      "ground_truth": "B",
+      "extracted_answer": "C",
+      "extraction_pass": 1,
+      "correct": false,
+      "reused": false
+    },
+    {
+      "problem_id": "gpqa_diamond_0052",
+      "subject": "chemistry",
+      "ground_truth": "C",
+      "extracted_answer": "D",
+      "extraction_pass": 1,
+      "correct": false,
+      "reused": false
+    },
+    {
+      "problem_id": "gpqa_diamond_0065",
+      "subject": "physics",
+      "ground_truth": "A",
+      "extracted_answer": "A",
+      "extraction_pass": 1,
+      "correct": true,
+      "reused": false
+    },
+    {
+      "problem_id": "gpqa_diamond_0070",
+      "subject": "physics",
+      "ground_truth": "D",
+      "extracted_answer": "C",
+      "extraction_pass": 1,
+      "correct": false,
+      "reused": false
+    },
+    {
+      "problem_id": "gpqa_diamond_0074",
+      "subject": "biology",
+      "ground_truth": "D",
+      "extracted_answer": "D",
+      "extraction_pass": 1,
+      "correct": true,
+      "reused": false
+    },
+    {
+      "problem_id": "gpqa_diamond_0075",
+      "subject": "biology",
+      "ground_truth": "A",
+      "extracted_answer": "A",
+      "extraction_pass": 1,
+      "correct": true,
+      "reused": false
+    },
+    {
+      "problem_id": "gpqa_diamond_0077",
+      "subject": "physics",
+      "ground_truth": "B",
+      "extracted_answer": "B",
+      "extraction_pass": 1,
+      "correct": true,
+      "reused": false
+    },
+    {
+      "problem_id": "gpqa_diamond_0079",
+      "subject": "biology",
+      "ground_truth": "A",
+      "extracted_answer": "D",
+      "extraction_pass": 1,
+      "correct": false,
+      "reused": false
+    },
+    {
+      "problem_id": "gpqa_diamond_0080",
+      "subject": "chemistry",
+      "ground_truth": "A",
+      "extracted_answer": "C",
+      "extraction_pass": 1,
+      "correct": false,
+      "reused": false
+    },
+    {
+      "problem_id": "gpqa_diamond_0082",
+      "subject": "chemistry",
+      "ground_truth": "A",
+      "extracted_answer": "A",
+      "extraction_pass": 1,
+      "correct": true,
+      "reused": false
+    },
+    {
+      "problem_id": "gpqa_diamond_0087",
+      "subject": "biology",
+      "ground_truth": "B",
+      "extracted_answer": "B",
+      "extraction_pass": 1,
+      "correct": true,
+      "reused": false
+    },
+    {
+      "problem_id": "gpqa_diamond_0090",
+      "subject": "chemistry",
+      "ground_truth": "B",
+      "extracted_answer": "A",
+      "extraction_pass": 1,
+      "correct": false,
+      "reused": false
+    },
+    {
+      "problem_id": "gpqa_diamond_0092",
+      "subject": "biology",
+      "ground_truth": "A",
+      "extracted_answer": "C",
+      "extraction_pass": 1,
+      "correct": false,
+      "reused": false
+    },
+    {
+      "problem_id": "gpqa_diamond_0096",
+      "subject": "biology",
+      "ground_truth": "A",
+      "extracted_answer": "D",
+      "extraction_pass": 1,
+      "correct": false,
+      "reused": false
+    },
+    {
+      "problem_id": "gpqa_diamond_0098",
+      "subject": "chemistry",
+      "ground_truth": "B",
+      "extracted_answer": "C",
+      "extraction_pass": 1,
+      "correct": false,
+      "reused": false
+    },
+    {
+      "problem_id": "gpqa_diamond_0101",
+      "subject": "biology",
+      "ground_truth": "A",
+      "extracted_answer": "A",
+      "extraction_pass": 1,
+      "correct": true,
+      "reused": false
+    },
+    {
+      "problem_id": "gpqa_diamond_0106",
+      "subject": "biology",
+      "ground_truth": "C",
+      "extracted_answer": "UNPARSEABLE",
+      "extraction_pass": 5,
+      "correct": true,
+      "reused": false
+    },
+    {
+      "problem_id": "gpqa_diamond_0107",
+      "subject": "physics",
+      "ground_truth": "A",
+      "extracted_answer": "A",
+      "extraction_pass": 1,
+      "correct": true,
+      "reused": false
+    },
+    {
+      "problem_id": "gpqa_diamond_0121",
+      "subject": "chemistry",
+      "ground_truth": "D",
+      "extracted_answer": "UNPARSEABLE",
+      "extraction_pass": 5,
+      "correct": false,
+      "reused": false
+    },
+    {
+      "problem_id": "gpqa_diamond_0127",
+      "subject": "biology",
+      "ground_truth": "D",
+      "extracted_answer": "A",
+      "extraction_pass": 1,
+      "correct": false,
+      "reused": false
+    },
+    {
+      "problem_id": "gpqa_diamond_0130",
+      "subject": "chemistry",
+      "ground_truth": "A",
+      "extracted_answer": "C",
+      "extraction_pass": 1,
+      "correct": false,
+      "reused": false
+    },
+    {
+      "problem_id": "gpqa_diamond_0131",
+      "subject": "chemistry",
+      "ground_truth": "B",
+      "extracted_answer": "C",
+      "extraction_pass": 1,
+      "correct": false,
+      "reused": false
+    },
+    {
+      "problem_id": "gpqa_diamond_0134",
+      "subject": "physics",
+      "ground_truth": "B",
+      "extracted_answer": "D",
+      "extraction_pass": 1,
+      "correct": false,
+      "reused": false
+    },
+    {
+      "problem_id": "gpqa_diamond_0151",
+      "subject": "biology",
+      "ground_truth": "B",
+      "extracted_answer": "B",
+      "extraction_pass": 1,
+      "correct": true,
+      "reused": false
+    },
+    {
+      "problem_id": "gpqa_diamond_0154",
+      "subject": "physics",
+      "ground_truth": "A",
+      "extracted_answer": "C",
+      "extraction_pass": 2,
+      "correct": false,
+      "reused": false
+    },
+    {
+      "problem_id": "gpqa_diamond_0156",
+      "subject": "biology",
+      "ground_truth": "B",
+      "extracted_answer": "UNPARSEABLE",
+      "extraction_pass": 5,
+      "correct": true,
+      "reused": false
+    },
+    {
+      "problem_id": "gpqa_diamond_0159",
+      "subject": "physics",
+      "ground_truth": "C",
+      "extracted_answer": "B",
+      "extraction_pass": 1,
+      "correct": false,
+      "reused": false
+    },
+    {
+      "problem_id": "gpqa_diamond_0160",
+      "subject": "physics",
+      "ground_truth": "D",
+      "extracted_answer": "C",
+      "extraction_pass": 1,
+      "correct": false,
+      "reused": false
+    },
+    {
+      "problem_id": "gpqa_diamond_0164",
+      "subject": "chemistry",
+      "ground_truth": "D",
+      "extracted_answer": "A",
+      "extraction_pass": 1,
+      "correct": false,
+      "reused": false
+    },
+    {
+      "problem_id": "gpqa_diamond_0165",
+      "subject": "physics",
+      "ground_truth": "D",
+      "extracted_answer": "D",
+      "extraction_pass": 1,
+      "correct": true,
+      "reused": false
+    },
+    {
+      "problem_id": "gpqa_diamond_0167",
+      "subject": "biology",
+      "ground_truth": "C",
+      "extracted_answer": "B",
+      "extraction_pass": 1,
+      "correct": false,
+      "reused": false
+    },
+    {
+      "problem_id": "gpqa_diamond_0171",
+      "subject": "physics",
+      "ground_truth": "B",
+      "extracted_answer": "B",
+      "extraction_pass": 1,
+      "correct": true,
+      "reused": false
+    },
+    {
+      "problem_id": "gpqa_diamond_0173",
+      "subject": "physics",
+      "ground_truth": "A",
+      "extracted_answer": "B",
+      "extraction_pass": 1,
+      "correct": false,
+      "reused": false
+    },
+    {
+      "problem_id": "gpqa_diamond_0176",
+      "subject": "physics",
+      "ground_truth": "D",
+      "extracted_answer": "C",
+      "extraction_pass": 1,
+      "correct": false,
+      "reused": false
+    },
+    {
+      "problem_id": "gpqa_diamond_0178",
+      "subject": "physics",
+      "ground_truth": "D",
+      "extracted_answer": "D",
+      "extraction_pass": 1,
+      "correct": true,
+      "reused": false
+    },
+    {
+      "problem_id": "gpqa_diamond_0195",
+      "subject": "physics",
+      "ground_truth": "C",
+      "extracted_answer": "C",
+      "extraction_pass": 1,
+      "correct": true,
+      "reused": false
+    }
+  ],
+  "summary": {
+    "n_correct": 21,
+    "accuracy": 0.446809,
+    "by_subject": {
+      "physics": {
+        "n": 16,
+        "correct": 8,
+        "accuracy": 0.5
+      },
+      "chemistry": {
+        "n": 16,
+        "correct": 3,
+        "accuracy": 0.1875
+      },
+      "biology": {
+        "n": 15,
+        "correct": 10,
+        "accuracy": 0.666667
+      }
+    },
+    "band": "green",
+    "band_action": "proceed",
+    "comparison_to_quick_recon": {
+      "quick_accuracy": 0.5,
+      "extended_accuracy": 0.446809,
+      "delta": -0.053191
+    }
+  },
+  "new_sampling_cost_usd": 0.008101,
+  "new_input_tokens": 17221,
+  "new_output_tokens": 27786
+}

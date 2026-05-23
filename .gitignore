@@ -6,6 +6,7 @@ outputs/*
 # Pre-registration evidence — force-tracked despite outputs/ exclusion
 !outputs/gate_minus_1_labels.json
 !outputs/recon_results.json
+!outputs/recon_extended_results.json
 
 # Python cache
 __pycache__/
