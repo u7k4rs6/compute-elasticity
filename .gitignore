@@ -29,3 +29,5 @@ data/
 # Misc
 .DS_Store
 *.log
+*.png
+.playwright-mcp/

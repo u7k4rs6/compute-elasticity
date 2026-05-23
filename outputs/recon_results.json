@@ -1,0 +1,138 @@
+{
+  "schema_version": "v6.0-pilot",
+  "phase": "day_0_recon",
+  "timestamp": "2026-05-23T18:37:49.018844+00:00",
+  "model": "Qwen/Qwen2.5-7B-Instruct-Turbo",
+  "temperature": 0.7,
+  "n_samples_per_problem": 1,
+  "gate_1_problems_reused": [
+    "gpqa_diamond_0040",
+    "gpqa_diamond_0008",
+    "gpqa_diamond_0007"
+  ],
+  "new_recon_problems": [
+    "gpqa_diamond_0010",
+    "gpqa_diamond_0012",
+    "gpqa_diamond_0026",
+    "gpqa_diamond_0027",
+    "gpqa_diamond_0029",
+    "gpqa_diamond_0030",
+    "gpqa_diamond_0032"
+  ],
+  "per_problem": [
+    {
+      "problem_id": "gpqa_diamond_0040",
+      "subject": "physics",
+      "ground_truth": "B",
+      "extracted_answer": "C",
+      "extraction_pass": 1,
+      "correct": false,
+      "reused_from_gate_1": true
+    },
+    {
+      "problem_id": "gpqa_diamond_0008",
+      "subject": "chemistry",
+      "ground_truth": "A",
+      "extracted_answer": "A",
+      "extraction_pass": 1,
+      "correct": true,
+      "reused_from_gate_1": true
+    },
+    {
+      "problem_id": "gpqa_diamond_0007",
+      "subject": "biology",
+      "ground_truth": "C",
+      "extracted_answer": "C",
+      "extraction_pass": 1,
+      "correct": true,
+      "reused_from_gate_1": true
+    },
+    {
+      "problem_id": "gpqa_diamond_0010",
+      "subject": "biology",
+      "ground_truth": "D",
+      "extracted_answer": "D",
+      "extraction_pass": 1,
+      "correct": true,
+      "reused_from_gate_1": false
+    },
+    {
+      "problem_id": "gpqa_diamond_0012",
+      "subject": "chemistry",
+      "ground_truth": "A",
+      "extracted_answer": "A",
+      "extraction_pass": 1,
+      "correct": true,
+      "reused_from_gate_1": false
+    },
+    {
+      "problem_id": "gpqa_diamond_0026",
+      "subject": "biology",
+      "ground_truth": "B",
+      "extracted_answer": "B",
+      "extraction_pass": 1,
+      "correct": true,
+      "reused_from_gate_1": false
+    },
+    {
+      "problem_id": "gpqa_diamond_0027",
+      "subject": "chemistry",
+      "ground_truth": "A",
+      "extracted_answer": "C",
+      "extraction_pass": 1,
+      "correct": false,
+      "reused_from_gate_1": false
+    },
+    {
+      "problem_id": "gpqa_diamond_0029",
+      "subject": "chemistry",
+      "ground_truth": "D",
+      "extracted_answer": "A",
+      "extraction_pass": 1,
+      "correct": false,
+      "reused_from_gate_1": false
+    },
+    {
+      "problem_id": "gpqa_diamond_0030",
+      "subject": "chemistry",
+      "ground_truth": "B",
+      "extracted_answer": "D",
+      "extraction_pass": 1,
+      "correct": false,
+      "reused_from_gate_1": false
+    },
+    {
+      "problem_id": "gpqa_diamond_0032",
+      "subject": "chemistry",
+      "ground_truth": "D",
+      "extracted_answer": "A",
+      "extraction_pass": 1,
+      "correct": false,
+      "reused_from_gate_1": false
+    }
+  ],
+  "summary": {
+    "n_problems": 10,
+    "n_correct": 5,
+    "accuracy": 0.5,
+    "by_subject": {
+      "physics": {
+        "n": 1,
+        "correct": 0
+      },
+      "chemistry": {
+        "n": 6,
+        "correct": 2
+      },
+      "biology": {
+        "n": 3,
+        "correct": 3
+      }
+    },
+    "band": "yellow",
+    "band_action": "proceed_with_flag"
+  },
+  "total_cost_usd": 0.001405,
+  "total_input_tokens": 3008,
+  "total_output_tokens": 4795
+}
