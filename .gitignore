@@ -18,6 +18,7 @@ outputs/*
 !outputs/entropy_baseline/
 !outputs/entropy_baseline/*
 !outputs/entropy_baseline_summary.json
+!outputs/hypothesis_results.json
 
 # Python cache
 __pycache__/
