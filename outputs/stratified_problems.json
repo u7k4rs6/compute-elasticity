@@ -1,0 +1,252 @@
+[
+  {
+    "problem_id": "gpqa_diamond_0008",
+    "subject": "chemistry",
+    "role": "gate_1"
+  },
+  {
+    "problem_id": "gpqa_diamond_0052",
+    "subject": "chemistry",
+    "role": "main_pilot"
+  },
+  {
+    "problem_id": "gpqa_diamond_0130",
+    "subject": "chemistry",
+    "role": "main_pilot"
+  },
+  {
+    "problem_id": "gpqa_diamond_0027",
+    "subject": "chemistry",
+    "role": "main_pilot"
+  },
+  {
+    "problem_id": "gpqa_diamond_0195",
+    "subject": "physics",
+    "role": "main_pilot"
+  },
+  {
+    "problem_id": "gpqa_diamond_0029",
+    "subject": "chemistry",
+    "role": "main_pilot"
+  },
+  {
+    "problem_id": "gpqa_diamond_0047",
+    "subject": "chemistry",
+    "role": "main_pilot"
+  },
+  {
+    "problem_id": "gpqa_diamond_0101",
+    "subject": "biology",
+    "role": "main_pilot"
+  },
+  {
+    "problem_id": "gpqa_diamond_0043",
+    "subject": "biology",
+    "role": "main_pilot"
+  },
+  {
+    "problem_id": "gpqa_diamond_0075",
+    "subject": "biology",
+    "role": "main_pilot"
+  },
+  {
+    "problem_id": "gpqa_diamond_0167",
+    "subject": "biology",
+    "role": "main_pilot"
+  },
+  {
+    "problem_id": "gpqa_diamond_0080",
+    "subject": "chemistry",
+    "role": "main_pilot"
+  },
+  {
+    "problem_id": "gpqa_diamond_0077",
+    "subject": "physics",
+    "role": "main_pilot"
+  },
+  {
+    "problem_id": "gpqa_diamond_0164",
+    "subject": "chemistry",
+    "role": "main_pilot"
+  },
+  {
+    "problem_id": "gpqa_diamond_0079",
+    "subject": "biology",
+    "role": "main_pilot"
+  },
+  {
+    "problem_id": "gpqa_diamond_0082",
+    "subject": "chemistry",
+    "role": "main_pilot"
+  },
+  {
+    "problem_id": "gpqa_diamond_0098",
+    "subject": "chemistry",
+    "role": "main_pilot"
+  },
+  {
+    "problem_id": "gpqa_diamond_0046",
+    "subject": "chemistry",
+    "role": "main_pilot"
+  },
+  {
+    "problem_id": "gpqa_diamond_0131",
+    "subject": "chemistry",
+    "role": "main_pilot"
+  },
+  {
+    "problem_id": "gpqa_diamond_0030",
+    "subject": "chemistry",
+    "role": "main_pilot"
+  },
+  {
+    "problem_id": "gpqa_diamond_0127",
+    "subject": "biology",
+    "role": "main_pilot"
+  },
+  {
+    "problem_id": "gpqa_diamond_0051",
+    "subject": "physics",
+    "role": "main_pilot"
+  },
+  {
+    "problem_id": "gpqa_diamond_0065",
+    "subject": "physics",
+    "role": "main_pilot"
+  },
+  {
+    "problem_id": "gpqa_diamond_0074",
+    "subject": "biology",
+    "role": "main_pilot"
+  },
+  {
+    "problem_id": "gpqa_diamond_0154",
+    "subject": "physics",
+    "role": "main_pilot"
+  },
+  {
+    "problem_id": "gpqa_diamond_0012",
+    "subject": "chemistry",
+    "role": "main_pilot"
+  },
+  {
+    "problem_id": "gpqa_diamond_0087",
+    "subject": "biology",
+    "role": "main_pilot"
+  },
+  {
+    "problem_id": "gpqa_diamond_0151",
+    "subject": "biology",
+    "role": "main_pilot"
+  },
+  {
+    "problem_id": "gpqa_diamond_0032",
+    "subject": "chemistry",
+    "role": "main_pilot"
+  },
+  {
+    "problem_id": "gpqa_diamond_0173",
+    "subject": "physics",
+    "role": "main_pilot"
+  },
+  {
+    "problem_id": "gpqa_diamond_0040",
+    "subject": "physics",
+    "role": "gate_1"
+  },
+  {
+    "problem_id": "gpqa_diamond_0159",
+    "subject": "physics",
+    "role": "main_pilot"
+  },
+  {
+    "problem_id": "gpqa_diamond_0070",
+    "subject": "physics",
+    "role": "main_pilot"
+  },
+  {
+    "problem_id": "gpqa_diamond_0096",
+    "subject": "biology",
+    "role": "main_pilot"
+  },
+  {
+    "problem_id": "gpqa_diamond_0178",
+    "subject": "physics",
+    "role": "main_pilot"
+  },
+  {
+    "problem_id": "gpqa_diamond_0007",
+    "subject": "biology",
+    "role": "gate_1"
+  },
+  {
+    "problem_id": "gpqa_diamond_0171",
+    "subject": "physics",
+    "role": "main_pilot"
+  },
+  {
+    "problem_id": "gpqa_diamond_0050",
+    "subject": "physics",
+    "role": "main_pilot"
+  },
+  {
+    "problem_id": "gpqa_diamond_0160",
+    "subject": "physics",
+    "role": "main_pilot"
+  },
+  {
+    "problem_id": "gpqa_diamond_0107",
+    "subject": "physics",
+    "role": "main_pilot"
+  },
+  {
+    "problem_id": "gpqa_diamond_0134",
+    "subject": "physics",
+    "role": "main_pilot"
+  },
+  {
+    "problem_id": "gpqa_diamond_0106",
+    "subject": "biology",
+    "role": "main_pilot"
+  },
+  {
+    "problem_id": "gpqa_diamond_0090",
+    "subject": "chemistry",
+    "role": "main_pilot"
+  },
+  {
+    "problem_id": "gpqa_diamond_0010",
+    "subject": "biology",
+    "role": "main_pilot"
+  },
+  {
+    "problem_id": "gpqa_diamond_0092",
+    "subject": "biology",
+    "role": "main_pilot"
+  },
+  {
+    "problem_id": "gpqa_diamond_0156",
+    "subject": "biology",
+    "role": "main_pilot"
+  },
+  {
+    "problem_id": "gpqa_diamond_0026",
+    "subject": "biology",
+    "role": "main_pilot"
+  },
+  {
+    "problem_id": "gpqa_diamond_0176",
+    "subject": "physics",
+    "role": "main_pilot"
+  },
+  {
+    "problem_id": "gpqa_diamond_0165",
+    "subject": "physics",
+    "role": "main_pilot"
+  },
+  {
+    "problem_id": "gpqa_diamond_0121",
+    "subject": "chemistry",
+    "role": "main_pilot"
+  }
+]
