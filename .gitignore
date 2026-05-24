@@ -19,6 +19,9 @@ outputs/*
 !outputs/entropy_baseline/*
 !outputs/entropy_baseline_summary.json
 !outputs/hypothesis_results.json
+!outputs/unimodal_sensitivity.json
+!outputs/unimodal_peak_analysis.json
+!outputs/convergence_breakdown.json
 
 # Python cache
 __pycache__/

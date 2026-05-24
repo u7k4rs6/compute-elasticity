@@ -1,0 +1,257 @@
+{
+  "n_problems": 47,
+  "families": [
+    {
+      "family": "constant",
+      "attempted": 47,
+      "converged": 47,
+      "failed": 0,
+      "convergence_rate": 1.0,
+      "failed_problem_ids": [],
+      "failed_details": []
+    },
+    {
+      "family": "logistic",
+      "attempted": 47,
+      "converged": 47,
+      "failed": 0,
+      "convergence_rate": 1.0,
+      "failed_problem_ids": [],
+      "failed_details": []
+    },
+    {
+      "family": "gompertz",
+      "attempted": 47,
+      "converged": 47,
+      "failed": 0,
+      "convergence_rate": 1.0,
+      "failed_problem_ids": [],
+      "failed_details": []
+    },
+    {
+      "family": "shifted_logistic",
+      "attempted": 47,
+      "converged": 18,
+      "failed": 29,
+      "convergence_rate": 0.383,
+      "failed_problem_ids": [
+        "gpqa_diamond_0010",
+        "gpqa_diamond_0012",
+        "gpqa_diamond_0030",
+        "gpqa_diamond_0043",
+        "gpqa_diamond_0046",
+        "gpqa_diamond_0050",
+        "gpqa_diamond_0065",
+        "gpqa_diamond_0070",
+        "gpqa_diamond_0074",
+        "gpqa_diamond_0075",
+        "gpqa_diamond_0077",
+        "gpqa_diamond_0079",
+        "gpqa_diamond_0080",
+        "gpqa_diamond_0082",
+        "gpqa_diamond_0087",
+        "gpqa_diamond_0092",
+        "gpqa_diamond_0096",
+        "gpqa_diamond_0101",
+        "gpqa_diamond_0107",
+        "gpqa_diamond_0121",
+        "gpqa_diamond_0127",
+        "gpqa_diamond_0151",
+        "gpqa_diamond_0154",
+        "gpqa_diamond_0156",
+        "gpqa_diamond_0160",
+        "gpqa_diamond_0164",
+        "gpqa_diamond_0165",
+        "gpqa_diamond_0171",
+        "gpqa_diamond_0195"
+      ],
+      "failed_details": [
+        {
+          "problem_id": "gpqa_diamond_0010",
+          "subject": "biology",
+          "r_range": 0.197,
+          "best_fit_family": "gompertz"
+        },
+        {
+          "problem_id": "gpqa_diamond_0012",
+          "subject": "chemistry",
+          "r_range": 0.138,
+          "best_fit_family": "gompertz"
+        },
+        {
+          "problem_id": "gpqa_diamond_0030",
+          "subject": "chemistry",
+          "r_range": 0.1212,
+          "best_fit_family": "unimodal"
+        },
+        {
+          "problem_id": "gpqa_diamond_0043",
+          "subject": "biology",
+          "r_range": 0.5178,
+          "best_fit_family": "unimodal"
+        },
+        {
+          "problem_id": "gpqa_diamond_0046",
+          "subject": "chemistry",
+          "r_range": 0.0952,
+          "best_fit_family": "unimodal"
+        },
+        {
+          "problem_id": "gpqa_diamond_0050",
+          "subject": "physics",
+          "r_range": 0.4673,
+          "best_fit_family": "logistic"
+        },
+        {
+          "problem_id": "gpqa_diamond_0065",
+          "subject": "physics",
+          "r_range": 0.2923,
+          "best_fit_family": "gompertz"
+        },
+        {
+          "problem_id": "gpqa_diamond_0070",
+          "subject": "physics",
+          "r_range": 0.6149,
+          "best_fit_family": "gompertz"
+        },
+        {
+          "problem_id": "gpqa_diamond_0074",
+          "subject": "biology",
+          "r_range": 0.0322,
+          "best_fit_family": "gompertz"
+        },
+        {
+          "problem_id": "gpqa_diamond_0075",
+          "subject": "biology",
+          "r_range": 0.4635,
+          "best_fit_family": "unimodal"
+        },
+        {
+          "problem_id": "gpqa_diamond_0077",
+          "subject": "physics",
+          "r_range": 0.0462,
+          "best_fit_family": "gompertz"
+        },
+        {
+          "problem_id": "gpqa_diamond_0079",
+          "subject": "biology",
+          "r_range": 0.1087,
+          "best_fit_family": "unimodal"
+        },
+        {
+          "problem_id": "gpqa_diamond_0080",
+          "subject": "chemistry",
+          "r_range": 0.375,
+          "best_fit_family": "gompertz"
+        },
+        {
+          "problem_id": "gpqa_diamond_0082",
+          "subject": "chemistry",
+          "r_range": 0.2529,
+          "best_fit_family": "gompertz"
+        },
+        {
+          "problem_id": "gpqa_diamond_0087",
+          "subject": "biology",
+          "r_range": 0.0,
+          "best_fit_family": "constant"
+        },
+        {
+          "problem_id": "gpqa_diamond_0092",
+          "subject": "biology",
+          "r_range": 0.163,
+          "best_fit_family": "unimodal"
+        },
+        {
+          "problem_id": "gpqa_diamond_0096",
+          "subject": "biology",
+          "r_range": 0.4404,
+          "best_fit_family": "logistic"
+        },
+        {
+          "problem_id": "gpqa_diamond_0101",
+          "subject": "biology",
+          "r_range": 0.6308,
+          "best_fit_family": "logistic"
+        },
+        {
+          "problem_id": "gpqa_diamond_0107",
+          "subject": "physics",
+          "r_range": 0.0154,
+          "best_fit_family": "gompertz"
+        },
+        {
+          "problem_id": "gpqa_diamond_0121",
+          "subject": "chemistry",
+          "r_range": 0.649,
+          "best_fit_family": "unimodal"
+        },
+        {
+          "problem_id": "gpqa_diamond_0127",
+          "subject": "biology",
+          "r_range": 0.0923,
+          "best_fit_family": "unimodal"
+        },
+        {
+          "problem_id": "gpqa_diamond_0151",
+          "subject": "biology",
+          "r_range": 0.3702,
+          "best_fit_family": "unimodal"
+        },
+        {
+          "problem_id": "gpqa_diamond_0154",
+          "subject": "physics",
+          "r_range": 0.4486,
+          "best_fit_family": "gompertz"
+        },
+        {
+          "problem_id": "gpqa_diamond_0156",
+          "subject": "biology",
+          "r_range": 0.5231,
+          "best_fit_family": "gompertz"
+        },
+        {
+          "problem_id": "gpqa_diamond_0160",
+          "subject": "physics",
+          "r_range": 0.3962,
+          "best_fit_family": "gompertz"
+        },
+        {
+          "problem_id": "gpqa_diamond_0164",
+          "subject": "chemistry",
+          "r_range": 0.6,
+          "best_fit_family": "unimodal"
+        },
+        {
+          "problem_id": "gpqa_diamond_0165",
+          "subject": "physics",
+          "r_range": 0.3144,
+          "best_fit_family": "gompertz"
+        },
+        {
+          "problem_id": "gpqa_diamond_0171",
+          "subject": "physics",
+          "r_range": 0.2154,
+          "best_fit_family": "gompertz"
+        },
+        {
+          "problem_id": "gpqa_diamond_0195",
+          "subject": "physics",
+          "r_range": 0.2163,
+          "best_fit_family": "gompertz"
+        }
+      ]
+    },
+    {
+      "family": "unimodal",
+      "attempted": 47,
+      "converged": 47,
+      "failed": 0,
+      "convergence_rate": 1.0,
+      "failed_problem_ids": [],
+      "failed_details": []
+    }
+  ],
+  "total_fits": 235,
+  "total_failed": 29
+}

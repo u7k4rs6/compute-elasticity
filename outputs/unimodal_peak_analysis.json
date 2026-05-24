@@ -1,0 +1,457 @@
+{
+  "regime_boundaries": {
+    "decaying": "c* <= 4.0",
+    "borderline_low": "4.0 < c* < 8.0",
+    "interior": "8.0 <= c* <= 32.0",
+    "borderline_high": "32.0 < c* < 56.0",
+    "saturating": "c* >= 56.0"
+  },
+  "aggregate": {
+    "n_unimodal_winners": 22,
+    "c_star_stats": {
+      "min": 1.7454614980169728e-16,
+      "p25": 1.2855848297835633,
+      "median": 1.4605071856099536,
+      "p75": 10.217407620639216,
+      "max": 156.0132238240692
+    },
+    "regime_counts": {
+      "interior": 1,
+      "borderline_low": 1,
+      "borderline_high": 0,
+      "decaying": 15,
+      "saturating": 5
+    },
+    "regime_fractions": {
+      "interior": 0.045454545454545456,
+      "borderline_low": 0.045454545454545456,
+      "borderline_high": 0.0,
+      "decaying": 0.6818181818181818,
+      "saturating": 0.22727272727272727
+    },
+    "fraction_interior": 0.045454545454545456,
+    "fraction_saturating": 0.22727272727272727,
+    "fraction_decaying": 0.6818181818181818,
+    "fraction_borderline": 0.045454545454545456
+  },
+  "per_problem": [
+    {
+      "problem_id": "gpqa_diamond_0178",
+      "subject": "physics",
+      "c_star": 1.7454614980169728e-16,
+      "A": 0.29403993904815906,
+      "sigma": 5.65989214570362,
+      "regime": "decaying",
+      "unimodal_weight": 0.9917538817169907,
+      "unimodal_converged": true,
+      "R_at_N": {
+        "1": 0.3076923076923077,
+        "2": 0.30240384615384613,
+        "4": 0.209,
+        "8": 0.129,
+        "16": 0.04,
+        "32": 0.0,
+        "64": 0.0
+      }
+    },
+    {
+      "problem_id": "gpqa_diamond_0079",
+      "subject": "biology",
+      "c_star": 8.046369269460009e-15,
+      "A": 0.11058885428265537,
+      "sigma": 4.085617934165073,
+      "regime": "decaying",
+      "unimodal_weight": 0.9999780932345729,
+      "unimodal_converged": true,
+      "R_at_N": {
+        "1": 0.1076923076923077,
+        "2": 0.10865384615384616,
+        "4": 0.06,
+        "8": 0.027,
+        "16": 0.003,
+        "32": 0.0,
+        "64": 0.0
+      }
+    },
+    {
+      "problem_id": "gpqa_diamond_0130",
+      "subject": "chemistry",
+      "c_star": 4.3829708103660315e-14,
+      "A": 0.2529196368678946,
+      "sigma": 18.924992151753262,
+      "regime": "decaying",
+      "unimodal_weight": 0.9852987157906596,
+      "unimodal_converged": true,
+      "R_at_N": {
+        "1": 0.26153846153846155,
+        "2": 0.2668269230769231,
+        "4": 0.249,
+        "8": 0.229,
+        "16": 0.165,
+        "32": 0.078,
+        "64": 0.0
+      }
+    },
+    {
+      "problem_id": "gpqa_diamond_0106",
+      "subject": "biology",
+      "c_star": 3.9847852930923586e-13,
+      "A": 0.2798354102571916,
+      "sigma": 11.466451288785398,
+      "regime": "decaying",
+      "unimodal_weight": 0.9957058010129528,
+      "unimodal_converged": true,
+      "R_at_N": {
+        "1": 0.2923076923076923,
+        "2": 0.29759615384615384,
+        "4": 0.247,
+        "8": 0.213,
+        "16": 0.118,
+        "32": 0.014,
+        "64": 0.0
+      }
+    },
+    {
+      "problem_id": "gpqa_diamond_0134",
+      "subject": "physics",
+      "c_star": 9.16234568609917e-13,
+      "A": 0.30280091797189457,
+      "sigma": 12.576570635410937,
+      "regime": "decaying",
+      "unimodal_weight": 0.9999994694269312,
+      "unimodal_converged": true,
+      "R_at_N": {
+        "1": 0.3076923076923077,
+        "2": 0.30528846153846156,
+        "4": 0.281,
+        "8": 0.249,
+        "16": 0.137,
+        "32": 0.016,
+        "64": 0.0
+      }
+    },
+    {
+      "problem_id": "gpqa_diamond_0029",
+      "subject": "chemistry",
+      "c_star": 1.2455516062947583,
+      "A": 0.042153393131866154,
+      "sigma": 1.8900023817800358,
+      "regime": "decaying",
+      "unimodal_weight": 0.9999999982872465,
+      "unimodal_converged": true,
+      "R_at_N": {
+        "1": 0.04225352112676056,
+        "2": 0.03943661971830986,
+        "4": 0.015,
+        "8": 0.002,
+        "16": 0.0,
+        "32": 0.0,
+        "64": 0.0
+      }
+    },
+    {
+      "problem_id": "gpqa_diamond_0176",
+      "subject": "physics",
+      "c_star": 1.4056845002499778,
+      "A": 0.03352876819801753,
+      "sigma": 0.9788261699485783,
+      "regime": "decaying",
+      "unimodal_weight": 1.0,
+      "unimodal_converged": true,
+      "R_at_N": {
+        "1": 0.03076923076923077,
+        "2": 0.027884615384615386,
+        "4": 0.001,
+        "8": 0.0,
+        "16": 0.0,
+        "32": 0.0,
+        "64": 0.0
+      }
+    },
+    {
+      "problem_id": "gpqa_diamond_0159",
+      "subject": "physics",
+      "c_star": 1.4240439742922413,
+      "A": 0.032568356296160506,
+      "sigma": 1.2578202035528003,
+      "regime": "decaying",
+      "unimodal_weight": 1.0,
+      "unimodal_converged": true,
+      "R_at_N": {
+        "1": 0.03076923076923077,
+        "2": 0.029326923076923077,
+        "4": 0.004,
+        "8": 0.0,
+        "16": 0.0,
+        "32": 0.0,
+        "64": 0.0
+      }
+    },
+    {
+      "problem_id": "gpqa_diamond_0127",
+      "subject": "biology",
+      "c_star": 1.4290295507014998,
+      "A": 0.09456597747884027,
+      "sigma": 1.6245176282915141,
+      "regime": "decaying",
+      "unimodal_weight": 0.9999999989769361,
+      "unimodal_converged": true,
+      "R_at_N": {
+        "1": 0.09230769230769231,
+        "2": 0.08990384615384615,
+        "4": 0.028,
+        "8": 0.004,
+        "16": 0.0,
+        "32": 0.0,
+        "64": 0.0
+      }
+    },
+    {
+      "problem_id": "gpqa_diamond_0167",
+      "subject": "biology",
+      "c_star": 1.4381386692543907,
+      "A": 0.016160454233995147,
+      "sigma": 1.3958302956898683,
+      "regime": "decaying",
+      "unimodal_weight": 1.0,
+      "unimodal_converged": true,
+      "R_at_N": {
+        "1": 0.015384615384615385,
+        "2": 0.014903846153846155,
+        "4": 0.003,
+        "8": 0.0,
+        "16": 0.0,
+        "32": 0.0,
+        "64": 0.0
+      }
+    },
+    {
+      "problem_id": "gpqa_diamond_0090",
+      "subject": "chemistry",
+      "c_star": 1.4602925706735104,
+      "A": 0.06226067299545251,
+      "sigma": 1.878354263239189,
+      "regime": "decaying",
+      "unimodal_weight": 0.9999999266356316,
+      "unimodal_converged": true,
+      "R_at_N": {
+        "1": 0.06153846153846154,
+        "2": 0.061057692307692306,
+        "4": 0.026,
+        "8": 0.005,
+        "16": 0.0,
+        "32": 0.0,
+        "64": 0.0
+      }
+    },
+    {
+      "problem_id": "gpqa_diamond_0030",
+      "subject": "chemistry",
+      "c_star": 1.4607218005463969,
+      "A": 0.12059847907402467,
+      "sigma": 1.919065463683571,
+      "regime": "decaying",
+      "unimodal_weight": 0.9999981301049783,
+      "unimodal_converged": true,
+      "R_at_N": {
+        "1": 0.12121212121212122,
+        "2": 0.12074592074592075,
+        "4": 0.054,
+        "8": 0.016,
+        "16": 0.002,
+        "32": 0.0,
+        "64": 0.0
+      }
+    },
+    {
+      "problem_id": "gpqa_diamond_0131",
+      "subject": "chemistry",
+      "c_star": 1.486019149217808,
+      "A": 0.03514751856289207,
+      "sigma": 0.9422131770112219,
+      "regime": "decaying",
+      "unimodal_weight": 1.0,
+      "unimodal_converged": true,
+      "R_at_N": {
+        "1": 0.03076923076923077,
+        "2": 0.03028846153846154,
+        "4": 0.001,
+        "8": 0.0,
+        "16": 0.0,
+        "32": 0.0,
+        "64": 0.0
+      }
+    },
+    {
+      "problem_id": "gpqa_diamond_0046",
+      "subject": "chemistry",
+      "c_star": 1.5713926328204944,
+      "A": 0.0985323675952529,
+      "sigma": 1.5203345453592287,
+      "regime": "decaying",
+      "unimodal_weight": 0.9999999999936953,
+      "unimodal_converged": true,
+      "R_at_N": {
+        "1": 0.09230769230769231,
+        "2": 0.09519230769230769,
+        "4": 0.028,
+        "8": 0.002,
+        "16": 0.0,
+        "32": 0.0,
+        "64": 0.0
+      }
+    },
+    {
+      "problem_id": "gpqa_diamond_0092",
+      "subject": "biology",
+      "c_star": 1.661306809344055,
+      "A": 0.16143316935230093,
+      "sigma": 1.6694078663403573,
+      "regime": "decaying",
+      "unimodal_weight": 0.9999987111608719,
+      "unimodal_converged": true,
+      "R_at_N": {
+        "1": 0.15384615384615385,
+        "2": 0.16298076923076923,
+        "4": 0.065,
+        "8": 0.019,
+        "16": 0.0,
+        "32": 0.0,
+        "64": 0.0
+      }
+    },
+    {
+      "problem_id": "gpqa_diamond_0047",
+      "subject": "chemistry",
+      "c_star": 7.929438707777546,
+      "A": 0.2941462999129294,
+      "sigma": 25.515988091736897,
+      "regime": "borderline_low",
+      "unimodal_weight": 0.9914734941174219,
+      "unimodal_converged": true,
+      "R_at_N": {
+        "1": 0.2923076923076923,
+        "2": 0.29423076923076924,
+        "4": 0.28,
+        "8": 0.294,
+        "16": 0.262,
+        "32": 0.21,
+        "64": 0.0
+      }
+    },
+    {
+      "problem_id": "gpqa_diamond_0026",
+      "subject": "biology",
+      "c_star": 10.980063924926439,
+      "A": 0.43308110135552036,
+      "sigma": 24.429460435905625,
+      "regime": "interior",
+      "unimodal_weight": 0.9998926865775724,
+      "unimodal_converged": true,
+      "R_at_N": {
+        "1": 0.4090909090909091,
+        "2": 0.4027972027972028,
+        "4": 0.429,
+        "8": 0.419,
+        "16": 0.394,
+        "32": 0.333,
+        "64": 0.0
+      }
+    },
+    {
+      "problem_id": "gpqa_diamond_0075",
+      "subject": "biology",
+      "c_star": 67.75612342529172,
+      "A": 0.9995933248917641,
+      "sigma": 60.702854167683796,
+      "regime": "saturating",
+      "unimodal_weight": 0.7038339797632248,
+      "unimodal_converged": true,
+      "R_at_N": {
+        "1": 0.5384615384615384,
+        "2": 0.5365384615384615,
+        "4": 0.579,
+        "8": 0.635,
+        "16": 0.712,
+        "32": 0.825,
+        "64": 1.0
+      }
+    },
+    {
+      "problem_id": "gpqa_diamond_0121",
+      "subject": "chemistry",
+      "c_star": 77.74992971096712,
+      "A": 0.9999999999999999,
+      "sigma": 52.174660974147415,
+      "regime": "saturating",
+      "unimodal_weight": 0.9360324956519581,
+      "unimodal_converged": true,
+      "R_at_N": {
+        "1": 0.3611111111111111,
+        "2": 0.3489827856025039,
+        "4": 0.403,
+        "8": 0.473,
+        "16": 0.528,
+        "32": 0.699,
+        "64": 0.998
+      }
+    },
+    {
+      "problem_id": "gpqa_diamond_0043",
+      "subject": "biology",
+      "c_star": 102.16685462653581,
+      "A": 0.9999999999999999,
+      "sigma": 32.51011131271894,
+      "regime": "saturating",
+      "unimodal_weight": 0.9997835176411896,
+      "unimodal_converged": true,
+      "R_at_N": {
+        "1": 0.49230769230769234,
+        "2": 0.48221153846153847,
+        "4": 0.51,
+        "8": 0.527,
+        "16": 0.556,
+        "32": 0.579,
+        "64": 1.0
+      }
+    },
+    {
+      "problem_id": "gpqa_diamond_0164",
+      "subject": "chemistry",
+      "c_star": 107.40988513419775,
+      "A": 0.9999999999999999,
+      "sigma": 47.750151140849134,
+      "regime": "saturating",
+      "unimodal_weight": 0.998116560160402,
+      "unimodal_converged": true,
+      "R_at_N": {
+        "1": 0.4,
+        "2": 0.4043269230769231,
+        "4": 0.44,
+        "8": 0.462,
+        "16": 0.525,
+        "32": 0.598,
+        "64": 1.0
+      }
+    },
+    {
+      "problem_id": "gpqa_diamond_0151",
+      "subject": "biology",
+      "c_star": 156.0132238240692,
+      "A": 0.9999999999999999,
+      "sigma": 70.88956938154405,
+      "regime": "saturating",
+      "unimodal_weight": 0.5598845764597522,
+      "unimodal_converged": true,
+      "R_at_N": {
+        "1": 0.4461538461538462,
+        "2": 0.42980769230769234,
+        "4": 0.463,
+        "8": 0.525,
+        "16": 0.524,
+        "32": 0.558,
+        "64": 0.8
+      }
+    }
+  ]
+}

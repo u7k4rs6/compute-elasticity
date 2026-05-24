@@ -1,0 +1,822 @@
+{
+  "regime_boundaries": {
+    "decaying": "c* <= 4.0",
+    "borderline_low": "4.0 < c* < 8.0",
+    "interior": "8.0 <= c* <= 32.0",
+    "borderline_high": "32.0 < c* < 56.0",
+    "saturating": "c* >= 56.0"
+  },
+  "aggregate": {
+    "n_unimodal_winners": 21,
+    "c_star_stats_unconstrained": {
+      "min": 5.168701004456867e-19,
+      "p25": 1.4056845002913811,
+      "median": 1.4607218005463969,
+      "p75": 10.980097394472496,
+      "max": 156.01320924013382
+    },
+    "regime_counts": {
+      "interior": 1,
+      "borderline_low": 1,
+      "borderline_high": 0,
+      "decaying": 14,
+      "saturating": 5
+    },
+    "regime_fractions": {
+      "interior": 0.0476,
+      "borderline_low": 0.0476,
+      "borderline_high": 0.0,
+      "decaying": 0.6667,
+      "saturating": 0.2381
+    },
+    "fraction_interior": 0.0476,
+    "fraction_saturating": 0.2381,
+    "fraction_decaying": 0.6667,
+    "fraction_borderline": 0.0476,
+    "sensitivity_c_star_ub": 64.0,
+    "n_winner_flips": 1,
+    "fraction_winner_flips": 0.0476,
+    "flip_targets": {
+      "logistic": 1
+    }
+  },
+  "per_problem": [
+    {
+      "problem_id": "gpqa_diamond_0130",
+      "subject": "chemistry",
+      "c_star_unconstrained": 5.168701004456867e-19,
+      "regime": "decaying",
+      "unimodal_weight_unconstrained": 0.9852987121538934,
+      "bics_unconstrained": {
+        "constant": -11.012914277244175,
+        "logistic": -7.12094757945416,
+        "gompertz": -7.121093964493447,
+        "shifted_logistic": -28.873748862645662,
+        "unimodal": -37.284108553640756
+      },
+      "R_at_N": {
+        "1": 0.26153846153846155,
+        "2": 0.2668269230769231,
+        "4": 0.249,
+        "8": 0.229,
+        "16": 0.165,
+        "32": 0.078,
+        "64": 0.0
+      },
+      "c_star_constrained": 2.144994829329824e-17,
+      "unimodal_bic_constrained": -37.28410855382563,
+      "unimodal_converged_constrained": true,
+      "unimodal_residual_se_constrained": 0.009676418145188985,
+      "weights_constrained": {
+        "constant": 1.9446908082644576e-06,
+        "logistic": 2.7779263748842115e-07,
+        "gompertz": 2.7781297057560314e-07,
+        "shifted_logistic": 0.014698787548351331,
+        "unimodal": 0.9852987121552323
+      },
+      "best_fit_constrained": "unimodal",
+      "winner_flips": false,
+      "winner_flips_to": null
+    },
+    {
+      "problem_id": "gpqa_diamond_0106",
+      "subject": "biology",
+      "c_star_unconstrained": 7.904750022963665e-18,
+      "regime": "decaying",
+      "unimodal_weight_unconstrained": 0.9957057976424862,
+      "bics_unconstrained": {
+        "constant": -8.291259558110907,
+        "logistic": -4.399299709940568,
+        "gompertz": -4.399439246044935,
+        "shifted_logistic": -23.198801558524472,
+        "unimodal": -34.09266251277074
+      },
+      "R_at_N": {
+        "1": 0.2923076923076923,
+        "2": 0.29759615384615384,
+        "4": 0.247,
+        "8": 0.213,
+        "16": 0.118,
+        "32": 0.014,
+        "64": 0.0
+      },
+      "c_star_constrained": 4.652900782403851e-16,
+      "unimodal_bic_constrained": -34.092662512823544,
+      "unimodal_converged_constrained": true,
+      "unimodal_residual_se_constrained": 0.01215392591278886,
+      "weights_constrained": {
+        "constant": 2.485579003197264e-06,
+        "logistic": 3.5505793969979315e-07,
+        "gompertz": 3.55082712264815e-07,
+        "shifted_logistic": 0.0042910066377456835,
+        "unimodal": 0.9957057976425991
+      },
+      "best_fit_constrained": "unimodal",
+      "winner_flips": false,
+      "winner_flips_to": null
+    },
+    {
+      "problem_id": "gpqa_diamond_0178",
+      "subject": "physics",
+      "c_star_unconstrained": 1.7454614980169728e-16,
+      "regime": "decaying",
+      "unimodal_weight_unconstrained": 0.9917538635707908,
+      "bics_unconstrained": {
+        "constant": -7.352948537698959,
+        "logistic": -3.4609906162992807,
+        "gompertz": -3.4611282258255045,
+        "shifted_logistic": -19.420862549259354,
+        "unimodal": -29.006474511999023
+      },
+      "R_at_N": {
+        "1": 0.3076923076923077,
+        "2": 0.30240384615384613,
+        "4": 0.209,
+        "8": 0.129,
+        "16": 0.04,
+        "32": 0.0,
+        "64": 0.0
+      },
+      "c_star_constrained": 2.092252277530663e-20,
+      "unimodal_bic_constrained": -29.00647451627411,
+      "unimodal_converged_constrained": true,
+      "unimodal_residual_se_constrained": 0.017478147399479626,
+      "weights_constrained": {
+        "constant": 1.9697017824333163e-05,
+        "logistic": 2.8136660695394968e-06,
+        "gompertz": 2.8138596698271217e-06,
+        "shifted_logistic": 0.008220811868164393,
+        "unimodal": 0.991753863588272
+      },
+      "best_fit_constrained": "unimodal",
+      "winner_flips": false,
+      "winner_flips_to": null
+    },
+    {
+      "problem_id": "gpqa_diamond_0134",
+      "subject": "physics",
+      "c_star_unconstrained": 9.16234568609917e-13,
+      "regime": "decaying",
+      "unimodal_weight_unconstrained": 0.9999994694257137,
+      "bics_unconstrained": {
+        "constant": -7.394579902799228,
+        "logistic": -3.5026259775733024,
+        "gompertz": -3.5027595913256064,
+        "shifted_logistic": -20.24575997921881,
+        "unimodal": -49.14853090057431
+      },
+      "R_at_N": {
+        "1": 0.3076923076923077,
+        "2": 0.30528846153846156,
+        "4": 0.281,
+        "8": 0.249,
+        "16": 0.137,
+        "32": 0.016,
+        "64": 0.0
+      },
+      "c_star_constrained": 1.3096291641765516e-17,
+      "unimodal_bic_constrained": -49.14853090057789,
+      "unimodal_converged_constrained": true,
+      "unimodal_residual_se_constrained": 0.004146369231924239,
+      "weights_constrained": {
+        "constant": 8.575205008617376e-10,
+        "logistic": 1.224947441114689e-10,
+        "gompertz": 1.2250292787603086e-10,
+        "shifted_logistic": 5.294717681573543e-07,
+        "unimodal": 0.9999994694257137
+      },
+      "best_fit_constrained": "unimodal",
+      "winner_flips": false,
+      "winner_flips_to": null
+    },
+    {
+      "problem_id": "gpqa_diamond_0029",
+      "subject": "chemistry",
+      "c_star_unconstrained": 1.2455542241066861,
+      "regime": "decaying",
+      "unimodal_weight_unconstrained": 0.5125613861875854,
+      "bics_unconstrained": {
+        "constant": -34.71506812601379,
+        "logistic": -30.823132000502753,
+        "gompertz": -30.823247816319913,
+        "shifted_logistic": -75.38535976139737,
+        "unimodal": -75.48587200447272
+      },
+      "R_at_N": {
+        "1": 0.04225352112676056,
+        "2": 0.03943661971830986,
+        "4": 0.015,
+        "8": 0.002,
+        "16": 0.0,
+        "32": 0.0,
+        "64": 0.0
+      },
+      "c_star_constrained": 1.2455541336728273,
+      "unimodal_bic_constrained": -75.48587200447642,
+      "unimodal_converged_constrained": true,
+      "unimodal_residual_se_constrained": 0.0006319117170252382,
+      "weights_constrained": {
+        "constant": 7.185852723026001e-10,
+        "logistic": 1.0264909393937302e-10,
+        "gompertz": 1.0265503830583195e-10,
+        "shifted_logistic": 0.48743861288806356,
+        "unimodal": 0.512561386188047
+      },
+      "best_fit_constrained": "unimodal",
+      "winner_flips": false,
+      "winner_flips_to": null
+    },
+    {
+      "problem_id": "gpqa_diamond_0176",
+      "subject": "physics",
+      "c_star_unconstrained": 1.4056845002913811,
+      "regime": "decaying",
+      "unimodal_weight_unconstrained": 0.9993921821192004,
+      "bics_unconstrained": {
+        "constant": -38.79029754270439,
+        "logistic": -34.89354214312842,
+        "gompertz": -34.89847723469111,
+        "shifted_logistic": -164.5796842810996,
+        "unimodal": -179.38973879380035
+      },
+      "R_at_N": {
+        "1": 0.03076923076923077,
+        "2": 0.027884615384615386,
+        "4": 0.001,
+        "8": 0.0,
+        "16": 0.0,
+        "32": 0.0,
+        "64": 0.0
+      },
+      "c_star_constrained": 1.4056845001677776,
+      "unimodal_bic_constrained": -179.38973879380035,
+      "unimodal_converged_constrained": true,
+      "unimodal_residual_se_constrained": 2.3863912189703087e-12,
+      "weights_constrained": {
+        "constant": 2.9441179205245373e-31,
+        "logistic": 4.195517308438971e-32,
+        "gompertz": 4.205882722781783e-32,
+        "shifted_logistic": 0.0006078178807994917,
+        "unimodal": 0.9993921821192004
+      },
+      "best_fit_constrained": "unimodal",
+      "winner_flips": false,
+      "winner_flips_to": null
+    },
+    {
+      "problem_id": "gpqa_diamond_0159",
+      "subject": "physics",
+      "c_star_unconstrained": 1.4240439742922413,
+      "regime": "decaying",
+      "unimodal_weight_unconstrained": 0.9999999957933379,
+      "bics_unconstrained": {
+        "constant": -38.68194676309789,
+        "logistic": -34.78457352111527,
+        "gompertz": -34.79012645480934,
+        "shifted_logistic": -140.81654612084202,
+        "unimodal": -179.38973879380035
+      },
+      "R_at_N": {
+        "1": 0.03076923076923077,
+        "2": 0.029326923076923077,
+        "4": 0.004,
+        "8": 0.0,
+        "16": 0.0,
+        "32": 0.0,
+        "64": 0.0
+      },
+      "c_star_constrained": 1.4240445885098656,
+      "unimodal_bic_constrained": -179.38973879380035,
+      "unimodal_converged_constrained": true,
+      "unimodal_residual_se_constrained": 2.033699946278044e-08,
+      "weights_constrained": {
+        "constant": 2.7905588020667285e-31,
+        "logistic": 3.9754594854918267e-32,
+        "gompertz": 3.986512554093843e-32,
+        "shifted_logistic": 4.206662156346825e-09,
+        "unimodal": 0.9999999957933379
+      },
+      "best_fit_constrained": "unimodal",
+      "winner_flips": false,
+      "winner_flips_to": null
+    },
+    {
+      "problem_id": "gpqa_diamond_0127",
+      "subject": "biology",
+      "c_star_unconstrained": 1.4290295670546462,
+      "regime": "decaying",
+      "unimodal_weight_unconstrained": 0.5087950805470266,
+      "bics_unconstrained": {
+        "constant": -23.476623604494574,
+        "logistic": -19.584692669838077,
+        "gompertz": -19.58480329531981,
+        "shifted_logistic": -65.30905278243387,
+        "unimodal": -65.37942068712847
+      },
+      "R_at_N": {
+        "1": 0.09230769230769231,
+        "2": 0.08990384615384615,
+        "4": 0.028,
+        "8": 0.004,
+        "16": 0.0,
+        "32": 0.0,
+        "64": 0.0
+      },
+      "c_star_constrained": 1.4290295646001734,
+      "unimodal_bic_constrained": -65.37942068712849,
+      "unimodal_converged_constrained": true,
+      "unimodal_residual_se_constrained": 0.0013006755677235605,
+      "weights_constrained": {
+        "constant": 4.050103566976086e-10,
+        "logistic": 5.785542183483309e-11,
+        "gompertz": 5.785862206529466e-11,
+        "shifted_logistic": 0.49120491893224727,
+        "unimodal": 0.5087950805470284
+      },
+      "best_fit_constrained": "unimodal",
+      "winner_flips": false,
+      "winner_flips_to": null
+    },
+    {
+      "problem_id": "gpqa_diamond_0167",
+      "subject": "biology",
+      "c_star_unconstrained": 1.4381386692543907,
+      "regime": "decaying",
+      "unimodal_weight_unconstrained": 0.9999999917945049,
+      "bics_unconstrained": {
+        "constant": -48.3740094571852,
+        "logistic": -44.47631484274439,
+        "gompertz": -44.48218914869322,
+        "shifted_logistic": -131.5746386921109,
+        "unimodal": -168.8115622358307
+      },
+      "R_at_N": {
+        "1": 0.015384615384615385,
+        "2": 0.014903846153846155,
+        "4": 0.003,
+        "8": 0.0,
+        "16": 0.0,
+        "32": 0.0,
+        "64": 0.0
+      },
+      "c_star_constrained": 1.4381446421255295,
+      "unimodal_bic_constrained": -179.38973879380035,
+      "unimodal_converged_constrained": true,
+      "unimodal_residual_se_constrained": 1.3897024696877194e-07,
+      "weights_constrained": {
+        "constant": 3.5505518015988777e-29,
+        "logistic": 5.05734081360742e-30,
+        "gompertz": 5.0722168330987845e-30,
+        "shifted_logistic": 4.140787437510889e-11,
+        "unimodal": 0.9999999999585922
+      },
+      "best_fit_constrained": "unimodal",
+      "winner_flips": false,
+      "winner_flips_to": null
+    },
+    {
+      "problem_id": "gpqa_diamond_0090",
+      "subject": "chemistry",
+      "c_star_unconstrained": 1.4603070402332075,
+      "regime": "decaying",
+      "unimodal_weight_unconstrained": 0.5485873915373874,
+      "bics_unconstrained": {
+        "constant": -29.117865308973244,
+        "logistic": -25.225931049689876,
+        "gompertz": -25.226044999466026,
+        "shifted_logistic": -62.167666616446326,
+        "unimodal": -62.557596386364054
+      },
+      "R_at_N": {
+        "1": 0.06153846153846154,
+        "2": 0.061057692307692306,
+        "4": 0.026,
+        "8": 0.005,
+        "16": 0.0,
+        "32": 0.0,
+        "64": 0.0
+      },
+      "c_star_constrained": 1.4603066792608785,
+      "unimodal_bic_constrained": -62.55759638640362,
+      "unimodal_converged_constrained": true,
+      "unimodal_residual_se_constrained": 0.0015911271677207608,
+      "weights_constrained": {
+        "constant": 3.0053875303636015e-08,
+        "logistic": 4.293166123569551e-09,
+        "gompertz": 4.293410733197166e-09,
+        "shifted_logistic": 0.4514125698172617,
+        "unimodal": 0.5485873915422862
+      },
+      "best_fit_constrained": "unimodal",
+      "winner_flips": false,
+      "winner_flips_to": null
+    },
+    {
+      "problem_id": "gpqa_diamond_0030",
+      "subject": "chemistry",
+      "c_star_unconstrained": 1.4607218005463969,
+      "regime": "decaying",
+      "unimodal_weight_unconstrained": 0.5376065331043373,
+      "bics_unconstrained": {
+        "constant": -19.79088062800106,
+        "logistic": -15.89894180717199,
+        "gompertz": -15.89906031803767,
+        "shifted_logistic": -46.37039785881804,
+        "unimodal": -46.67182371477751
+      },
+      "R_at_N": {
+        "1": 0.12121212121212122,
+        "2": 0.12074592074592075,
+        "4": 0.054,
+        "8": 0.016,
+        "16": 0.002,
+        "32": 0.0,
+        "64": 0.0
+      },
+      "c_star_constrained": 1.4607250316479565,
+      "unimodal_bic_constrained": -46.67182371545957,
+      "unimodal_converged_constrained": true,
+      "unimodal_residual_se_constrained": 0.0049487782281283236,
+      "weights_constrained": {
+        "constant": 7.822434082656633e-07,
+        "logistic": 1.1174243611880065e-07,
+        "gompertz": 1.1174905766139866e-07,
+        "shifted_logistic": 0.46239246107598586,
+        "unimodal": 0.5376065331891121
+      },
+      "best_fit_constrained": "unimodal",
+      "winner_flips": false,
+      "winner_flips_to": null
+    },
+    {
+      "problem_id": "gpqa_diamond_0131",
+      "subject": "chemistry",
+      "c_star_unconstrained": 1.486019149217808,
+      "regime": "decaying",
+      "unimodal_weight_unconstrained": 0.9999999999925424,
+      "bics_unconstrained": {
+        "constant": -38.24790527828821,
+        "logistic": -34.35122627806487,
+        "gompertz": -34.356084970790846,
+        "shifted_logistic": -128.14615626018994,
+        "unimodal": -179.38973879380035
+      },
+      "R_at_N": {
+        "1": 0.03076923076923077,
+        "2": 0.03028846153846154,
+        "4": 0.001,
+        "8": 0.0,
+        "16": 0.0,
+        "32": 0.0,
+        "64": 0.0
+      },
+      "c_star_constrained": 1.4860207846542264,
+      "unimodal_bic_constrained": -179.38973879380035,
+      "unimodal_converged_constrained": true,
+      "unimodal_residual_se_constrained": 3.4936378326418726e-07,
+      "weights_constrained": {
+        "constant": 2.246157829125411e-31,
+        "logistic": 3.2010110657050017e-32,
+        "gompertz": 3.208796883690512e-32,
+        "shifted_logistic": 7.457571679665248e-12,
+        "unimodal": 0.9999999999925424
+      },
+      "best_fit_constrained": "unimodal",
+      "winner_flips": false,
+      "winner_flips_to": null
+    },
+    {
+      "problem_id": "gpqa_diamond_0046",
+      "subject": "chemistry",
+      "c_star_unconstrained": 1.5713926314890894,
+      "regime": "decaying",
+      "unimodal_weight_unconstrained": 0.9564864434146477,
+      "bics_unconstrained": {
+        "constant": -23.00018448205146,
+        "logistic": -19.10826003885539,
+        "gompertz": -19.108364173525878,
+        "shifted_logistic": -68.9010979330475,
+        "unimodal": -75.08148609428571
+      },
+      "R_at_N": {
+        "1": 0.09230769230769231,
+        "2": 0.09519230769230769,
+        "4": 0.028,
+        "8": 0.002,
+        "16": 0.0,
+        "32": 0.0,
+        "64": 0.0
+      },
+      "c_star_constrained": 1.5713926313469824,
+      "unimodal_bic_constrained": -75.08148609428571,
+      "unimodal_converged_constrained": true,
+      "unimodal_residual_se_constrained": 0.000650430469206059,
+      "weights_constrained": {
+        "constant": 4.692106583284487e-12,
+        "logistic": 6.702660371036156e-13,
+        "gompertz": 6.703009369786355e-13,
+        "shifted_logistic": 0.043513556579319684,
+        "unimodal": 0.9564864434146477
+      },
+      "best_fit_constrained": "unimodal",
+      "winner_flips": false,
+      "winner_flips_to": null
+    },
+    {
+      "problem_id": "gpqa_diamond_0092",
+      "subject": "biology",
+      "c_star_unconstrained": 1.661306809344055,
+      "regime": "decaying",
+      "unimodal_weight_unconstrained": 0.9999986258769278,
+      "bics_unconstrained": {
+        "constant": -15.93391367003925,
+        "logistic": -12.041983057085648,
+        "gompertz": -12.04209336089669,
+        "shifted_logistic": -10.99136878972029,
+        "unimodal": -43.559190156067984
+      },
+      "R_at_N": {
+        "1": 0.15384615384615385,
+        "2": 0.16298076923076923,
+        "4": 0.065,
+        "8": 0.019,
+        "16": 0.0,
+        "32": 0.0,
+        "64": 0.0
+      },
+      "c_star_constrained": 1.6613065773635527,
+      "unimodal_bic_constrained": -43.55919015607828,
+      "unimodal_converged_constrained": true,
+      "unimodal_residual_se_constrained": 0.006180948211871844,
+      "weights_constrained": {
+        "constant": 1.0028750659180326e-06,
+        "logistic": 1.432599644915484e-07,
+        "gompertz": 1.4326786576945817e-07,
+        "shifted_logistic": 8.472017607801606e-08,
+        "unimodal": 0.9999986258769278
+      },
+      "best_fit_constrained": "unimodal",
+      "winner_flips": false,
+      "winner_flips_to": null
+    },
+    {
+      "problem_id": "gpqa_diamond_0047",
+      "subject": "chemistry",
+      "c_star_unconstrained": 7.929410991105019,
+      "regime": "borderline_low",
+      "unimodal_weight_unconstrained": 0.9914734941352136,
+      "bics_unconstrained": {
+        "constant": -10.540560887516069,
+        "logistic": -6.648613373166324,
+        "gompertz": -6.648740576684176,
+        "shifted_logistic": -20.984698800793353,
+        "unimodal": -30.510551744493725
+      },
+      "R_at_N": {
+        "1": 0.2923076923076923,
+        "2": 0.29423076923076924,
+        "4": 0.28,
+        "8": 0.294,
+        "16": 0.262,
+        "32": 0.21,
+        "64": 0.0
+      },
+      "c_star_constrained": 7.92940900173149,
+      "unimodal_bic_constrained": -30.510551744753137,
+      "unimodal_converged_constrained": true,
+      "unimodal_residual_se_constrained": 0.015697748475254555,
+      "weights_constrained": {
+        "constant": 4.56933176391758e-05,
+        "logistic": 6.5272016093714e-06,
+        "gompertz": 6.527616764076768e-06,
+        "shifted_logistic": 0.008467757727677215,
+        "unimodal": 0.9914734941363103
+      },
+      "best_fit_constrained": "unimodal",
+      "winner_flips": false,
+      "winner_flips_to": null
+    },
+    {
+      "problem_id": "gpqa_diamond_0026",
+      "subject": "biology",
+      "c_star_unconstrained": 10.980097394472496,
+      "regime": "interior",
+      "unimodal_weight_unconstrained": 0.9998919694047771,
+      "bics_unconstrained": {
+        "constant": -5.501614579563496,
+        "logistic": -1.6096899093974706,
+        "gompertz": -1.6097942710161917,
+        "shifted_logistic": 0.10705417787230953,
+        "unimodal": -24.362242347198887
+      },
+      "R_at_N": {
+        "1": 0.4090909090909091,
+        "2": 0.4027972027972028,
+        "4": 0.429,
+        "8": 0.419,
+        "16": 0.394,
+        "32": 0.333,
+        "64": 0.0
+      },
+      "c_star_constrained": 10.980226776233742,
+      "unimodal_bic_constrained": -24.362242346733645,
+      "unimodal_converged_constrained": true,
+      "unimodal_residual_se_constrained": 0.024353662523293042,
+      "weights_constrained": {
+        "constant": 8.02453356795885e-05,
+        "logistic": 1.1463021157649355e-05,
+        "gompertz": 1.1463619322977317e-05,
+        "shifted_logistic": 4.858619087827291e-06,
+        "unimodal": 0.999891969404752
+      },
+      "best_fit_constrained": "unimodal",
+      "winner_flips": false,
+      "winner_flips_to": null
+    },
+    {
+      "problem_id": "gpqa_diamond_0075",
+      "subject": "biology",
+      "c_star_unconstrained": 67.75612397057886,
+      "regime": "saturating",
+      "unimodal_weight_unconstrained": 0.5895909040517617,
+      "bics_unconstrained": {
+        "constant": -3.9447396376637105,
+        "logistic": -27.31444167780208,
+        "gompertz": -30.06243449020719,
+        "shifted_logistic": -29.665139096214347,
+        "unimodal": -32.244913659618945
+      },
+      "R_at_N": {
+        "1": 0.5384615384615384,
+        "2": 0.5365384615384615,
+        "4": 0.579,
+        "8": 0.635,
+        "16": 0.712,
+        "32": 0.825,
+        "64": 1.0
+      },
+      "c_star_constrained": 63.99999999999999,
+      "unimodal_bic_constrained": -31.52798112276161,
+      "unimodal_converged_constrained": true,
+      "unimodal_residual_se_constrained": 0.01459740489284674,
+      "weights_constrained": {
+        "constant": 5.130637953987745e-07,
+        "logistic": 0.06093091351729961,
+        "gompertz": 0.2407447065845981,
+        "shifted_logistic": 0.1973718210400472,
+        "unimodal": 0.5009520457942597
+      },
+      "best_fit_constrained": "unimodal",
+      "winner_flips": false,
+      "winner_flips_to": null
+    },
+    {
+      "problem_id": "gpqa_diamond_0121",
+      "subject": "chemistry",
+      "c_star_unconstrained": 77.74991304421859,
+      "regime": "saturating",
+      "unimodal_weight_unconstrained": 0.9360323049097468,
+      "bics_unconstrained": {
+        "constant": 0.3607807242837513,
+        "logistic": -22.795160122244653,
+        "gompertz": -20.331798963883692,
+        "shifted_logistic": 1.7285508916436916,
+        "unimodal": -28.673801475105314
+      },
+      "R_at_N": {
+        "1": 0.3611111111111111,
+        "2": 0.3489827856025039,
+        "4": 0.403,
+        "8": 0.473,
+        "16": 0.528,
+        "32": 0.699,
+        "64": 0.998
+      },
+      "c_star_constrained": 63.99999999999999,
+      "unimodal_bic_constrained": -25.47155465677995,
+      "unimodal_converged_constrained": true,
+      "unimodal_residual_se_constrained": 0.02249843286358604,
+      "weights_constrained": {
+        "constant": 1.8358715694703438e-06,
+        "logistic": 0.19592549957526745,
+        "gompertz": 0.05717140744601692,
+        "shifted_logistic": 9.264772899654335e-07,
+        "unimodal": 0.7469003306298562
+      },
+      "best_fit_constrained": "unimodal",
+      "winner_flips": false,
+      "winner_flips_to": null
+    },
+    {
+      "problem_id": "gpqa_diamond_0043",
+      "subject": "biology",
+      "c_star_unconstrained": 102.1668813333539,
+      "regime": "saturating",
+      "unimodal_weight_unconstrained": 0.9997835161850196,
+      "bics_unconstrained": {
+        "constant": -3.046032271031761,
+        "logistic": -11.487087898518709,
+        "gompertz": -10.638850874438766,
+        "shifted_logistic": 6.690648199212798,
+        "unimodal": -29.387273615571615
+      },
+      "R_at_N": {
+        "1": 0.49230769230769234,
+        "2": 0.48221153846153847,
+        "4": 0.51,
+        "8": 0.527,
+        "16": 0.556,
+        "32": 0.579,
+        "64": 1.0
+      },
+      "c_star_constrained": 63.999999999998664,
+      "unimodal_bic_constrained": -26.884547957982022,
+      "unimodal_converged_constrained": true,
+      "unimodal_residual_se_constrained": 0.020338539085469315,
+      "weights_constrained": {
+        "constant": 6.655850242644446e-06,
+        "logistic": 0.00045305975098160813,
+        "gompertz": 0.0002964579850514967,
+        "shifted_logistic": 5.1157609390613656e-08,
+        "unimodal": 0.9992437752561149
+      },
+      "best_fit_constrained": "unimodal",
+      "winner_flips": false,
+      "winner_flips_to": null
+    },
+    {
+      "problem_id": "gpqa_diamond_0164",
+      "subject": "chemistry",
+      "c_star_unconstrained": 107.40988559826762,
+      "regime": "saturating",
+      "unimodal_weight_unconstrained": 0.9963329594540778,
+      "bics_unconstrained": {
+        "constant": -1.0033830666116241,
+        "logistic": -14.860763032858848,
+        "gompertz": -13.335869938423226,
+        "shifted_logistic": -15.526345106302998,
+        "unimodal": -28.173448172314565
+      },
+      "R_at_N": {
+        "1": 0.4,
+        "2": 0.4043269230769231,
+        "4": 0.44,
+        "8": 0.462,
+        "16": 0.525,
+        "32": 0.598,
+        "64": 1.0
+      },
+      "c_star_constrained": 63.99999999999999,
+      "unimodal_bic_constrained": -22.912327544952156,
+      "unimodal_converged_constrained": true,
+      "unimodal_residual_se_constrained": 0.02701109190218378,
+      "weights_constrained": {
+        "constant": 1.663001386806443e-05,
+        "logistic": 0.016981828001864378,
+        "gompertz": 0.007922424510530811,
+        "shifted_logistic": 0.023687201187480373,
+        "unimodal": 0.9513919162862564
+      },
+      "best_fit_constrained": "unimodal",
+      "winner_flips": false,
+      "winner_flips_to": null
+    },
+    {
+      "problem_id": "gpqa_diamond_0151",
+      "subject": "biology",
+      "c_star_unconstrained": 156.01320924013382,
+      "regime": "saturating",
+      "unimodal_weight_unconstrained": 0.4677064155861172,
+      "bics_unconstrained": {
+        "constant": -8.278786056347984,
+        "logistic": -23.07546725549779,
+        "gompertz": -22.176885987456465,
+        "shifted_logistic": -22.45652342372434,
+        "unimodal": -24.544669937231696
+      },
+      "R_at_N": {
+        "1": 0.4461538461538462,
+        "2": 0.42980769230769234,
+        "4": 0.463,
+        "8": 0.525,
+        "16": 0.524,
+        "32": 0.558,
+        "64": 0.8
+      },
+      "c_star_constrained": 63.99999999999999,
+      "unimodal_bic_constrained": -21.97977105182614,
+      "unimodal_converged_constrained": true,
+      "unimodal_residual_se_constrained": 0.02887161033388878,
+      "weights_constrained": {
+        "constant": 0.00020749780573043515,
+        "logistic": 0.3389003412052058,
+        "gompertz": 0.2162457411240177,
+        "shifted_logistic": 0.24869672183688088,
+        "unimodal": 0.19594969802816511
+      },
+      "best_fit_constrained": "logistic",
+      "winner_flips": true,
+      "winner_flips_to": "logistic"
+    }
+  ]
+}
