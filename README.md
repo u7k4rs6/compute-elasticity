@@ -28,13 +28,13 @@ pytest tests/ -v --tb=short
 | 7 | Temperature side test | ✓ |
 | 8 | Fitting | ✓ |
 | 9 | Pass 1: confirmatory analysis | ✓ |
-| 10 | Pass 2: exploratory + go/no-go | in progress |
+| 10 | Pass 2: exploratory + go/no-go | ✓ |
 
 ## Pilot Results
 
 **Overall verdict: GO** — 4 PASS, 1 FAIL, 1 DEFERRED across H1–H6.
 
-Full results: [`outputs/hypothesis_results.json`](outputs/hypothesis_results.json)
+Full writeup: [`PILOT_WRITEUP.md`](PILOT_WRITEUP.md). Full results: [`outputs/hypothesis_results.json`](outputs/hypothesis_results.json)
 
 | H | Statement | Verdict | Measured |
 |---|-----------|---------|----------|
