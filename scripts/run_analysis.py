@@ -293,7 +293,7 @@ def _bootstrap_param_ci(
     rng: np.random.Generator,
     n_bootstrap: int,
 ) -> dict[str, tuple[float, float]]:
-    """Bootstrap 5th/95th-pct CI for each param of the given curve family.
+    """Bootstrap 2.5th/97.5th-pct CI (95%) for each param of the given curve family.
 
     Resamples binary correct/incorrect outcomes, reconstructs R(N) via the
     binomial formula (exact under i.i.d. samples), then re-fits the family.
@@ -334,8 +334,8 @@ def _bootstrap_param_ci(
     ci: dict[str, tuple[float, float]] = {}
     for i in range(arr.shape[1]):
         ci[f"p{i}"] = (
-            float(np.percentile(arr[:, i], 5)),
-            float(np.percentile(arr[:, i], 95)),
+            float(np.percentile(arr[:, i], 2.5)),
+            float(np.percentile(arr[:, i], 97.5)),
         )
     return ci
 
@@ -343,7 +343,7 @@ def _bootstrap_param_ci(
 def _ci_overlap_rate(
     ci1: dict[str, tuple[float, float]], ci2: dict[str, tuple[float, float]]
 ) -> float:
-    """Fraction of params whose 90% bootstrap CIs overlap (binary indicator)."""
+    """Fraction of params whose 95% bootstrap CIs overlap (binary indicator)."""
     overlaps = []
     for pk in ci1:
         if pk not in ci2:
@@ -597,7 +597,13 @@ def _print_summary(results: dict[str, Any]) -> None:
 
 
 def main() -> None:
-    """Entry point for Phase 9 confirmatory analysis."""
+    """Entry point for Phase 9 confirmatory analysis.
+
+    Pass --h6-only to re-run only H6 and patch the existing
+    outputs/hypothesis_results.json (preserves H1–H5 values).
+    """
+    import argparse
+
     from pilot.config import OUTPUTS_DIR, SCHEMA_VERSION
 
     logging.basicConfig(
@@ -605,9 +611,46 @@ def main() -> None:
         format="%(asctime)s %(levelname)s %(message)s",
     )
 
+    parser = argparse.ArgumentParser()
+    parser.add_argument(
+        "--h6-only",
+        action="store_true",
+        help="Re-evaluate H6 only; patch existing hypothesis_results.json.",
+    )
+    args = parser.parse_args()
+
+    side_test_ids = _load_side_test_ids()
+
+    if args.h6_only:
+        out_path = OUTPUTS_DIR / "hypothesis_results.json"
+        if not out_path.exists():
+            logger.error("No existing %s — run without --h6-only first.", out_path)
+            sys.exit(1)
+        results = json.loads(out_path.read_text())
+
+        logger.info("Evaluating H6 only (bootstrap, ~45 min)…")
+        h6 = _evaluate_h6(side_test_ids)
+        results["H6"] = h6
+        results["timestamp"] = datetime.now(tz=timezone.utc).isoformat()
+
+        verdicts = [
+            results["H1"]["verdict"],
+            results["H2"]["overall_verdict"],
+            results["H3"]["verdict"],
+            results["H5"]["verdict"],
+            h6["verdict"],
+        ]
+        results["summary"]["n_passed"] = verdicts.count("PASS")
+        results["summary"]["n_failed"] = verdicts.count("FAIL")
+        results["summary"]["n_ambiguous"] = verdicts.count("AMBIGUOUS")
+        results["summary"]["overall_go_no_go"] = _go_no_go(results["H1"], results["H2"])
+
+        out_path.write_text(json.dumps(results, indent=2))
+        _print_summary(results)
+        return
+
     locked_ids = _load_locked_ids()
     gate_ids = _load_gate_ids()
-    side_test_ids = _load_side_test_ids()
     main_pilot_ids = _select_main_pilot_ids(locked_ids, gate_ids)
 
     fits_summary_path = OUTPUTS_DIR / "fits_summary.json"
@@ -632,7 +675,7 @@ def main() -> None:
     logger.info("Evaluating H5…")
     h5 = _evaluate_h5(fits_summary)
 
-    logger.info("Evaluating H6 (bootstrap, ~1 min)…")
+    logger.info("Evaluating H6 (bootstrap, ~45 min)…")
     h6 = _evaluate_h6(side_test_ids)
 
     verdicts = [

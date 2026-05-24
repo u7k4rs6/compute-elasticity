@@ -1,0 +1,171 @@
+{
+  "schema_version": "v6.0-pilot",
+  "phase": "h1_to_h6_confirmatory",
+  "timestamp": "2026-05-24T14:24:39.621775+00:00",
+  "H1": {
+    "measured": 0.010737984361364535,
+    "threshold_pass": 0.1,
+    "threshold_fail": 0.15,
+    "deciding_metric": "median_residual_se",
+    "verdict": "PASS"
+  },
+  "H2": {
+    "criterion_a": {
+      "families_above_0.10": [
+        "gompertz",
+        "shifted_logistic",
+        "unimodal"
+      ],
+      "n_families": 3,
+      "min_required": 2,
+      "verdict": "PASS"
+    },
+    "criterion_b": {
+      "n_close_problems": 16,
+      "n_total": 47,
+      "fraction_2plus_close": 0.3404,
+      "min_fraction": 0.3,
+      "verdict": "PASS"
+    },
+    "overall_verdict": "PASS"
+  },
+  "H3": {
+    "n_problems": 47,
+    "median_elasticity_threshold": 0.0010501343012054149,
+    "n_above_median": 23,
+    "auc_diversity": 0.5236,
+    "auc_entropy": 0.6504,
+    "auc_nll": 0.6359,
+    "delta_auc_entropy": -0.1268,
+    "delta_auc_nll": -0.1123,
+    "threshold_pass_auc": 0.6,
+    "threshold_pass_delta": 0.03,
+    "threshold_fail_auc": 0.55,
+    "verdict": "FAIL"
+  },
+  "H4": {
+    "verdict": "DEFERRED",
+    "note": "deferred to full multi-model study"
+  },
+  "H5": {
+    "unimodal_win_count": 21,
+    "n_total": 47,
+    "unimodal_fraction": 0.4468,
+    "threshold_pass": 0.05,
+    "interior_peak_count": 1,
+    "interpretation_note": "see outputs/unimodal_sensitivity.json",
+    "verdict": "PASS"
+  },
+  "H6": {
+    "mean_ci_overlap_rate": 1.0,
+    "per_pair_overlap": {
+      "0.3_0.7": 1.0,
+      "0.7_1.0": 1.0,
+      "0.3_1.0": 1.0
+    },
+    "n_problems": 10,
+    "threshold_pass": 0.7,
+    "threshold_fail": 0.5,
+    "n_bootstrap_resamples": 1000,
+    "per_problem": [
+      {
+        "problem_id": "gpqa_diamond_0040",
+        "ref_family": "unimodal",
+        "pair_overlap_rates": {
+          "0.3_0.7": 1.0,
+          "0.7_1.0": 1.0,
+          "0.3_1.0": 1.0
+        }
+      },
+      {
+        "problem_id": "gpqa_diamond_0008",
+        "ref_family": "unimodal",
+        "pair_overlap_rates": {
+          "0.3_0.7": 1.0,
+          "0.7_1.0": 1.0,
+          "0.3_1.0": 1.0
+        }
+      },
+      {
+        "problem_id": "gpqa_diamond_0007",
+        "ref_family": "gompertz",
+        "pair_overlap_rates": {
+          "0.3_0.7": 1.0,
+          "0.7_1.0": 1.0,
+          "0.3_1.0": 1.0
+        }
+      },
+      {
+        "problem_id": "gpqa_diamond_0010",
+        "ref_family": "unimodal",
+        "pair_overlap_rates": {
+          "0.3_0.7": 1.0,
+          "0.7_1.0": 1.0,
+          "0.3_1.0": 1.0
+        }
+      },
+      {
+        "problem_id": "gpqa_diamond_0012",
+        "ref_family": "gompertz",
+        "pair_overlap_rates": {
+          "0.3_0.7": 1.0,
+          "0.7_1.0": 1.0,
+          "0.3_1.0": 1.0
+        }
+      },
+      {
+        "problem_id": "gpqa_diamond_0026",
+        "ref_family": "unimodal",
+        "pair_overlap_rates": {
+          "0.3_0.7": 1.0,
+          "0.7_1.0": 1.0,
+          "0.3_1.0": 1.0
+        }
+      },
+      {
+        "problem_id": "gpqa_diamond_0027",
+        "ref_family": "shifted_logistic",
+        "pair_overlap_rates": {
+          "0.3_0.7": 1.0,
+          "0.7_1.0": 1.0,
+          "0.3_1.0": 1.0
+        }
+      },
+      {
+        "problem_id": "gpqa_diamond_0029",
+        "ref_family": "unimodal",
+        "pair_overlap_rates": {
+          "0.3_0.7": 1.0,
+          "0.7_1.0": 1.0,
+          "0.3_1.0": 1.0
+        }
+      },
+      {
+        "problem_id": "gpqa_diamond_0030",
+        "ref_family": "unimodal",
+        "pair_overlap_rates": {
+          "0.3_0.7": 1.0,
+          "0.7_1.0": 1.0,
+          "0.3_1.0": 1.0
+        }
+      },
+      {
+        "problem_id": "gpqa_diamond_0032",
+        "ref_family": "constant",
+        "pair_overlap_rates": {
+          "0.3_0.7": 1.0,
+          "0.7_1.0": 1.0,
+          "0.3_1.0": 1.0
+        }
+      }
+    ],
+    "verdict": "PASS"
+  },
+  "summary": {
+    "n_passed": 4,
+    "n_failed": 1,
+    "n_ambiguous": 0,
+    "n_deferred": 1,
+    "overall_go_no_go": "GO"
+  }
+}
