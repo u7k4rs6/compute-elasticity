@@ -1,0 +1,19 @@
+{
+  "schema_version": "v6.0-pilot",
+  "problem_id": "gpqa_diamond_0070",
+  "subject": "physics",
+  "model": "Qwen/Qwen2.5-7B-Instruct-Turbo",
+  "temperature": 0.7,
+  "n_tokens": 516,
+  "mean_per_token_nll": 0.10847438528675979,
+  "median_per_token_nll": 6.198883e-06,
+  "max_per_token_nll": 4.15625,
+  "top_logprobs_available": true,
+  "input_tokens": 205,
+  "output_tokens": 516,
+  "full_response": "To solve this problem, we need to understand the relationship between the equilibrium temperature of a planet and its distance from the star it orbits. The equilibrium temperature \\( T \\) of a planet can be approximated using the Stefan-Boltzmann law, which relates the temperature to the planet's distance from the star. The key factor is the inverse square relationship with distance, as the intensity of radiation from the star decreases with the square of the distance.\n\nGiven the orbital periods of the planets in the ratio 1:2:2.5:3.5:5, we can deduce the relationship between their distances from the star. The period \\( P \\) of a planet in a circular orbit is related to its semi-major axis \\( a \\) by Kepler's third law:\n\n\\[ P^2 \\propto a^3 \\]\n\nThis implies:\n\n\\[ \\left(\\frac{P_4}{P_2}\\right)^2 = \\left(\\frac{a_4}{a_2}\\right)^3 \\]\n\nGiven the period ratio \\( P_4 : P_2 = 3.5 : 2 \\):\n\n\\[ \\left(\\frac{3.5}{2}\\right)^2 = \\left(\\frac{a_4}{a_2}\\right)^3 \\]\n\n\\[ \\left(1.75\\right)^2 = \\left(\\frac{a_4}{a_2}\\right)^3 \\]\n\n\\[ 3.0625 = \\left(\\frac{a_4}{a_2}\\right)^3 \\]\n\nTaking the cube root of both sides:\n\n\\[ \\frac{a_4}{a_2} = \\sqrt[3]{3.0625} \\approx 1.45 \\]\n\nThe equilibrium temperature \\( T \\) is inversely proportional to the square root of the distance from the star:\n\n\\[ T \\propto \\frac{1}{\\sqrt{a}} \\]\n\nSo, the ratio of the equilibrium temperatures between Planet_4 and Planet_2 is:\n\n\\[ \\frac{T_4}{T_2} = \\frac{1}{\\sqrt{\\frac{a_4}{a_2}}} = \\frac{1}{\\sqrt{1.45}} \\approx \\frac{1}{1.204} \\approx 0.83 \\]\n\nTherefore, the ratio of the equilibrium temperatures between Planet_4 and Planet_2 is approximately 0.83.\n\nAnswer: D",
+  "timestamp": "2026-05-24T11:50:34.423814+00:00",
+  "mean_per_token_entropy": 0.1107182981862255,
+  "median_per_token_entropy": 8.000479889861899e-05,
+  "max_per_token_entropy": 1.3200346118303208
+}

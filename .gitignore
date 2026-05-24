@@ -15,6 +15,9 @@ outputs/*
 !outputs/diversity/*
 !outputs/fits_summary.json
 !outputs/diversity_summary.json
+!outputs/entropy_baseline/
+!outputs/entropy_baseline/*
+!outputs/entropy_baseline_summary.json
 
 # Python cache
 __pycache__/

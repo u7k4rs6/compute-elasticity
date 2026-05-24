@@ -1,0 +1,19 @@
+{
+  "schema_version": "v6.0-pilot",
+  "problem_id": "gpqa_diamond_0082",
+  "subject": "chemistry",
+  "model": "Qwen/Qwen2.5-7B-Instruct-Turbo",
+  "temperature": 0.7,
+  "n_tokens": 1185,
+  "mean_per_token_nll": 0.1196114747061457,
+  "median_per_token_nll": 4.053116e-06,
+  "max_per_token_nll": 5.96875,
+  "top_logprobs_available": true,
+  "input_tokens": 227,
+  "output_tokens": 1185,
+  "full_response": "Let's break down the problem step by step:\n\n### Initial Dilution\n\n1. **Initial Concentration of Acetic Acid:**\n   - Initial volume of acetic acid = 20.00 cm\u00b3 (0.020 L)\n   - Initial concentration = 0.05 M\n\n2. **Volume After Dilution:**\n   - Volume of water added = 20.00 cm\u00b3 (0.020 L)\n   - Total volume after dilution = 40.00 cm\u00b3 (0.040 L)\n   - Concentration of acetic acid after dilution = \\(\\frac{0.05 \\, \\text{M} \\times 0.020 \\, \\text{L}}{0.040 \\, \\text{L}} = 0.025 \\, \\text{M}\\)\n\n### pH at 25% Titration\n\n3. **Volume of NaOH Added at 25% Titration:**\n   - Volume of NaOH added = 25% of 40.00 cm\u00b3 = 10.00 cm\u00b3 (0.010 L)\n   - Concentration of NaOH = 0.1 M\n   - Amount of NaOH added = \\(0.1 \\, \\text{M} \\times 0.010 \\, \\text{L} = 0.001 \\, \\text{moles}\\)\n\n4. **Moles of Acetic Acid and Sodium Acetate After Titration:**\n   - Moles of acetic acid initially = \\(0.025 \\, \\text{M} \\times 0.040 \\, \\text{L} = 0.001 \\, \\text{moles}\\)\n   - Moles of NaOH added = 0.001 moles\n   - Moles of acetic acid remaining = 0.001 - 0.001 = 0 moles\n   - Moles of sodium acetate formed = 0.001 moles\n\n5. **pH Calculation at 25% Titration:**\n   - Since the acetic acid is completely neutralized, we have a buffer solution of sodium acetate.\n   - Use the Henderson-Hasselbalch equation: \\( \\text{pH} = \\text{p}K_a + \\log \\left( \\frac{[\\text{A}^-]}{[\\text{HA}]} \\right) \\)\n   - Here, \\([\\text{A}^-] = 0.001 \\, \\text{moles} / 0.040 \\, \\text{L} = 0.025 \\, \\text{M}\\) and \\([\\text{HA}] = 0 \\, \\text{M}\\)\n   - However, since the pH changes significantly from the initial state, we need to consider the weak acid dissociation.\n   - The pH of a 0.025 M sodium acetate solution can be approximated using the \\(K_a\\) value.\n   - \\( \\text{pH} = \\text{p}K_a + \\log \\left( \\frac{[\\text{A}^-]}{[\\text{HA}]} \\right) = -\\log(1.85 \\times 10^{-5}) + \\log(0.025) \\approx 4.73 \\)\n\n### pH at Equivalence Point\n\n6. **Volume of NaOH Added at Equivalence Point:**\n   - Equivalence point is when moles of NaOH added = moles of acetic acid initially = 0.001 moles\n   - Volume of NaOH = \\(\\frac{0.001 \\, \\text{moles}}{0.1 \\, \\text{M}} = 0.010 \\, \\text{L} = 10.00 \\, \\text{cm}^3\\)\n   - Total volume at equivalence point = 40.00 cm\u00b3 + 10.00 cm\u00b3 = 50.00 cm\u00b3 (0.050 L)\n   - Concentration of acetate ion = \\(\\frac{0.001 \\, \\text{moles}}{0.050 \\, \\text{L}} = 0.02 \\, \\text{M}\\)\n\n7. **pH Calculation at Equivalence Point:**\n   - At the equivalence point, the solution is a salt solution of sodium acetate.\n   - The pH is determined by the hydrolysis of the acetate ion.\n   - \\( \\text{pOH} = -\\log \\left( \\frac{K_w}{K_a} \\right) + \\log \\left( \\frac{[\\text{A}^-]}{[\\text{HA}]} \\right) = -\\log \\left( \\frac{10^{-14}}{1.85 \\times 10^{-5}} \\right) + \\log(1) \\approx 9.27 \\)\n   - \\( \\text{pH} = 14 - 9.27 = 4.73 \\)\n\nThus, the pH at 25% titration is approximately 4.73, and at the equivalence point, it is also approximately 7.00.\n\n**Answer: C**",
+  "timestamp": "2026-05-24T11:51:27.003488+00:00",
+  "mean_per_token_entropy": 0.1249391038082943,
+  "median_per_token_entropy": 5.6696606409879614e-05,
+  "max_per_token_entropy": 1.5790469977731303
+}

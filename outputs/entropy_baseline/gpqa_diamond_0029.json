@@ -1,0 +1,19 @@
+{
+  "schema_version": "v6.0-pilot",
+  "problem_id": "gpqa_diamond_0029",
+  "subject": "chemistry",
+  "model": "Qwen/Qwen2.5-7B-Instruct-Turbo",
+  "temperature": 0.7,
+  "n_tokens": 250,
+  "mean_per_token_nll": 0.27267337935370695,
+  "median_per_token_nll": 0.00144958495,
+  "max_per_token_nll": 5.875,
+  "top_logprobs_available": true,
+  "input_tokens": 135,
+  "output_tokens": 250,
+  "full_response": "To solve this problem, we need to understand the relationship between the energy of light and its color. The energy of a photon is inversely proportional to its wavelength and directly proportional to its frequency. The visible light spectrum ranges from approximately 1.65 eV for red light to about 3.1 eV for violet light.\n\nGiven that the dye emits light with an energy of 2.3393 eV, we can infer that the energy of the absorbed light is the complementary energy within the visible spectrum. We need to find a color that corresponds to the energy range closest to 2.3393 eV.\n\n- Red light has an energy around 1.65 eV.\n- Blue light has an energy around 2.86 eV.\n- Yellow light has an energy around 2.07 eV.\n- Violet light has an energy around 3.1 eV.\n\nThe energy of 2.3393 eV is closest to the energy of yellow light, which is around 2.07 eV. Therefore, the dye likely absorbs light in the blue region of the spectrum (since the complementary color to yellow is blue).\n\nAnswer: B",
+  "timestamp": "2026-05-24T11:49:35.617172+00:00",
+  "mean_per_token_entropy": 0.2425322264725657,
+  "median_per_token_entropy": 0.011358694986946121,
+  "max_per_token_entropy": 1.3882718584041764
+}

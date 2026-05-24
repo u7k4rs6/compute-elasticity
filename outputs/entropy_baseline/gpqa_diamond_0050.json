@@ -1,0 +1,19 @@
+{
+  "schema_version": "v6.0-pilot",
+  "problem_id": "gpqa_diamond_0050",
+  "subject": "physics",
+  "model": "Qwen/Qwen2.5-7B-Instruct-Turbo",
+  "temperature": 0.7,
+  "n_tokens": 630,
+  "mean_per_token_nll": 0.34757400575573577,
+  "median_per_token_nll": 0.009399414,
+  "max_per_token_nll": 6.75,
+  "top_logprobs_available": true,
+  "input_tokens": 202,
+  "output_tokens": 630,
+  "full_response": "To solve this problem, let's break it down step by step:\n\n1. **Understanding the System**: We have a charge \\( q \\) placed a distance \\( d \\) away from the center of a grounded conducting sphere of radius \\( R \\).\n\n2. **Potential Energy Consideration**: The potential energy \\( U \\) of a system of charges is the work done to assemble the charges from infinity. In this case, the work done to bring the charge \\( q \\) from infinity to the given distance \\( d \\) from the center of the sphere and to allow the sphere to reach a new equilibrium state.\n\n3. **Grounded Conducting Sphere**: A grounded conductor will have its potential zero. The charge will distribute itself on the surface of the sphere, and the potential at any point outside the sphere will be the same as if all the charge were concentrated at the center of the sphere.\n\n4. **Potential at a Distance \\( d \\) from a Point Charge**: If we consider the charge \\( q \\) to be a point charge, the potential \\( V \\) at a distance \\( d \\) from the charge is given by:\n   \\[\n   V = \\frac{kq}{d}\n   \\]\n   where \\( k \\) is the Coulomb constant.\n\n5. **Potential of the Grounded Sphere**: The potential on the surface of the grounded conducting sphere is 0 (since it is grounded), and the potential at a distance \\( d \\) (for \\( d > R \\)) from the center of the sphere due to the induced charges is:\n   \\[\n   V = \\frac{kq_{\\text{induced}}}{d}\n   \\]\n   where \\( q_{\\text{induced}} \\) is the induced charge on the sphere. However, the potential energy is related to the work done to bring the charge \\( q \\) to the position, which involves the charge distribution on the sphere.\n\n6. **Potential Energy Calculation**: The net potential energy \\( U \\) of the system is the work done to bring the charge \\( q \\) from infinity to a distance \\( d \\) and to allow the sphere to reach a new equilibrium. For a grounded conducting sphere, the potential energy can be derived using the formula for the potential energy of a point charge in the field of a grounded conducting sphere:\n   \\[\n   U = -\\frac{kq^2 R}{d^2 - R^2}\n   \\]\n   This formula is derived from the method of images or by solving the boundary value problem for the potential.\n\nGiven the options, the correct formula matches option A:\n\\[\nU = -\\frac{1}{2} \\frac{kq^2 R}{d^2 - R^2}\n\\]\nHowever, the factor of \\( \\frac{1}{2} \\) is often included in the context of the image charge method or specific derivations, but the standard form without the \\( \\frac{1}{2} \\) is more commonly used.\n\nTherefore, the correct answer is:\n\nAnswer: B",
+  "timestamp": "2026-05-24T11:50:10.443757+00:00",
+  "mean_per_token_entropy": 0.30371976241196563,
+  "median_per_token_entropy": 0.054914550000318044,
+  "max_per_token_entropy": 1.5418295242311495
+}

@@ -1,0 +1,19 @@
+{
+  "schema_version": "v6.0-pilot",
+  "problem_id": "gpqa_diamond_0121",
+  "subject": "chemistry",
+  "model": "Qwen/Qwen2.5-7B-Instruct-Turbo",
+  "temperature": 0.7,
+  "n_tokens": 502,
+  "mean_per_token_nll": 0.21870347105357912,
+  "median_per_token_nll": 0.00037765502499999997,
+  "max_per_token_nll": 5.25,
+  "top_logprobs_available": true,
+  "input_tokens": 243,
+  "output_tokens": 502,
+  "full_response": "Let's break down the synthesis step by step to determine the number of distinct hydrogen signals in the 1H NMR spectrum of the final product 4.\n\n1. **Acetic Acid (CH\u2083COOH) + Bromine (Br\u2082) + Pyridine + Acetic Anhydride (CH\u2083CO)\u2082O \u2192 Product 1 (CH\u2083COCH\u2082Br)**\n   - Product 1 is an acetoacetyl bromide.\n   - It has 4 distinct hydrogen signals: one from CH\u2083, one from CH\u2082, and two from CH\u2082Br (but since bromine is not typically split by proton NMR, we only consider the CH\u2082).\n\n2. **Product 1 (CH\u2083COCH\u2082Br) + Ethanol (C\u2082H\u2085OH) + Sulfuric Acid (H\u2082SO\u2084) \u2192 Product 2 (CH\u2083COCH\u2082CH\u2082OH)**\n   - Product 2 is an acetoacetic ester.\n   - It has 6 distinct hydrogen signals: one from CH\u2083, two each from CH\u2082 (one directly attached to the carbonyl and one from the ethyl group).\n\n3. **Product 2 (CH\u2083COCH\u2082CH\u2082OH) + Sodium Cyanide (NaCN) \u2192 Product 3 (CH\u2083COCH\u2082CH\u2082CN)**\n   - Product 3 is an acetoacetonitrile.\n   - It has 4 distinct hydrogen signals: one from CH\u2083, two each from CH\u2082 (one directly attached to the carbonyl and one from the ethyl group).\n\n4. **Product 3 (CH\u2083COCH\u2082CH\u2082CN) + Sodium Hydride (NaH) + 1,5-Dibromopentane (CH\u2083CH\u2082CHBrCH\u2082Br) \u2192 Product 4 (CH\u2083COCH\u2082CH\u2082CH\u2082CHBrCH\u2082Br)**\n   - Product 4 is a 5-bromo-3-pentanone.\n   - It has 10 distinct hydrogen signals: one from CH\u2083, two each from CH\u2082 (one directly attached to the carbonyl and three from the pentane chain).\n\nSo, the final product 4 has 10 distinct hydrogen signals in its 1H NMR spectrum.\n\nAnswer: A",
+  "timestamp": "2026-05-24T11:52:30.830482+00:00",
+  "mean_per_token_entropy": 0.200931913220003,
+  "median_per_token_entropy": 0.003878865880115381,
+  "max_per_token_entropy": 1.5819599059065221
+}

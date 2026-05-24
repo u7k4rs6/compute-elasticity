@@ -1,0 +1,28 @@
+{
+  "schema_version": "v6.0-pilot",
+  "n_main_pilot_problems": 47,
+  "n_side_test_cells": 30,
+  "family_win_counts": {
+    "constant": 2,
+    "logistic": 3,
+    "gompertz": 15,
+    "shifted_logistic": 6,
+    "unimodal": 21
+  },
+  "family_mean_bic_weights": {
+    "constant": 0.038226631120362974,
+    "logistic": 0.06536617999936291,
+    "gompertz": 0.29284932896271515,
+    "shifted_logistic": 0.18272856562707565,
+    "unimodal": 0.4208292942904833
+  },
+  "median_residual_se_main": 0.010737984361364535,
+  "n_problems_with_2plus_close_families": 16,
+  "n_problems_unimodal_wins": 21,
+  "fitted_elasticities_distribution": {
+    "min": 0.0,
+    "median": 0.0010501343012054149,
+    "max": 0.009918018901685423
+  },
+  "n_nonconverged_fits": 0
+}

@@ -1,0 +1,19 @@
+{
+  "schema_version": "v6.0-pilot",
+  "problem_id": "gpqa_diamond_0130",
+  "subject": "chemistry",
+  "model": "Qwen/Qwen2.5-7B-Instruct-Turbo",
+  "temperature": 0.7,
+  "n_tokens": 546,
+  "mean_per_token_nll": 0.34204168319428585,
+  "median_per_token_nll": 0.004119873,
+  "max_per_token_nll": 6.875,
+  "top_logprobs_available": true,
+  "input_tokens": 393,
+  "output_tokens": 546,
+  "full_response": "To solve this problem, let's break it down step by step:\n\n1. **Understanding the Anhydride:**\n   - The anhydride has a single peak at 7 ppm in 1H NMR and two peaks at 137 ppm and 165 ppm in 13C NMR. This suggests a symmetrical structure due to the single 1H peak in 1H NMR, which often indicates a conjugated system or a highly symmetrical structure.\n   - The presence of a dicarboxylic acid and a cis-alkene suggests a structure like (cis)-1,2-bis(oxalo)ethane anhydride, which is (HOOCCH=CHCOOH)2.\n\n2. **Reaction with 1,2,3,4-Tetramethyl-1,3-cyclopentadiene:**\n   - The reaction yields two products with the same molecular formula (C13H16O3). These products are likely formed by the addition of the tetramethyl-1,3-cyclopentadiene across the double bond in two different configurations.\n\n3. **2D NOESY NMR Analysis:**\n   - The presence of a cross-peak in the major product but not in the minor product suggests that these two resonances are spatially close in the major product but not in the minor product. This is indicative of a difference in the conformation of the two products.\n\n4. **Analyzing the Options:**\n   - We need to determine which pair of resonances shows this spatial proximity in the major product.\n   - Options A, B, and D involve a 1H doublet at ~1.5 ppm and/or a 6H singlet at ~1 ppm, which are not typical for the expected product structure. The 1H doublet at ~1.5 ppm is more likely to be a methine (CH) proton, and the 6H singlet at ~1 ppm is characteristic of a primary methyl group.\n   - Option C involves a 6H singlet at ~1.7 ppm and a 2H singlet at ~3.5 ppm. The 6H singlet at ~1.7 ppm is characteristic of a tertiary methyl group (CH3), and the 2H singlet at ~3.5 ppm could be a methylene (CH2) group. These resonances are more likely to show a NOE effect due to their spatial proximity in the major product.\n\nGiven the structure and the NOESY analysis, the correct answer is:\n\nAnswer: C",
+  "timestamp": "2026-05-24T11:52:39.468495+00:00",
+  "mean_per_token_entropy": 0.3076618859567597,
+  "median_per_token_entropy": 0.0270712586359415,
+  "max_per_token_entropy": 1.5210110072274379
+}

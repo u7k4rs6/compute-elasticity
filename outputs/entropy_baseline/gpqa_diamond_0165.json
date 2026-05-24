@@ -1,0 +1,19 @@
+{
+  "schema_version": "v6.0-pilot",
+  "problem_id": "gpqa_diamond_0165",
+  "subject": "physics",
+  "model": "Qwen/Qwen2.5-7B-Instruct-Turbo",
+  "temperature": 0.7,
+  "n_tokens": 428,
+  "mean_per_token_nll": 0.29132760741855185,
+  "median_per_token_nll": 0.000441551205,
+  "max_per_token_nll": 6.65625,
+  "top_logprobs_available": true,
+  "input_tokens": 942,
+  "output_tokens": 428,
+  "full_response": "To solve this problem, we need to understand the context of the Lagrangian and the approximation for the mass of the pseudo-Goldstone boson $H_{2}$ through radiative corrections in the given extension of the Standard Model.\n\nThe Lagrangian includes a singlet scalar $\\phi$ and a scalar-doublet $S$, as well as singlet fermions $N_{iR}$. The vev (vacuum expectation value) of $\\phi$ is given as $\\left\\langle \\phi\\right\\rangle ^{2}=\\left(x^{2}+\\upsilon^{2}\\right)$, with $\\left\\langle \\phi\\right\\rangle =x$ and $\\left\\langle h\\right\\rangle =v$. The mass term for the pseudo-Goldstone boson $H_{2}$ arises from radiative corrections involving various mass scales in the theory.\n\nGiven the structure of radiative corrections to the Higgs mass in the Standard Model and similar extensions, the mass of the pseudo-Goldstone boson $H_{2}$ can be approximated by a formula that includes contributions from various particles' masses, gauge bosons, and possible additional heavy singlet fermions. The general form of the radiative correction for such a mass is:\n\n\\[ M_{h_{2}}^{2} = \\frac{1}{8\\pi^2 (x^2 + v^2)} \\left\\{ \\alpha_1 M_{h_1}^4 + \\alpha_2 M_W^4 + \\alpha_3 M_Z^4 - \\alpha_4 M_t^4 + \\alpha_5 M_{H^{\\pm}}^4 + \\alpha_6 M_{H^0}^4 + \\alpha_7 M_{A^0}^4 - \\alpha_8 \\sum M_{N_i}^4 \\right\\} \\]\n\nThis formula matches the structure provided in option D, with the necessary terms for radiative corrections and the correct denominator.\n\nTherefore, the correct answer is:\n\nAnswer: D",
+  "timestamp": "2026-05-24T11:53:29.203118+00:00",
+  "mean_per_token_entropy": 0.2411754914292687,
+  "median_per_token_entropy": 0.004010186147576874,
+  "max_per_token_entropy": 1.5457460662038796
+}

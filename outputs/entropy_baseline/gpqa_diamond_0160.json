@@ -1,0 +1,19 @@
+{
+  "schema_version": "v6.0-pilot",
+  "problem_id": "gpqa_diamond_0160",
+  "subject": "physics",
+  "model": "Qwen/Qwen2.5-7B-Instruct-Turbo",
+  "temperature": 0.7,
+  "n_tokens": 302,
+  "mean_per_token_nll": 0.41474145304882,
+  "median_per_token_nll": 0.029724121,
+  "max_per_token_nll": 7.0,
+  "top_logprobs_available": true,
+  "input_tokens": 333,
+  "output_tokens": 302,
+  "full_response": "To solve this problem, let's break down the key points:\n\n1. **Initial Condition (\u03bb1):** Mike determined the mean free path (\u03bb1) of gas molecules in the ultra-high vacuum state (< 10^-9 Torr) before initiating the electron beam. This determination was based on the sample compartment volume, pressure, and temperature.\n\n2. **Effect of Electron Beam:**\n   - When an electron beam is initiated, the electrons interact with the gas molecules, which can cause ionization of the gas molecules and the formation of charged particles.\n   - These charged particles can collide with other gas molecules, leading to further ionizations and the generation of a plasma-like environment.\n   - In such an environment, the gas molecules are more likely to collide with each other and the electrons, leading to an increased probability of collisions.\n\n3. **Mean Free Path (\u03bb2) After Electron Beam:**\n   - Since the electron beam introduces charged particles and potentially a plasma-like environment, the mean free path of the gas molecules is expected to be shortened.\n   - The mean free path in a plasma or ionized state is generally shorter because the charged particles can collide more frequently.\n\nConsidering these points, we can conclude that the mean free path (\u03bb2) after the initiation of the electron beam will be shorter than the initial mean free path (\u03bb1) due to the increased interaction among charged particles.\n\nThus, the correct answer is:\n\nAnswer: D) \u03bb2 < \u03bb1",
+  "timestamp": "2026-05-24T11:53:19.341266+00:00",
+  "mean_per_token_entropy": 0.36369575181376923,
+  "median_per_token_entropy": 0.14381531769589245,
+  "max_per_token_entropy": 1.4727636522190621
+}

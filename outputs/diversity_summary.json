@@ -1,0 +1,33 @@
+{
+  "n_problems": 47,
+  "diversity_min": 0.02757026751836141,
+  "diversity_median": 0.05823818842569987,
+  "diversity_max": 0.12198781967163086,
+  "overall_truncation_rate": 0.031914893617021274,
+  "above_median_problems": [
+    "gpqa_diamond_0012",
+    "gpqa_diamond_0027",
+    "gpqa_diamond_0032",
+    "gpqa_diamond_0047",
+    "gpqa_diamond_0051",
+    "gpqa_diamond_0052",
+    "gpqa_diamond_0074",
+    "gpqa_diamond_0077",
+    "gpqa_diamond_0079",
+    "gpqa_diamond_0080",
+    "gpqa_diamond_0090",
+    "gpqa_diamond_0101",
+    "gpqa_diamond_0106",
+    "gpqa_diamond_0107",
+    "gpqa_diamond_0121",
+    "gpqa_diamond_0127",
+    "gpqa_diamond_0130",
+    "gpqa_diamond_0131",
+    "gpqa_diamond_0151",
+    "gpqa_diamond_0156",
+    "gpqa_diamond_0171",
+    "gpqa_diamond_0173",
+    "gpqa_diamond_0176",
+    "gpqa_diamond_0195"
+  ]
+}

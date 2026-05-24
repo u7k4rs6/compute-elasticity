@@ -1,0 +1,19 @@
+{
+  "schema_version": "v6.0-pilot",
+  "problem_id": "gpqa_diamond_0052",
+  "subject": "chemistry",
+  "model": "Qwen/Qwen2.5-7B-Instruct-Turbo",
+  "temperature": 0.7,
+  "n_tokens": 434,
+  "mean_per_token_nll": 0.2106770579379022,
+  "median_per_token_nll": 0.0008277893,
+  "max_per_token_nll": 5.25,
+  "top_logprobs_available": true,
+  "input_tokens": 265,
+  "output_tokens": 434,
+  "full_response": "Let's break down the information step by step to identify the correct chemical formula.\n\n1. **FTIR Spectrum**: The presence of an ester group is indicated by the absorption peaks in the FTIR spectrum.\n\n2. **1H NMR Spectrum Analysis**:\n   - Six signals: two for aromatic-H (indicating 6 aromatic protons), two for vinyl-H (indicating 2 vinyl protons), and two for \u2013CH3 groups (indicating 2 methyl groups).\n   - No signals corresponding to \u2013CH2 groups (indicating no methylene groups).\n\n3. **Counting Hydrogens**:\n   - Aromatic-H: 6 protons\n   - Vinyl-H: 2 protons (one in a doublet and one in a doublet of quartets, which means they are part of a conjugated system, likely part of a vinyl group attached to the aromatic ring).\n   - Methyl groups: 2 \u00d7 3 protons (since each methyl group has 3 protons).\n\n   Therefore, the total number of protons is:\n   - 6 (aromatic) + 2 (vinyl) + 6 (methyl) = 14 protons.\n\n4. **Counting Oxygen**:\n   - Since there is an ester group, there is 1 oxygen atom.\n\n5. **Counting Carbon**:\n   - The aromatic ring contributes 6 carbons.\n   - The vinyl group contributes 2 carbons.\n   - The methyl groups contribute 2 carbons.\n   - There is 1 carbon in the ester group (which is shared with the oxygen).\n\n   Therefore, the total number of carbons is:\n   - 6 (aromatic) + 2 (vinyl) + 2 (methyl) + 1 (ester) = 11 carbons.\n\n6. **Final Chemical Formula**:\n   - Carbon: 11\n   - Hydrogen: 14\n   - Oxygen: 2\n\nThus, the chemical formula is C11H14O2.\n\n**Answer: B**",
+  "timestamp": "2026-05-24T11:50:21.132980+00:00",
+  "mean_per_token_entropy": 0.22324389853361104,
+  "median_per_token_entropy": 0.0070905384471896165,
+  "max_per_token_entropy": 1.4530230555552206
+}

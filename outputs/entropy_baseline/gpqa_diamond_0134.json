@@ -1,0 +1,19 @@
+{
+  "schema_version": "v6.0-pilot",
+  "problem_id": "gpqa_diamond_0134",
+  "subject": "physics",
+  "model": "Qwen/Qwen2.5-7B-Instruct-Turbo",
+  "temperature": 0.7,
+  "n_tokens": 1043,
+  "mean_per_token_nll": 0.11873750110779895,
+  "median_per_token_nll": 2.3841858e-07,
+  "max_per_token_nll": 7.25,
+  "top_logprobs_available": true,
+  "input_tokens": 392,
+  "output_tokens": 1043,
+  "full_response": "To determine the kinematically allowed decays of the boson \\(X\\) at the lowest order, we need to consider the mass of the boson and the masses of the fermions involved in the decay. The boson \\(X\\) has a mass of 6 GeV. We need to check which fermion pairs can decay into \\(X\\) such that the decay products have a combined mass less than or equal to 6 GeV.\n\nLet's go through the options step by step:\n\n1. **Option A: \\(X \\rightarrow b\\bar{b}, s\\bar{s}, u\\bar{u}, d\\bar{d}, \\tau^{+}\\tau^{-}, e^{+}e^{-}\\)**\n   - \\(b\\) and \\(s\\) quarks are heavier than \\(u\\) and \\(d\\) quarks, but both pairs have masses well above 6 GeV. Thus, \\(b\\bar{b}\\) and \\(s\\bar{s}\\) are not kinematically allowed.\n   - \\(\\tau^{+}\\tau^{-}\\) pair has a mass of 2 \\(\\times\\) 1.777 GeV = 3.554 GeV, so \\(\\tau^{+}\\tau^{-}\\) is a possible decay.\n   - \\(e^{+}e^{-}\\) pair has a mass of 2 \\(\\times\\) 0.511 GeV = 1.022 GeV, so \\(e^{+}e^{-}\\) is also a possible decay.\n   - \\(u\\bar{u}\\) and \\(d\\bar{d}\\) pairs have masses less than 6 GeV, so they are possible decays.\n\n2. **Option B: \\(X \\rightarrow c\\bar{c}, s\\bar{s}, u\\bar{u}, d\\bar{d}, \\tau^{+}\\tau^{-}, \\mu^{+}\\mu^{-}, e^{+}e^{-}\\)**\n   - \\(c\\bar{c}\\) pair has a mass of 2 \\(\\times\\) 1.276 GeV = 2.552 GeV, so \\(c\\bar{c}\\) is a possible decay.\n   - \\(s\\bar{s}\\) pair has a mass of 3.554 GeV, so \\(s\\bar{s}\\) is not a possible decay.\n   - \\(u\\bar{u}\\) and \\(d\\bar{d}\\) pairs have masses less than 6 GeV, so they are possible decays.\n   - \\(\\tau^{+}\\tau^{-}\\), \\(\\mu^{+}\\mu^{-}\\), and \\(e^{+}e^{-}\\) pairs have masses less than 6 GeV, so they are possible decays.\n\n3. **Option C: \\(X \\rightarrow c\\bar{c}, s\\bar{s}, u\\bar{u}, d\\bar{d}, t\\bar{t}, \\tau^{+}\\tau^{-}, \\mu^{+}\\mu^{-}, e^{+}e^{-}\\)**\n   - \\(t\\bar{t}\\) pair has a mass of 2 \\(\\times\\) 172.75 GeV = 345.5 GeV, which is much greater than 6 GeV. Thus, \\(t\\bar{t}\\) is not a possible decay.\n   - \\(c\\bar{c}\\), \\(s\\bar{s}\\), \\(u\\bar{u}\\), and \\(d\\bar{d}\\) pairs have masses less than 6 GeV, so they are possible decays.\n   - \\(\\tau^{+}\\tau^{-}\\), \\(\\mu^{+}\\mu^{-}\\), and \\(e^{+}e^{-}\\) pairs have masses less than 6 GeV, so they are possible decays.\n\n4. **Option D: \\(X \\rightarrow b\\bar{b}, s\\bar{s}, u\\bar{u}, d\\bar{d}, \\tau^{+}\\tau^{-}, \\mu^{+}\\mu^{-}, e^{+}e^{-}\\)**\n   - \\(b\\bar{b}\\) and \\(s\\bar{s}\\) pairs have masses more than 6 GeV, so they are not possible decays.\n   - \\(u\\bar{u}\\) and \\(d\\bar{d}\\) pairs have masses less than 6 GeV, so they are possible decays.\n   - \\(\\tau^{+}\\tau^{-}\\), \\(\\mu^{+}\\mu^{-}\\), and \\(e^{+}e^{-}\\) pairs have masses less than 6 GeV, so they are possible decays.\n\nFrom the above analysis, option D includes all possible decays that are kinematically allowed given the mass of the boson \\(X\\).\n\nTherefore, the correct answer is:\n\nAnswer: D",
+  "timestamp": "2026-05-24T11:52:54.017692+00:00",
+  "mean_per_token_entropy": 0.08955959243017353,
+  "median_per_token_entropy": 3.6551858022214383e-06,
+  "max_per_token_entropy": 1.5760435487143587
+}

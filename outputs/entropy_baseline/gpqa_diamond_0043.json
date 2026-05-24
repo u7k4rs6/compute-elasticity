@@ -1,0 +1,19 @@
+{
+  "schema_version": "v6.0-pilot",
+  "problem_id": "gpqa_diamond_0043",
+  "subject": "biology",
+  "model": "Qwen/Qwen2.5-7B-Instruct-Turbo",
+  "temperature": 0.7,
+  "n_tokens": 333,
+  "mean_per_token_nll": 0.27743206086600114,
+  "median_per_token_nll": 3.7670135e-05,
+  "max_per_token_nll": 5.90625,
+  "top_logprobs_available": true,
+  "input_tokens": 347,
+  "output_tokens": 333,
+  "full_response": "Let's analyze each option step by step to determine which experiment will not help in discovering the mitochondrial role of the drug:\n\nA) Transformation of cells with recombinant luciferase and luminometer reading after 5 \u03bcM of luciferin addition to the supernatant:\n- Luciferase activity is typically used to measure ATP levels. If the drug affects ATP production or consumption, this assay can provide direct evidence of mitochondrial function. Thus, this experiment can help.\n\nB) Confocal fluorescence microscopy after Mito-RTP staining of the cells:\n- Mito-RTP is a mitochondrial-specific probe used for staining mitochondria. This experiment can help visualize the distribution and integrity of mitochondria in the cells, which is crucial for assessing mitochondrial function. Thus, this experiment can help.\n\nC) Flow cytometry after labeling with 2.5 \u03bcM 5,5',6,6'-Tetrachloro-1,1',3,3'-tetraethylbenzimidazolylcarbocyanine iodide:\n- JC-1 is a dye used to measure mitochondrial membrane potential. Changes in the membrane potential are indicative of mitochondrial health and function. Thus, this experiment can help.\n\nD) Differential centrifugation extraction of mitochondria followed by the Glucose Uptake Colorimetric Assay Kit:\n- This experiment involves isolating mitochondria and assessing their ability to take up glucose, which is not directly related to mitochondrial energy production or other mitochondrial functions. Glucose uptake is more related to transporters and metabolism in the cytosol. This experiment will not provide direct evidence of mitochondrial function.\n\nAnswer: D",
+  "timestamp": "2026-05-24T11:49:48.181304+00:00",
+  "mean_per_token_entropy": 0.24836507613824432,
+  "median_per_token_entropy": 0.0004303619639792914,
+  "max_per_token_entropy": 1.5144253163165995
+}

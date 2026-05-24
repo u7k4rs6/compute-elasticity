@@ -1,0 +1,19 @@
+{
+  "schema_version": "v6.0-pilot",
+  "problem_id": "gpqa_diamond_0065",
+  "subject": "physics",
+  "model": "Qwen/Qwen2.5-7B-Instruct-Turbo",
+  "temperature": 0.7,
+  "n_tokens": 285,
+  "mean_per_token_nll": 0.28094648944159406,
+  "median_per_token_nll": 0.0059509277,
+  "max_per_token_nll": 5.09375,
+  "top_logprobs_available": true,
+  "input_tokens": 158,
+  "output_tokens": 285,
+  "full_response": "Let's analyze each symmetry in the context of the SMEFT (Standard Model Effective Field Theory):\n\n1. **Lorentz Symmetry**: This is a fundamental symmetry of the Standard Model and is respected by all operators in the SMEFT. It ensures that the laws of physics are the same in all inertial frames of reference.\n\n2. **Poincare Symmetry**: This includes both Lorentz symmetry and spatial translations. Since the SMEFT is formulated in a Lorentz-invariant way, it also respects Poincare symmetry.\n\n3. **CP Symmetry**: This is a symmetry that interchanges particles with their antiparticles and also involves changes in the sign of the spatial coordinates. While the Standard Model is CP-violating at the electroweak scale, the SMEFT operators are constructed in such a way that they respect the CP symmetry in the context of the effective theory.\n\n4. **CPT Symmetry**: This is a stronger symmetry that includes charge conjugation (C), parity (P), and time reversal (T). In quantum field theory, CPT symmetry is a fundamental symmetry and is respected by all operators in the SMEFT.\n\nGiven this analysis, all the operators in the SMEFT must respect Lorentz symmetry (1), Poincare symmetry (2), CP symmetry (3), and CPT symmetry (4).\n\nTherefore, the correct answer is:\n\nAnswer: A",
+  "timestamp": "2026-05-24T11:50:23.807133+00:00",
+  "mean_per_token_entropy": 0.2856621030147775,
+  "median_per_token_entropy": 0.038944357889298474,
+  "max_per_token_entropy": 1.5158629146391605
+}

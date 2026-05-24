@@ -1,0 +1,19 @@
+{
+  "schema_version": "v6.0-pilot",
+  "problem_id": "gpqa_diamond_0164",
+  "subject": "chemistry",
+  "model": "Qwen/Qwen2.5-7B-Instruct-Turbo",
+  "temperature": 0.7,
+  "n_tokens": 273,
+  "mean_per_token_nll": 0.24470852541926955,
+  "median_per_token_nll": 4.7683716e-06,
+  "max_per_token_nll": 5.1875,
+  "top_logprobs_available": true,
+  "input_tokens": 311,
+  "output_tokens": 273,
+  "full_response": "Let's analyze each statement carefully:\n\nA) \"Aluminum-based activators do not work for the essential additional reaction step.\"\n- The question states that \"Aluminum-based activators do not work for the essential additional reaction step.\" This statement is directly given and is likely correct based on the context provided.\n\nB) \"Such combined systems are already implemented on an industrial scale in the US.\"\n- The senior scientist mentions that \"Such combined systems are already implemented on an industrial scale in the US.\" This statement is also directly mentioned and is likely correct.\n\nC) \"Certain noble metal catalysts can be used but are too expensive.\"\n- The senior scientist states that \"Certain noble metal catalysts can be used but are too expensive.\" This statement is also given and is likely correct.\n\nD) \"One can use a catalyst of a group VIa transition metal in combination with specific activators.\"\n- The senior scientist mentions \"One can use a catalyst of a group VIa transition metal in combination with specific activators.\" This statement is also correct based on the context provided.\n\nSince all statements are correct based on the information given, we need to identify the one that directly answers the question about the formation of a polymer with regular branches using only ethylene as the monomer and a dual catalyst system. The most relevant and directly supporting statement would be:\n\nAnswer: D",
+  "timestamp": "2026-05-24T11:53:21.741817+00:00",
+  "mean_per_token_entropy": 0.19768622960981674,
+  "median_per_token_entropy": 6.701512644550085e-05,
+  "max_per_token_entropy": 1.5681854950601384
+}

@@ -1,0 +1,19 @@
+{
+  "schema_version": "v6.0-pilot",
+  "problem_id": "gpqa_diamond_0010",
+  "subject": "biology",
+  "model": "Qwen/Qwen2.5-7B-Instruct-Turbo",
+  "temperature": 0.7,
+  "n_tokens": 336,
+  "mean_per_token_nll": 0.3631963021081371,
+  "median_per_token_nll": 0.0035171509,
+  "max_per_token_nll": 5.5,
+  "top_logprobs_available": true,
+  "input_tokens": 433,
+  "output_tokens": 336,
+  "full_response": "To solve this multiple-choice question, let's analyze each statement carefully:\n\nA) This statement discusses the ability of ORF3a from SARS-CoV-2 to trigger caspase-8 activation, a characteristic of the extrinsic apoptotic pathway, and also mentions that Bcl-2 is not affected, implying a route through the extrinsic pathway. This is a plausible biological mechanism and aligns with current scientific understanding.\n\nB) This statement talks about the frameshifting mechanism involving pseudoknots and mentions the similar behavior of SARS-CoV and SARS-CoV-2 in terms of conformations and frameshifting rates. This is supported by research findings on these viruses.\n\nC) This statement describes the process of programmed ribosomal frameshifting in creating polyproteins and mentions that SARS-CoV-2 and SARS-CoV have similar conformational frameshifting. This is consistent with the known biology of these viruses.\n\nD) This statement suggests that SARS-CoV-2 nsp10/nsp14-ExoN operates as a heterodimer in a mismatch repair mechanism and that the N-terminal ExoN domain of nsp14 binds to nsp10 to form an active exonuclease complex. However, this is not a well-established function for SARS-CoV-2. The primary functions of these viral proteins are more related to replication and transcription, and there is no strong evidence to support a mismatch repair mechanism through this complex.\n\nAfter careful consideration, the statement that does not align with the current understanding of SARS-CoV-2 molecular biology is:\n\nAnswer: D",
+  "timestamp": "2026-05-24T11:49:11.506945+00:00",
+  "mean_per_token_entropy": 0.30941057361870883,
+  "median_per_token_entropy": 0.024767642715901567,
+  "max_per_token_entropy": 1.4391867481671252
+}

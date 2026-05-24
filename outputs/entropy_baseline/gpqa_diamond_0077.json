@@ -1,0 +1,19 @@
+{
+  "schema_version": "v6.0-pilot",
+  "problem_id": "gpqa_diamond_0077",
+  "subject": "physics",
+  "model": "Qwen/Qwen2.5-7B-Instruct-Turbo",
+  "temperature": 0.7,
+  "n_tokens": 738,
+  "mean_per_token_nll": 0.11636131498644749,
+  "median_per_token_nll": 1.0728836e-06,
+  "max_per_token_nll": 5.375,
+  "top_logprobs_available": true,
+  "input_tokens": 549,
+  "output_tokens": 738,
+  "full_response": "To solve this problem, we need to consider the retarded potentials for a moving point charge. The scalar potential \\( V \\) and vector potential \\( \\vec{A} \\) for a point charge moving with a trajectory \\( \\vec{s}(t) \\) are derived from the Lienard-Wiechert potentials. \n\nGiven:\n- The field point is \\( \\vec{r} \\).\n- The vector from the field generating point at time \\( t_r \\) to the observation point is \\( \\vec{d} = \\vec{r} - \\vec{s}(t_r) \\).\n- The velocity of the charge at the field generating instant \\( t_r \\) is \\( \\vec{v} \\).\n- The trajectory of the charge is \\( \\vec{s}(t) \\).\n- The time \\( t > t_r \\).\n\nThe scalar potential \\( V \\) and vector potential \\( \\vec{A} \\) at a point \\( \\vec{r} \\) and time \\( t \\) are given by:\n\n\\[ V(\\vec{r},t) = \\frac{q}{4\\pi\\epsilon_0 (|\\vec{d}| - \\vec{d} \\cdot \\vec{v}/c)} \\]\n\n\\[ \\vec{A}(\\vec{r},t) = \\frac{\\mu_0 q \\vec{v}}{4\\pi (|\\vec{d}| - \\vec{d} \\cdot \\vec{v}/c)} \\]\n\nHere, \\( |\\vec{d}| = \\sqrt{(\\vec{r} - \\vec{s}(t_r))^2} \\), and the term \\( \\vec{d} \\cdot \\vec{v}/c \\) represents the time delay due to the finite speed of light.\n\nLet's compare this with the given options:\n\nA) \\( V(\\vec{r},t) = \\dfrac{qc}{4\\pi\\epsilon_o (d c + \\vec{d}. \\vec{v})} \\), \\( \\vec{A(\\vec{r},t)} = \\dfrac{\\mu_o qc \\vec{v}}{4\\pi (d c + \\vec{d}. \\vec{v})} \\)\n\nB) \\( V(\\vec{r},t) = \\dfrac{qc}{4\\pi\\epsilon_o (d c - \\vec{d}. \\vec{v})} \\), \\( \\vec{A(\\vec{r},t)} = \\dfrac{\\mu_o qc \\vec{v}}{4\\pi (d c - \\vec{d}. \\vec{v})} \\)\n\nC) \\( V(\\vec{r},t) = \\dfrac{q}{4\\pi\\epsilon_o r} \\), \\( \\vec{A(\\vec{r},t)} = \\dfrac{\\vec{v}}{c^2} V(\\vec{r},t) \\)\n\nD) \\( V(\\vec{r},t) = \\dfrac{q}{4\\pi\\epsilon_o r} \\), \\( \\vec{A(\\vec{r},t)} = \\dfrac{\\vec{v^2}}{c^2} V(\\vec{r},t) \\)\n\nOption B matches the form of the Lienard-Wiechert potentials, where the denominator is \\( |\\vec{d}| - \\vec{d} \\cdot \\vec{v}/c \\).\n\nTherefore, the correct answer is:\n\nAnswer: B",
+  "timestamp": "2026-05-24T11:50:50.852571+00:00",
+  "mean_per_token_entropy": 0.11010382802070097,
+  "median_per_token_entropy": 1.6048355295440488e-05,
+  "max_per_token_entropy": 1.5107393062830137
+}

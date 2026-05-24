@@ -1,0 +1,19 @@
+{
+  "schema_version": "v6.0-pilot",
+  "problem_id": "gpqa_diamond_0107",
+  "subject": "physics",
+  "model": "Qwen/Qwen2.5-7B-Instruct-Turbo",
+  "temperature": 0.7,
+  "n_tokens": 1095,
+  "mean_per_token_nll": 0.14358834258359865,
+  "median_per_token_nll": 4.887581e-06,
+  "max_per_token_nll": 6.5,
+  "top_logprobs_available": true,
+  "input_tokens": 226,
+  "output_tokens": 1095,
+  "full_response": "To solve this problem, we need to compare the order of magnitude of the paramagnetic coupling term (which involves the magnetic field \\(\\vec{B}\\)) and the transition energy \\(\\Delta E\\) of the Hydrogen atom.\n\n### Step 1: Paramagnetic Coupling Term\nThe paramagnetic coupling term in the Hydrogen atom due to an external magnetic field \\(\\vec{B}\\) (which is parallel to the \\(z\\)-axis) is given by:\n\\[\n\\left\\langle H \\right\\rangle = -\\mu_B B m\n\\]\nwhere:\n- \\(\\mu_B\\) is the Bohr magneton,\n- \\(B\\) is the magnetic field strength (1 T),\n- \\(m\\) is the orbital magnetic quantum number.\n\nFor small values of \\(m\\), the maximum value of \\(m\\) for the ground state (1s) is 0. For excited states, the maximum \\(m\\) can be 1 (for the 2p state, for example).\n\nThe Bohr magneton \\(\\mu_B\\) is:\n\\[\n\\mu_B = \\frac{e \\hbar}{2 m_e c}\n\\]\nwhere \\(e\\) is the elementary charge, \\(\\hbar\\) is the reduced Planck's constant, \\(m_e\\) is the mass of the electron, and \\(c\\) is the speed of light.\n\n### Step 2: Transition Energy of Hydrogen Atom\nThe transition energy \\(\\Delta E\\) for a Hydrogen atom can be calculated using the Rydberg formula for the spectral lines. For the Balmer series (which includes the wavelength \\(\\lambda = 0.4861 \\mu m\\)), the energy difference between levels \\(n_i\\) and \\(n_f\\) (where \\(n_f = 2\\) and \\(n_i > 2\\)) is given by:\n\\[\n\\Delta E = R_H \\left( \\frac{1}{n_f^2} - \\frac{1}{n_i^2} \\right)\n\\]\nwhere \\(R_H\\) is the Rydberg constant. For the transition corresponding to \\(\\lambda = 0.4861 \\mu m\\), it is the \\(\\text{H}\\alpha\\) line (from \\(n_i = 3\\) to \\(n_f = 2\\)):\n\\[\n\\Delta E = R_H \\left( \\frac{1}{2^2} - \\frac{1}{3^2} \\right) = R_H \\left( \\frac{1}{4} - \\frac{1}{9} \\right) = R_H \\left( \\frac{9 - 4}{36} \\right) = R_H \\left( \\frac{5}{36} \\right)\n\\]\n\nThe Rydberg constant \\(R_H\\) is approximately \\(1.097 \\times 10^7 \\, \\text{m}^{-1}\\), and the energy \\(E\\) in joules is given by:\n\\[\nE = \\frac{h c R_H}{\\lambda}\n\\]\nwhere \\(h\\) is Planck's constant.\n\nSubstituting \\(\\lambda = 0.4861 \\times 10^{-6} \\, \\text{m}\\), we get:\n\\[\n\\Delta E = \\frac{6.626 \\times 10^{-34} \\, \\text{J s} \\times 3 \\times 10^8 \\, \\text{m/s} \\times 1.097 \\times 10^7 \\, \\text{m}^{-1}}{0.4861 \\times 10^{-6} \\, \\text{m}} \\approx 4.574 \\times 10^{-19} \\, \\text{J}\n\\]\n\n### Step 3: Magnitude Comparison\nThe paramagnetic coupling term \\(\\langle H \\rangle\\) for small \\(m\\) (let's consider \\(m = 1\\) for a rough estimate):\n\\[\n\\left\\langle H \\right\\rangle = -\\mu_B B m = -\\mu_B \\times 1 \\, \\text{T} \\times 1 = -\\mu_B\n\\]\nThe Bohr magneton \\(\\mu_B\\) is approximately \\(9.274 \\times 10^{-24} \\, \\text{J/T}\\).\n\nSo:\n\\[\n\\left\\langle H \\right\\rangle \\approx 9.274 \\times 10^{-24} \\, \\text{J}\n\\]\n\nComparing \\(\\left\\langle H \\right\\rangle\\) and \\(\\Delta E\\):\n\\[\n\\left\\langle H \\right\\rangle \\approx 9.274 \\times 10^{-24} \\, \\text{J} \\quad \\text{and} \\quad \\Delta E \\approx 4.574 \\times 10^{-19} \\, \\text{J}\n\\]\n\nClearly:\n\\[\n\\left\\langle H \\right\\rangle \\ll \\Delta E\n\\]\n\n### Final Answer:\nAnswer: A",
+  "timestamp": "2026-05-24T11:52:26.130963+00:00",
+  "mean_per_token_entropy": 0.14344740905509337,
+  "median_per_token_entropy": 6.706490956988465e-05,
+  "max_per_token_entropy": 1.5332240195882014
+}

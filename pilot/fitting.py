@@ -18,6 +18,9 @@ from pilot.config import CURVE_FAMILIES
 
 logger = logging.getLogger(__name__)
 
+_N_STARTS: int = 10
+_MULTISTART_SEED: int = 42
+
 
 # ---------------------------------------------------------------------------
 # Result type
@@ -81,31 +84,66 @@ def _make_fit_result(
     R: np.ndarray,
     bounds: tuple,
     p0: list[float],
+    n_starts: int = _N_STARTS,
+    seed: int = _MULTISTART_SEED,
 ) -> FitResult:
-    """Run curve_fit and package results into FitResult."""
+    """Run curve_fit with multi-start optimization; return best converged result.
+
+    Generates n_starts initial parameter guesses by sampling uniformly within
+    the parameter bounds (seed fixed for reproducibility), plus the heuristic
+    p0 as the first candidate.  Wide-bound parameters (upper > 100) are sampled
+    up to min(upper, max(100, c.max() * 2)) to avoid numerically extreme starts.
+    Among all starts that converge, returns the one with the lowest residual sum
+    of squares (i.e. the global MLE under Gaussian noise).  If every start fails,
+    returns FitResult with converged=False and BIC computed from p0.
+    """
     n = len(c)
     k = len(p0)
-    converged = True
-    try:
-        with warnings.catch_warnings():
-            warnings.simplefilter("ignore")
-            popt, pcov = curve_fit(
-                fn, c, R, p0=p0, bounds=bounds, maxfev=10_000, method="trf"
-            )
-        fitted = fn(c, *popt)
-        rss = float(np.sum((R - fitted) ** 2))
-    except (RuntimeError, ValueError) as exc:
-        logger.debug("curve_fit failed for %s: %s", family, exc)
-        converged = False
-        popt = np.array(p0, dtype=float)
-        fitted = fn(c, *popt)
-        rss = float(np.sum((R - fitted) ** 2))
-        pcov = np.full((k, k), np.inf)
+    lower = np.array(bounds[0], dtype=float)
+    upper = np.array(bounds[1], dtype=float)
+    # Clip sampling ceiling for params with very wide bounds (c0, sigma up to 1e4)
+    sample_upper = np.minimum(upper, np.maximum(1e2, c.max() * 2.0))
 
-    bic = _compute_bic(k=k, n=n, rss=rss)
-    residual_se = float(np.sqrt(rss / n))
-    params_t = tuple(float(x) for x in popt)
-    cov_t = tuple(tuple(float(x) for x in row) for row in pcov)
+    rng = np.random.default_rng(seed)
+    random_starts = [
+        list(rng.uniform(lower, sample_upper)) for _ in range(n_starts - 1)
+    ]
+    all_starts: list[list[float]] = [p0] + random_starts
+
+    best_rss = float("inf")
+    best_popt: np.ndarray | None = None
+    best_pcov: np.ndarray | None = None
+
+    for p0_i in all_starts:
+        try:
+            with warnings.catch_warnings():
+                warnings.simplefilter("ignore")
+                popt, pcov = curve_fit(
+                    fn, c, R, p0=p0_i, bounds=bounds, maxfev=10_000, method="trf"
+                )
+            fitted = fn(c, *popt)
+            rss = float(np.sum((R - fitted) ** 2))
+            if rss < best_rss:
+                best_rss = rss
+                best_popt = popt
+                best_pcov = pcov
+        except (RuntimeError, ValueError):
+            continue
+
+    converged = best_popt is not None
+    if not converged:
+        logger.debug("All %d starts failed for %s", n_starts, family)
+        popt_arr = np.array(p0, dtype=float)
+        fitted = fn(c, *popt_arr)
+        best_rss = float(np.sum((R - fitted) ** 2))
+        best_pcov = np.full((k, k), np.inf)
+    else:
+        popt_arr = best_popt
+
+    bic = _compute_bic(k=k, n=n, rss=best_rss)
+    residual_se = float(np.sqrt(best_rss / n))
+    params_t = tuple(float(x) for x in popt_arr)
+    cov_t = tuple(tuple(float(x) for x in row) for row in best_pcov)
     return FitResult(
         family=family,
         params=params_t,

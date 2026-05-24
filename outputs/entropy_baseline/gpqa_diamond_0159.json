@@ -1,0 +1,19 @@
+{
+  "schema_version": "v6.0-pilot",
+  "problem_id": "gpqa_diamond_0159",
+  "subject": "physics",
+  "model": "Qwen/Qwen2.5-7B-Instruct-Turbo",
+  "temperature": 0.7,
+  "n_tokens": 442,
+  "mean_per_token_nll": 0.27517567342699717,
+  "median_per_token_nll": 0.0013885498,
+  "max_per_token_nll": 6.28125,
+  "top_logprobs_available": true,
+  "input_tokens": 233,
+  "output_tokens": 442,
+  "full_response": "To solve this problem, let's break it down step by step:\n\n1. **Understanding the Aperture Shape**: An N-sided polygon with all apothems of length \\(a\\) approaches a circle as \\(N\\) becomes very large. The apothem is the distance from the center of the polygon to the midpoint of a side.\n\n2. **Diffraction Pattern**: When monochromatic light falls on an aperture, it diffracts, creating a diffraction pattern in the far field. The intensity distribution in the far field is given by the Fraunhofer diffraction pattern.\n\n3. **Small Angle Approximation**: Given that the related angles are small, we can use the approximation \\(\\tan(\\theta) \\approx \\theta\\).\n\n4. **Diffraction Formula for Circular Aperture**: For a circular aperture of radius \\(a\\), the first diffraction minimum occurs at an angle \\(\\theta\\) given by:\n   \\[\n   \\sin(\\theta) = 1.22 \\frac{\\lambda}{a}\n   \\]\n   However, for small angles, \\(\\sin(\\theta) \\approx \\theta\\). So, the first minimum occurs at:\n   \\[\n   \\theta \\approx 1.22 \\frac{\\lambda}{a}\n   \\]\n\n5. **Angular Distance Between First Two Minima**: The intensity minima are symmetric about the center, and the angular distance between the first and the second minimum (on one side of the center) is twice the angle to the first minimum:\n   \\[\n   \\Delta \\theta = 2 \\theta = 2 \\left(1.22 \\frac{\\lambda}{a}\\right) = 2.44 \\frac{\\lambda}{a}\n   \\]\n\nHowever, the question asks for the angular distance between the first two minima, which is the distance between the first minimum on one side and the first minimum on the opposite side. This is simply the angle to the first minimum:\n   \\[\n   \\Delta \\theta = 1.22 \\frac{\\lambda}{a}\n   \\]\n\nThus, the correct answer is:\n\nAnswer: B",
+  "timestamp": "2026-05-24T11:53:16.498517+00:00",
+  "mean_per_token_entropy": 0.2333515619974248,
+  "median_per_token_entropy": 0.010203878752930707,
+  "max_per_token_entropy": 1.5262566163240316
+}

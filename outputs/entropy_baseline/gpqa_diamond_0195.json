@@ -1,0 +1,19 @@
+{
+  "schema_version": "v6.0-pilot",
+  "problem_id": "gpqa_diamond_0195",
+  "subject": "physics",
+  "model": "Qwen/Qwen2.5-7B-Instruct-Turbo",
+  "temperature": 0.7,
+  "n_tokens": 567,
+  "mean_per_token_nll": 0.0988507692704491,
+  "median_per_token_nll": -0.0,
+  "max_per_token_nll": 3.5,
+  "top_logprobs_available": true,
+  "input_tokens": 258,
+  "output_tokens": 567,
+  "full_response": "To solve this problem, let's first understand the relativistic kinetic energy of a particle. The total energy \\(E\\) of a relativistic particle is given by:\n\n\\[ E = \\gamma mc^2 \\]\n\nwhere \\(\\gamma\\) is the Lorentz factor:\n\n\\[ \\gamma = \\frac{1}{\\sqrt{1 - \\frac{v^2}{c^2}}} \\]\n\nThe kinetic energy \\(K\\) of the particle is:\n\n\\[ K = E - mc^2 = \\gamma mc^2 - mc^2 \\]\n\nFor a harmonic oscillator, the total energy \\(E\\) is:\n\n\\[ E = \\frac{1}{2} k A^2 \\]\n\nwhere \\(k\\) is the spring constant and \\(A\\) is the maximum amplitude. Setting the total energy equal to the kinetic energy for the maximum speed, we get:\n\n\\[ \\frac{1}{2} k A^2 = \\gamma mc^2 - mc^2 \\]\n\n\\[ \\frac{1}{2} k A^2 = mc^2 (\\gamma - 1) \\]\n\nSolving for \\(\\gamma\\):\n\n\\[ \\gamma = 1 + \\frac{k A^2}{2 m c^2} \\]\n\nNow, using the expression for \\(\\gamma\\):\n\n\\[ \\gamma = \\frac{1}{\\sqrt{1 - \\frac{v_{max}^2}{c^2}}} \\]\n\n\\[ 1 + \\frac{k A^2}{2 m c^2} = \\frac{1}{\\sqrt{1 - \\frac{v_{max}^2}{c^2}}} \\]\n\nSquaring both sides:\n\n\\[ \\left(1 + \\frac{k A^2}{2 m c^2}\\right)^2 = \\frac{1}{1 - \\frac{v_{max}^2}{c^2}} \\]\n\nRearranging for \\(\\frac{v_{max}^2}{c^2}\\):\n\n\\[ 1 - \\frac{v_{max}^2}{c^2} = \\frac{1}{\\left(1 + \\frac{k A^2}{2 m c^2}\\right)^2} \\]\n\n\\[ \\frac{v_{max}^2}{c^2} = 1 - \\frac{1}{\\left(1 + \\frac{k A^2}{2 m c^2}\\right)^2} \\]\n\nTaking the square root of both sides:\n\n\\[ v_{max} = c \\sqrt{1 - \\frac{1}{\\left(1 + \\frac{k A^2}{2 m c^2}\\right)^2}} \\]\n\nThis corresponds to option C.\n\nAnswer: C",
+  "timestamp": "2026-05-24T11:54:11.985397+00:00",
+  "mean_per_token_entropy": 0.09613178124584987,
+  "median_per_token_entropy": 9.441571405546664e-07,
+  "max_per_token_entropy": 1.5347303848660727
+}

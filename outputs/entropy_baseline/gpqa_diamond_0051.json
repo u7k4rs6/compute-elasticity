@@ -1,0 +1,19 @@
+{
+  "schema_version": "v6.0-pilot",
+  "problem_id": "gpqa_diamond_0051",
+  "subject": "physics",
+  "model": "Qwen/Qwen2.5-7B-Instruct-Turbo",
+  "temperature": 0.7,
+  "n_tokens": 717,
+  "mean_per_token_nll": 0.1539598844990016,
+  "median_per_token_nll": 6.198883e-06,
+  "max_per_token_nll": 6.03125,
+  "top_logprobs_available": true,
+  "input_tokens": 286,
+  "output_tokens": 717,
+  "full_response": "To solve this problem, let's break it down step by step:\n\n1. **Understanding the Effect of Spots on Temperature:**\n   - When the star's surface is not covered by dark spots, the photospheric effective temperature (Teff) is 6000K.\n   - When 40% of the surface is covered by spots, the Teff decreases to 5500K.\n\n2. **Stellar Photosphere in LTE:**\n   - The stellar photosphere is in local thermodynamic equilibrium (LTE), which implies that the population of atoms in different energy levels is determined by the Boltzmann distribution.\n\n3. **Ratio of Neutral Ti Atoms in Two Energy Levels:**\n   - The ratio of the number of neutral atoms of Ti in two energetic levels (level 1 and level 2) is given by the Boltzmann factor \\( \\frac{n_1}{n_2} = \\exp(-\\Delta E / kT) \\), where \\( \\Delta E \\) is the energy difference between the two levels, \\( k \\) is the Boltzmann constant, and \\( T \\) is the temperature.\n\n4. **Energy Difference and Wavelength:**\n   - The transition between the energy levels corresponds to a wavelength of approximately 1448 \u00c5. Using the energy-wavelength relation \\( E = hc/\\lambda \\), where \\( h \\) is Planck's constant, \\( c \\) is the speed of light, and \\( \\lambda \\) is the wavelength, we can calculate \\( \\Delta E \\).\n   - \\( \\Delta E = \\frac{hc}{1448 \\times 10^{-10} m} \\approx 1.17 \\times 10^{-19} J \\).\n\n5. **Ratio at Different Temperatures:**\n   - At 6000K (when there are no spots):\n     \\[\n     \\frac{n_1}{n_2} = \\exp\\left(-\\frac{1.17 \\times 10^{-19} J}{1.38 \\times 10^{-23} J/K \\times 6000 K}\\right) \\approx \\exp(-13.84) \\approx 1.2 \\times 10^{-6}\n     \\]\n   - At 5500K (when there are spots):\n     \\[\n     \\frac{n_1}{n_2} = \\exp\\left(-\\frac{1.17 \\times 10^{-19} J}{1.38 \\times 10^{-23} J/K \\times 5500 K}\\right) \\approx \\exp(-15.74) \\approx 3.8 \\times 10^{-7}\n     \\]\n\n6. **Ratio of Ratios:**\n   - The factor by which the ratio changes is:\n     \\[\n     \\frac{\\frac{n_1}{n_2} \\text{ (no spots)}}{\\frac{n_1}{n_2} \\text{ (spots)}} = \\frac{1.2 \\times 10^{-6}}{3.8 \\times 10^{-7}} \\approx 3.16 \\approx 3.2\n     \\]\n\nGiven the options provided, the closest factor is:\n\nAnswer: C) ~2.9",
+  "timestamp": "2026-05-24T11:50:16.585980+00:00",
+  "mean_per_token_entropy": 0.14464334891809688,
+  "median_per_token_entropy": 7.987947586799804e-05,
+  "max_per_token_entropy": 1.5997630518265256
+}

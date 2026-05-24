@@ -1,0 +1,19 @@
+{
+  "schema_version": "v6.0-pilot",
+  "problem_id": "gpqa_diamond_0127",
+  "subject": "biology",
+  "model": "Qwen/Qwen2.5-7B-Instruct-Turbo",
+  "temperature": 0.7,
+  "n_tokens": 362,
+  "mean_per_token_nll": 0.22573403230086955,
+  "median_per_token_nll": 4.7683716e-07,
+  "max_per_token_nll": 4.3125,
+  "top_logprobs_available": true,
+  "input_tokens": 2848,
+  "output_tokens": 362,
+  "full_response": "To determine which plasmid to use, we need to identify the one that correctly encodes the human P53 protein based on the given amino acid sequence.\n\nThe amino acid sequence of the human P53 protein provided is:\n\nMEEPQSDPSVEPPLSQETFSDLWKLLPENNVLSPLPSQAMDDLMLSPDDIEQWFTEDPGPDEAPRMPEAAPPVAPAPAAPTPAAPAPAPSWPLSSSVPSQKTYQGSYGFRLGFLHSGTAKSVTCTYSPALNKMFCQLAKTCPVQLWVDSTPPPGTRVRAMAIYKQSQHMTEVVRRCPHHERCSDSDGLAPPQHLIRVEGNLRVEYLDDRNTFRHSVVVPYEPPEVGSDCTTIHYNYMCNSSCMGGMNRRPILTIITLEDSSGNLLGRNSFEVRVCACPGRDRRTEEENLRKKGEPHHELPPGSTKRALPNNTSSSPQPKKKPLDGEYFTLQIRGRERFEMFRELNEALELKDAQAGKEPGGSRAHSSHLKSKKGQSTSRHKKLMFKTEGPDSD\n\nTo translate this sequence into DNA, we need to find a plasmid that encodes this exact sequence when transcribed and translated.\n\nLooking at the options, we can see that option B contains the full sequence of the P53 protein in its amino acid sequence. This is because it is the only one that matches the exact sequence provided, including the start codon (ATG) and stop codon (TGA or TAA).\n\nTherefore, the correct plasmid to use is:\n\nAnswer: B",
+  "timestamp": "2026-05-24T11:52:34.471361+00:00",
+  "mean_per_token_entropy": 0.18499547743509598,
+  "median_per_token_entropy": 8.132064658184468e-06,
+  "max_per_token_entropy": 1.5400858677566096
+}

@@ -1,0 +1,19 @@
+{
+  "schema_version": "v6.0-pilot",
+  "problem_id": "gpqa_diamond_0154",
+  "subject": "physics",
+  "model": "Qwen/Qwen2.5-7B-Instruct-Turbo",
+  "temperature": 0.7,
+  "n_tokens": 703,
+  "mean_per_token_nll": 0.03612142829875568,
+  "median_per_token_nll": -0.0,
+  "max_per_token_nll": 3.34375,
+  "top_logprobs_available": true,
+  "input_tokens": 464,
+  "output_tokens": 703,
+  "full_response": "To find the uncertainty \\(\\Delta P_z\\) of the operator \\(P_z\\), we need to follow these steps:\n\n1. **Identify the eigenstate of \\(P_x\\):** The given state is \\(\\left| \\psi \\right> = \\begin{pmatrix} -\\frac{1}{2} \\\\ \\frac{1}{\\sqrt{2}} \\\\ -\\frac{1}{2} \\end{pmatrix}\\).\n\n2. **Calculate the expectation value of \\(P_z\\):** The expectation value \\(\\langle P_z \\rangle\\) is given by \\(\\langle \\psi | P_z | \\psi \\rangle\\).\n\n3. **Calculate the expectation value of \\(P_z^2\\):** The expectation value \\(\\langle P_z^2 \\rangle\\) is given by \\(\\langle \\psi | P_z^2 | \\psi \\rangle\\).\n\n4. **Compute the uncertainty \\(\\Delta P_z\\):** The uncertainty is given by \\(\\Delta P_z = \\sqrt{\\langle P_z^2 \\rangle - \\langle P_z \\rangle^2}\\).\n\nLet's perform these calculations step by step.\n\n### Step 1: Calculate \\(\\langle P_z \\rangle\\)\n\nThe matrix form of \\(P_z\\) is:\n\\[ P_z = \\begin{pmatrix} \\hbar & 0 & 0 \\\\ 0 & 0 & 0 \\\\ 0 & 0 & -\\hbar \\end{pmatrix} \\]\n\nThe expectation value \\(\\langle P_z \\rangle\\) is:\n\\[ \\langle P_z \\rangle = \\left( -\\frac{1}{2} \\right) \\hbar + \\left( \\frac{1}{\\sqrt{2}} \\right) \\cdot 0 + \\left( -\\frac{1}{2} \\right) (-\\hbar) = -\\frac{\\hbar}{2} + \\frac{\\hbar}{2} = 0 \\]\n\n### Step 2: Calculate \\(\\langle P_z^2 \\rangle\\)\n\nThe matrix form of \\(P_z^2\\) is:\n\\[ P_z^2 = \\begin{pmatrix} \\hbar^2 & 0 & 0 \\\\ 0 & 0 & 0 \\\\ 0 & 0 & \\hbar^2 \\end{pmatrix} \\]\n\nThe expectation value \\(\\langle P_z^2 \\rangle\\) is:\n\\[ \\langle P_z^2 \\rangle = \\left( -\\frac{1}{2} \\right) \\hbar^2 + \\left( \\frac{1}{\\sqrt{2}} \\right) \\cdot 0 + \\left( -\\frac{1}{2} \\right) \\hbar^2 = -\\frac{\\hbar^2}{2} + \\frac{\\hbar^2}{2} = \\hbar^2 \\]\n\n### Step 3: Compute the uncertainty \\(\\Delta P_z\\)\n\nThe uncertainty is:\n\\[ \\Delta P_z = \\sqrt{\\langle P_z^2 \\rangle - \\langle P_z \\rangle^2} = \\sqrt{\\hbar^2 - 0} = \\hbar \\]\n\nThus, the uncertainty \\(\\Delta P_z\\) of \\(P_z\\) is \\(\\hbar\\).\n\nAnswer: D",
+  "timestamp": "2026-05-24T11:53:10.362000+00:00",
+  "mean_per_token_entropy": 0.05864555163977454,
+  "median_per_token_entropy": 8.265291559650689e-07,
+  "max_per_token_entropy": 1.5519179338172617
+}

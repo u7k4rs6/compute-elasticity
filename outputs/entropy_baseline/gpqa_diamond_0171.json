@@ -1,0 +1,19 @@
+{
+  "schema_version": "v6.0-pilot",
+  "problem_id": "gpqa_diamond_0171",
+  "subject": "physics",
+  "model": "Qwen/Qwen2.5-7B-Instruct-Turbo",
+  "temperature": 0.7,
+  "n_tokens": 1018,
+  "mean_per_token_nll": 0.07964729210549919,
+  "median_per_token_nll": 4.7683716e-07,
+  "max_per_token_nll": 3.875,
+  "top_logprobs_available": true,
+  "input_tokens": 278,
+  "output_tokens": 1018,
+  "full_response": "To solve this problem, we need to use the Saha equation, which relates the excitation of atoms to the temperature and pressure in the photosphere of a star. The Saha equation for a two-level system (ground state and excited state) is given by:\n\n\\[ \\frac{n_{\\text{excited}}}{n_{\\text{ground}}} = \\frac{2}{\\pi^2 h^3 c^3} \\left( \\frac{2mkT}{h^2} \\right)^{3/2} \\exp \\left( -\\frac{\\Delta E}{kT} \\right) \\]\n\nWhere:\n- \\( n_{\\text{excited}} \\) and \\( n_{\\text{ground}} \\) are the number densities of excited and ground state atoms, respectively.\n- \\( T \\) is the temperature.\n- \\( \\Delta E \\) is the energy difference between the two levels.\n- \\( k \\) is the Boltzmann constant.\n\nGiven that the iron atoms in the photosphere of star_1 are twice as excited in a specific energy level compared to star_2, we can set up the following relationship:\n\n\\[ \\frac{n_{\\text{excited,1}}}{n_{\\text{ground,1}}} = 2 \\cdot \\frac{n_{\\text{excited,2}}}{n_{\\text{ground,2}}} \\]\n\nUsing the Saha equation for both stars, we have:\n\n\\[ \\frac{2}{\\pi^2 h^3 c^3} \\left( \\frac{2mkT_1}{h^2} \\right)^{3/2} \\exp \\left( -\\frac{\\Delta E}{kT_1} \\right) = 2 \\cdot \\frac{2}{\\pi^2 h^3 c^3} \\left( \\frac{2mkT_2}{h^2} \\right)^{3/2} \\exp \\left( -\\frac{\\Delta E}{kT_2} \\right) \\]\n\nSimplifying, we get:\n\n\\[ \\left( \\frac{T_1}{T_2} \\right)^{3/2} \\exp \\left( -\\frac{\\Delta E}{kT_1} \\right) = \\left( \\frac{T_2}{T_1} \\right)^{3/2} \\exp \\left( -\\frac{\\Delta E}{kT_2} \\right) \\]\n\nTaking the natural logarithm of both sides:\n\n\\[ \\frac{3}{2} \\ln \\left( \\frac{T_1}{T_2} \\right) - \\frac{\\Delta E}{kT_1} = - \\frac{3}{2} \\ln \\left( \\frac{T_2}{T_1} \\right) + \\frac{\\Delta E}{kT_2} \\]\n\nSince \\(\\ln \\left( \\frac{T_1}{T_2} \\right) = -\\ln \\left( \\frac{T_2}{T_1} \\right)\\), we can simplify further:\n\n\\[ \\frac{3}{2} \\ln \\left( \\frac{T_1}{T_2} \\right) + \\frac{3}{2} \\ln \\left( \\frac{T_1}{T_2} \\right) = \\frac{\\Delta E}{kT_1} + \\frac{\\Delta E}{kT_2} \\]\n\n\\[ 3 \\ln \\left( \\frac{T_1}{T_2} \\right) = \\frac{\\Delta E}{k} \\left( \\frac{1}{T_1} + \\frac{1}{T_2} \\right) \\]\n\n\\[ \\ln \\left( \\frac{T_1}{T_2} \\right) = \\frac{\\Delta E}{3k} \\left( \\frac{1}{T_1} + \\frac{1}{T_2} \\right) \\]\n\nGiven that \\( \\Delta E = 1.38 \\times 10^{-23} \\) J and \\( k = 1.38 \\times 10^{-23} \\) J/K, the term \\( \\frac{\\Delta E}{3k} \\) simplifies to 1:\n\n\\[ \\ln \\left( \\frac{T_1}{T_2} \\right) = \\frac{1}{3} \\left( \\frac{1}{T_1} + \\frac{1}{T_2} \\right) \\]\n\nThis can be rearranged to:\n\n\\[ \\ln(2) = \\frac{T_2 - T_1}{T_1 T_2} \\]\n\nThus, the correct equation is:\n\nAnswer: B",
+  "timestamp": "2026-05-24T11:53:41.468854+00:00",
+  "mean_per_token_entropy": 0.08634862358857011,
+  "median_per_token_entropy": 7.879435948711331e-06,
+  "max_per_token_entropy": 1.4062716609403019
+}
