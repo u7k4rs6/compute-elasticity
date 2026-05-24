@@ -9,6 +9,12 @@ outputs/*
 !outputs/recon_extended_results.json
 !outputs/phase_6_progress.json
 !outputs/side_test_progress.json
+!outputs/fits/
+!outputs/fits/*
+!outputs/diversity/
+!outputs/diversity/*
+!outputs/fits_summary.json
+!outputs/diversity_summary.json
 
 # Python cache
 __pycache__/
