@@ -53,7 +53,7 @@ Full results: [`outputs/hypothesis_results.json`](outputs/hypothesis_results.jso
 
 - **H5 interpretation.** Of the 21 unimodal BIC winners, only 1 problem (gpqa_diamond_0026, c* ≈ 11) shows a genuine interior accuracy peak. The remaining 20 are fitting artifacts — either decaying (peak below the data grid, c* < 4) or saturating (peak beyond grid, c* > 56). See [`outputs/unimodal_sensitivity.json`](outputs/unimodal_sensitivity.json) for the full regime breakdown.
 
-**Total API spend: ~$0.60** of the $15.00 budget (multi-start optimization eliminated convergence failures without additional API cost; most budget was reserved for the sampling phases).
+**Total API spend: ~$0.60** of the $15.00 budget. The original PRD estimate ($10–15) overstated actual usage by ~25× — outputs were shorter than expected, and the Pass-5 LLM scorer never had to fire because regex extraction held above 99%.
 
 ## Reproducibility
 
@@ -61,6 +61,8 @@ Full results: [`outputs/hypothesis_results.json`](outputs/hypothesis_results.jso
 - **Falsification suite:** `pytest tests/falsification.py -v` — reads `outputs/hypothesis_results.json` and asserts each verdict. A pytest failure = hypothesis falsified.
 - **Phase tags** (in order):
   `phase-0-complete` → `phase-1-complete` → `pre-pilot-v6.0` → `pre-pilot-v6.0.1-single-provider` → `pre-pilot-v6.0.2-turbo-variant` → `phase-4-complete` → `phase-5-complete` → `phase-6-complete` → `phase-7-complete` → `phase-8-complete` → `phase-9-complete`
+
+  > Phase 2 corresponds to the three `pre-pilot-v6.0.*` tags. Phase 3 (API smoke tests) was committed inline and has no dedicated tag.
 
 ## License
 
