@@ -1,11 +1,11 @@
 {
   "schema_version": "v6.0-pilot",
   "phase": "side_test",
-  "last_updated": "2026-05-24T05:06:49.360400+00:00",
+  "last_updated": "2026-05-24T05:22:41.186378+00:00",
   "n_problems_total": 10,
   "n_cells_total": 30,
-  "n_cells_complete": 20,
-  "n_problems_complete": 5,
+  "n_cells_complete": 30,
+  "n_problems_complete": 10,
   "per_problem": [
     {
       "problem_id": "gpqa_diamond_0040",
@@ -122,9 +122,9 @@
       "subject": "biology",
       "temperatures": {
         "0.3": {
-          "n_samples": 0,
-          "complete": false,
-          "cost_usd": 0.0
+          "n_samples": 16,
+          "complete": true,
+          "cost_usd": 0.0017904599999999998
         },
         "0.7": {
           "n_samples": 66,
@@ -132,21 +132,21 @@
           "cost_usd": 0.0
         },
         "1.0": {
-          "n_samples": 0,
-          "complete": false,
-          "cost_usd": 0.0
+          "n_samples": 16,
+          "complete": true,
+          "cost_usd": 0.00178434
         }
       },
-      "all_complete": false
+      "all_complete": true
     },
     {
       "problem_id": "gpqa_diamond_0027",
       "subject": "chemistry",
       "temperatures": {
         "0.3": {
-          "n_samples": 0,
-          "complete": false,
-          "cost_usd": 0.0
+          "n_samples": 16,
+          "complete": true,
+          "cost_usd": 0.00253818
         },
         "0.7": {
           "n_samples": 66,
@@ -154,21 +154,21 @@
           "cost_usd": 0.0
         },
         "1.0": {
-          "n_samples": 0,
-          "complete": false,
-          "cost_usd": 0.0
+          "n_samples": 16,
+          "complete": true,
+          "cost_usd": 0.0026564400000000004
         }
       },
-      "all_complete": false
+      "all_complete": true
     },
     {
       "problem_id": "gpqa_diamond_0029",
       "subject": "chemistry",
       "temperatures": {
         "0.3": {
-          "n_samples": 0,
-          "complete": false,
-          "cost_usd": 0.0
+          "n_samples": 16,
+          "complete": true,
+          "cost_usd": 0.0018081
         },
         "0.7": {
           "n_samples": 71,
@@ -176,21 +176,21 @@
           "cost_usd": 0.0
         },
         "1.0": {
-          "n_samples": 0,
-          "complete": false,
-          "cost_usd": 0.0
+          "n_samples": 16,
+          "complete": true,
+          "cost_usd": 0.00182502
         }
       },
-      "all_complete": false
+      "all_complete": true
     },
     {
       "problem_id": "gpqa_diamond_0030",
       "subject": "chemistry",
       "temperatures": {
         "0.3": {
-          "n_samples": 0,
-          "complete": false,
-          "cost_usd": 0.0
+          "n_samples": 16,
+          "complete": true,
+          "cost_usd": 0.00181548
         },
         "0.7": {
           "n_samples": 66,
@@ -198,21 +198,21 @@
           "cost_usd": 0.0
         },
         "1.0": {
-          "n_samples": 0,
-          "complete": false,
-          "cost_usd": 0.0
+          "n_samples": 16,
+          "complete": true,
+          "cost_usd": 0.0018801
         }
       },
-      "all_complete": false
+      "all_complete": true
     },
     {
       "problem_id": "gpqa_diamond_0032",
       "subject": "chemistry",
       "temperatures": {
         "0.3": {
-          "n_samples": 0,
-          "complete": false,
-          "cost_usd": 0.0
+          "n_samples": 16,
+          "complete": true,
+          "cost_usd": 0.00275202
         },
         "0.7": {
           "n_samples": 66,
@@ -220,16 +220,16 @@
           "cost_usd": 0.0
         },
         "1.0": {
-          "n_samples": 0,
-          "complete": false,
-          "cost_usd": 0.0
+          "n_samples": 16,
+          "complete": true,
+          "cost_usd": 0.00263628
         }
       },
-      "all_complete": false
+      "all_complete": true
     }
   ],
   "prior_phases_cost_usd": 0.50974668,
-  "this_phase_cost_usd": 0.03027186,
+  "this_phase_cost_usd": 0.051758280000000004,
   "halted": false,
   "halt_reason": null
 }
