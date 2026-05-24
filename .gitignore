@@ -8,6 +8,7 @@ outputs/*
 !outputs/recon_results.json
 !outputs/recon_extended_results.json
 !outputs/phase_6_progress.json
+!outputs/side_test_progress.json
 
 # Python cache
 __pycache__/
