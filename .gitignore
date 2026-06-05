@@ -33,6 +33,7 @@ outputs/*
 !outputs/realizable/*
 !outputs/realizable/mv_curves/
 !outputs/realizable/mv_curves/*
+!outputs/realizable/h3_difficulty_control.json
 
 # Python cache
 __pycache__/
