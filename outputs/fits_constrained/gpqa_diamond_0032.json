@@ -1,0 +1,79 @@
+{
+  "schema_version": "v6.0-pilot",
+  "problem_id": "gpqa_diamond_0032",
+  "subject": "chemistry",
+  "c_star_bounds": [
+    1.0,
+    64.0
+  ],
+  "R_at_N": {
+    "1": 0.0,
+    "2": 0.0,
+    "4": 0.0,
+    "8": 0.0,
+    "16": 0.0,
+    "32": 0.0,
+    "64": 0.0
+  },
+  "best_fit_unconstrained": "constant",
+  "fits": {
+    "constant": {
+      "params": [
+        1e-10
+      ],
+      "bic": -185.2274692409663,
+      "residual_se": 1.0000000000000002e-10,
+      "converged": true,
+      "weight": 0.8355251469634496
+    },
+    "logistic": {
+      "params": [
+        0.35452596812986836,
+        9.706983174146593,
+        114.3195035292413
+      ],
+      "bic": -181.33564894285567,
+      "residual_se": 0.0,
+      "converged": true,
+      "weight": 0.11936073528049342
+    },
+    "gompertz": {
+      "params": [
+        0.00010173342358407733,
+        88.14781905944564,
+        0.06067383724330249
+      ],
+      "bic": -142.02768944511425,
+      "residual_se": 6.263607632069769e-06,
+      "converged": true,
+      "weight": 3.477335010102827e-10
+    },
+    "shifted_logistic": {
+      "params": [
+        0.2816652107730489,
+        0.03146414528124881,
+        475.206599112551,
+        1.1421685524495473e-10
+      ],
+      "bic": -179.38973879380035,
+      "residual_se": 2.889701706888354e-07,
+      "converged": true,
+      "weight": 0.045114117408285366
+    },
+    "unimodal": {
+      "params": [
+        0.008044328078550277,
+        49.05456938142188,
+        1.2908180052546636,
+        2.0065458682710824e-05
+      ],
+      "bic": -123.782369664232,
+      "residual_se": 2.0065458682710824e-05,
+      "converged": true,
+      "weight": 3.795995442917114e-14
+    }
+  },
+  "best_fit_constrained": "constant",
+  "unimodal_c_star_constrained": 49.05456938142188,
+  "winner_flips": false
+}

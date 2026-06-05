@@ -1,0 +1,26 @@
+{
+  "schema_version": "v6.0-pilot",
+  "c_star_bounds": [
+    1.0,
+    64.0
+  ],
+  "n_problems": 47,
+  "family_win_counts_constrained": {
+    "constant": 2,
+    "logistic": 4,
+    "gompertz": 15,
+    "shifted_logistic": 6,
+    "unimodal": 20
+  },
+  "n_unimodal_wins_constrained": 20,
+  "unimodal_fraction_constrained": 0.4255,
+  "n_winner_flips": 1,
+  "flip_problems": [
+    {
+      "problem_id": "gpqa_diamond_0151",
+      "subject": "biology",
+      "flips_to": "logistic"
+    }
+  ],
+  "h5_verdict_constrained": "PASS"
+}

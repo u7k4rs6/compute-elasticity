@@ -161,6 +161,17 @@
     ],
     "verdict": "PASS"
   },
+  "H5_constrained": {
+    "c_star_bounds": [1.0, 64.0],
+    "unimodal_win_count_constrained": 20,
+    "n_total": 47,
+    "unimodal_fraction_constrained": 0.4255,
+    "n_winner_flips": 1,
+    "flip_problems": [
+      {"problem_id": "gpqa_diamond_0151", "subject": "biology", "flips_to": "logistic"}
+    ],
+    "verdict_constrained": "PASS"
+  },
   "summary": {
     "n_passed": 4,
     "n_failed": 1,
