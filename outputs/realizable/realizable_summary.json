@@ -1,0 +1,72 @@
+{
+  "schema_version": "v6.0-pilot",
+  "n_problems": 47,
+  "median_mv_gain_threshold": 0.0,
+  "n_above_median_mv_gain": 23,
+  "n_ties_at_median": 2,
+  "parse_rate": 0.980481,
+  "validation": {
+    "oracle_vs_r_at_n_max_abs_diff": 1.0,
+    "oracle_vs_r_at_n_mean_abs_diff": 0.307228,
+    "mv_acc_1_eq_p_all_problems": true,
+    "note": "Oracle pass@N (combinatorial formula) does NOT match existing R_at_N. This is expected: the existing pipeline computes majority-vote accuracy, not oracle pass@N. R_at_N is an unbiased MV estimator, not best-of-N. MV_acc(1)==p confirmed for all problems, validating data loading."
+  },
+  "mv_gain_distribution": {
+    "mean": 0.098494,
+    "median": 0.0,
+    "min": -0.409091,
+    "max": 0.634389,
+    "n_gt_0_02": 22,
+    "n_le_0": 24,
+    "n_interior_peak": 1
+  },
+  "auc_table": {
+    "entropy_N1": 0.5199,
+    "nll_N1": 0.5163,
+    "diversity_mean_N4": 0.4764,
+    "diversity_max_N8": 0.5127,
+    "difficulty_p": 0.9511,
+    "mean_input_tokens": 0.5734,
+    "mean_output_tokens": 0.4529
+  },
+  "disentanglement": {
+    "spearman_partial_rho": 0.1013,
+    "spearman_partial_pvalue": 0.5029,
+    "stratified_auc_entropy_low_p": 0.5417,
+    "stratified_auc_entropy_high_p": 0.6742,
+    "logit_p_only_auc": 0.9511,
+    "logit_2feat_auc": 0.9565,
+    "logit_2feat_coefs": {
+      "intercept": {
+        "coef": 0.2377,
+        "se": 0.4929,
+        "pvalue": 0.6296
+      },
+      "entropy_N1": {
+        "coef": -0.1089,
+        "se": 0.4531,
+        "pvalue": 0.8101
+      },
+      "p": {
+        "coef": 3.1508,
+        "se": 0.9148,
+        "pvalue": 0.0006
+      }
+    },
+    "verdict": "Entropy_N1 does NOT clearly survive the difficulty control. Spearman partial rho=0.101 (p=0.503); stratified AUC low-p=0.542, high-p=0.674; logit entropy coef p=0.810. Much of entropy's predictive power may reflect problem difficulty."
+  },
+  "bootstrap_ci_95": {
+    "entropy_N1_auc": {
+      "lo": 0.3691,
+      "hi": 0.7411
+    },
+    "difficulty_p_auc": {
+      "lo": 0.6345,
+      "hi": 1.0
+    },
+    "frac_mv_gain_gt_002": {
+      "lo": 0.3191,
+      "hi": 0.617
+    }
+  }
+}

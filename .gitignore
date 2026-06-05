@@ -29,6 +29,10 @@ outputs/*
 !outputs/h3_ablation.json
 !outputs/samples_for_entropy_N4/
 !outputs/samples_for_entropy_N4/*
+!outputs/realizable/
+!outputs/realizable/*
+!outputs/realizable/mv_curves/
+!outputs/realizable/mv_curves/*
 
 # Python cache
 __pycache__/

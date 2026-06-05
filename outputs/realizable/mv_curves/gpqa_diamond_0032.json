@@ -1,0 +1,30 @@
+{
+  "problem_id": "gpqa_diamond_0032",
+  "subject": "chemistry",
+  "n_total": 66,
+  "c_correct": 0,
+  "p": 0.0,
+  "mv_acc": {
+    "1": 0.0,
+    "2": 0.0,
+    "4": 0.0,
+    "8": 0.0,
+    "16": 0.0,
+    "32": 0.0,
+    "64": 0.0
+  },
+  "oracle_pass_at_n": {
+    "1": 0.0,
+    "2": 0.0,
+    "4": 0.0,
+    "8": 0.0,
+    "16": 0.0,
+    "32": 0.0,
+    "64": 0.0
+  },
+  "mean_input_tokens": 356.0,
+  "mean_output_tokens": 571.82,
+  "mv_gain": 0.0,
+  "mv_gain_max": 0.0,
+  "interior_peak": false
+}

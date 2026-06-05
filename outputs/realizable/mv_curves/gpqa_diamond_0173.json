@@ -1,0 +1,30 @@
+{
+  "problem_id": "gpqa_diamond_0173",
+  "subject": "physics",
+  "n_total": 65,
+  "c_correct": 13,
+  "p": 0.2,
+  "mv_acc": {
+    "1": 0.2,
+    "2": 0.204,
+    "4": 0.1445,
+    "8": 0.118,
+    "16": 0.0395,
+    "32": 0.005,
+    "64": 0.0
+  },
+  "oracle_pass_at_n": {
+    "1": 0.2,
+    "2": 0.3625,
+    "4": 0.600134,
+    "8": 0.850905,
+    "16": 0.984009,
+    "32": 0.999965,
+    "64": 1.0
+  },
+  "mean_input_tokens": 240.0,
+  "mean_output_tokens": 1216.35,
+  "mv_gain": -0.2,
+  "mv_gain_max": 0.004,
+  "interior_peak": false
+}
