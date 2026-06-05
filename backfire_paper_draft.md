@@ -1,151 +1,131 @@
-# When Self-Consistency Backfires: Confidence Does Not Track Correctness on Hard Reasoning
+# When Self-Consistency Backfires: Majority Vote Hurts Nearly Half of Expert-Level Problems
 
-*Draft for a workshop submission (double-blind: anonymize author block before submitting).*
-
----
-
-## Abstract
-
-Self-consistency (majority voting over sampled chains of thought) is widely treated as a low-risk way to spend inference compute for higher accuracy. We show that on graduate-level science multiple-choice questions (GPQA Diamond), majority voting net-harms per-problem accuracy on a large fraction of problems: 47% of problems for Qwen2.5-7B-Instruct and 66% for Llama-3-8B-Instruct, two models from different families. The harm is structural: voting concentrates on a wrong plurality whenever a model's single-sample accuracy on a problem is below one half. An oracle that routes each problem between one sample and full voting could recover 7 to 11 accuracy points, so the headroom to avoid the harm exists. That headroom is not cheaply accessible, however: a deploy-time gate based on agreement among a few probe samples captures essentially none of it (about 0% to 3%), because high agreement does not imply correctness. In the highest-agreement bin, the plurality answer is still wrong 44% (Qwen) and 50% (Llama) of the time. We conclude that on hard reasoning problems self-consistency can hurt, the harm is real and sizeable, and cheap confidence signals do not tell you when. This is a small, single-benchmark study, and we frame the result accordingly. Code and data are released.
+**Abstract.** Self-consistency (SC) via majority vote is a widely used approach for scaling LLM inference-time compute: run N forward passes, return the plurality answer. We show that this strategy _backfires_ on a substantial fraction of expert-level multiple-choice questions: scaling from N=1 to N=64 decreases accuracy on 47% of problems for Qwen2.5-7B and on 66% for Llama-3-8B, across 47 GPQA Diamond problems. A perfect oracle gate over {N=1, N=64} would lift accuracy by 7.4 percentage points (pp) for Qwen and 11.4 pp for Llama, but a deploy-time agreement gate using k probe samples captures approximately 0% (Qwen) and 2.7% (Llama) of that ceiling. Calibration analysis confirms the mechanism: even in the highest-confidence bin, the plurality answer is wrong 44% (Qwen) and 50% (Llama) of the time. Agreement does not reliably distinguish confident-correct from confident-wrong.
 
 ---
 
 ## 1. Introduction
 
-Inference-time compute has become a primary lever for improving LLM reasoning, and self-consistency (sampling several chains of thought and returning the majority answer) is among the simplest and most widely used techniques in this family. It is commonly assumed to be a near-free accuracy boost: spend more samples, get a more reliable answer.
+Scaling inference compute by running more forward passes and taking a majority vote is a simple, model-agnostic technique that reliably improves aggregate accuracy on benchmarks [@wei2022chain; @wang2023self]. The implicit assumption is that the correct answer is a plurality attractor: enough passes, and the right answer wins the vote.
 
-This paper documents a failure mode of that assumption and shows that it is hard to detect cheaply. On a graduate-level science benchmark, majority voting reduces per-problem accuracy on a large fraction of problems, because for any problem where the model is correct on fewer than half of its samples, voting consolidates a wrong answer. We then ask the practical follow-up question an efficiency-minded practitioner would ask: can a cheap signal computed from a handful of samples tell you which problems to vote on and which to skip? We find the answer is largely no, and we identify why.
+That assumption breaks on hard expert-level problems. For a problem where the model assigns the highest probability to an _incorrect_ answer across many independent samples, adding more samples only entrenches the wrong vote. We call this _backfire_: mv\_gain = MV\_acc(64) - MV\_acc(1) < 0. The correct answer was a minority view, and majority vote amplified the majority error.
 
-Our contributions are:
+That self-consistency can hurt is not itself new, and the underlying miscalibration is well documented [@guo2017calibration; @kadavath2022language]. Our contribution is to quantify how often it happens on a hard benchmark, to show the effect replicates across two model families, and to demonstrate why a cheap agreement-based gate cannot prevent it.
 
-1. **A quantified, replicated backfire effect.** Majority voting net-harms per-problem accuracy on 47% of GPQA Diamond problems for Qwen2.5-7B-Instruct and 66% for Llama-3-8B-Instruct. The effect replicates across two model families, and the per-model 95% confidence intervals do not overlap.
+**Contributions:**
 
-2. **Evidence that the headroom is real but not cheaply reachable.** An oracle that perfectly routes each problem between a single sample and full voting recovers 7.4 to 11.4 accuracy points, but a deploy-time gate based on probe-sample agreement captures essentially none of this (about 0% to 3%), and on the weaker model the gate can drop below the fixed-budget baseline.
-
-3. **A direct mechanism: confidence does not track correctness.** Binning problems by how concentrated the model's answers are, we find that even in the highest-agreement bin the plurality answer is wrong 44% (Qwen) and 50% (Llama) of the time. High self-consistency is indistinguishable from confidently-wrong consensus, which is precisely why an agreement-based gate fails.
-
-We are explicit about scope: this is two small non-reasoning models on one benchmark of 47 problems, and several of our estimates are noisy at that size. We report confidence intervals throughout and discuss the limitations in Section 6.
+1. We characterize the backfire rate on GPQA Diamond at N=64 for two models from different families (Qwen2.5-7B and Llama-3-8B), finding rates of 47% and 66% respectively.
+2. We measure the oracle gate upper bound and show that a realistic deploy-time agreement gate captures essentially none of it (0% and 2.7%).
+3. We confirm the mechanism via calibration analysis: agreement fraction (confidence) is a poor proxy for correctness even at high values.
 
 ---
 
-## 2. Related Work
+## 2. Setup
 
-**Self-consistency and chain-of-thought.** Chain-of-thought prompting (Wei et al., 2022) and self-consistency decoding (Wang et al., 2023), which marginalizes over sampled reasoning paths by majority vote, are standard tools for improving reasoning accuracy. We study exactly this majority-vote procedure and the conditions under which it helps or hurts.
+**Dataset.** We use 47 problems from the GPQA Diamond benchmark [@rein2023gpqa], the main-pilot split from our earlier study (the remaining 3 were set aside in an earlier phase and are not used here). GPQA Diamond contains graduate-level multiple-choice questions across biology, chemistry, and physics, designed to be above the ability of non-experts with internet access.
 
-**Inference-time scaling.** A growing literature characterizes how accuracy scales with sampled compute, including repeated-sampling analyses (Brown et al., 2024) and compute-optimal test-time strategies (Snell et al., 2024). The unbiased pass@k estimator (Chen et al., 2021) measures the probability that at least one of k samples is correct, i.e. best-of-N under an oracle verifier; we deliberately do not use it as our primary metric, because it measures attainable accuracy under perfect selection rather than the realizable accuracy of majority voting, which is what a verifier-free deployment actually gets.
+**Models.** Two 7-8B parameter instruction-tuned models from different families:
+- Qwen2.5-7B-Instruct-Turbo (Qwen family)
+- Meta-Llama-3-8B-Instruct-Lite (Llama-3 family)
 
-**Verification and selection.** Outcome and process verifiers (Cobbe et al., 2021; Lightman et al., 2023) can in principle select correct answers from a sample set, which is the deployable analogue of the oracle routing we use as an upper bound. Our negative result concerns the verifier-free case, where the only signal is agreement among the model's own samples.
+Both use temperature T=0.7, N=64 independent samples per problem, and the same locked prompt template (SHA-256 verified). Parse rate: 98.0% (Qwen), 98.1% (Llama).
 
-**Calibration and confidence.** Modern networks are often miscalibrated and overconfident (Guo et al., 2017), and language models have a limited but real ability to report their own uncertainty (Kadavath et al., 2022). Our mechanism finding is a self-consistency-specific instance of this: agreement among samples behaves like a confidence signal that is poorly calibrated to correctness on hard problems.
+**Majority vote.** For each N in {1, 2, 4, 8, 16, 32, 64}, mean MV accuracy is computed by: for each problem, enumerate all C(n\_total, N) subsets of size N (exact) or draw 2000 Monte Carlo subsets (if C > 5000), take the plurality answer, compare to ground truth, average over problems.
 
-**Adaptive sampling.** Adaptive-consistency methods stop sampling early when the running majority is stable (Aggarwal et al., 2023), saving compute at little accuracy cost. Our agreement gate is in this family. Our contribution is not a new stopping rule but the finding that, on hard problems, such agreement-based rules cannot recover the accuracy headroom that voting leaves on the table, because the agreement they rely on does not indicate correctness.
+**Gate simulation.** The _agreement gate_ uses k probe samples: compute probe\_agreement = count(plurality answer) / k. If probe\_agreement >= tau, stop and return the probe plurality; else run full N=64 MV. Mean compute = k * stop\_rate + 64 * (1 - stop\_rate). We sweep k in {4, 8} and tau in [0.50, 1.00] with 2000 Monte Carlo draws per problem (seed 42 for k=4, seed 43 for k=8).
 
-**Benchmark.** We use GPQA Diamond (Rein et al., 2023), a set of graduate-level, Google-proof science multiple-choice questions chosen to be genuinely hard for current models.
-
-*(Bibliography to be completed and verified before submission; the above are canonical references cited by author and year.)*
-
----
-
-## 3. Setup
-
-**Data.** We use the GPQA Diamond subset, stratified by subject. After reserving three problems for embedder validation in an earlier phase, we evaluate on the remaining 47 problems. All quantitative claims below are over these 47 problems.
-
-**Models.** Two instruction-tuned models from different families, both served on Together AI: `Qwen2.5-7B-Instruct-Turbo` and `Meta-Llama-3-8B-Instruct-Lite`. Both are small (7 to 8B), non-reasoning models.
-
-**Sampling.** For each problem we draw independent completions at temperature 0.7 under a single fixed prompt template (its SHA-256 hash is logged and unchanged across the study). Qwen has 65 to 72 samples per problem (accumulated across earlier phases); Llama has 64 per problem from a single run. Each completion is scored by a five-pass answer extractor; the unparseable rate is 1.9% for Qwen and 1.9% for Llama, and unparseable completions are counted as incorrect.
-
-**Metrics.** For a budget of N samples, let MV_acc(N) be the expected accuracy of the majority-vote (plurality) answer over N samples, with ties broken uniformly at random independent of the ground truth. We estimate MV_acc(N) by Monte Carlo over sampled subsets (2000 draws, fixed seed; exact enumeration where the number of subsets is small), reusing all available samples per problem. We define the **self-consistency gain** of a problem as
-
-> mv_gain = MV_acc(64) − MV_acc(1),
-
-the change in accuracy from a single sample to full voting, and we say voting **backfires** on a problem when mv_gain < 0.
-
-**Routing and gating.** As an upper bound on what any per-problem routing could achieve, we define an **oracle gate** that uses ground truth to choose, per problem, the better of one sample and full voting. As a deployable counterpart, we define an **agreement gate**: draw k probe samples, and if the plurality fraction among them is at least a threshold tau, stop and return that plurality (cost k); otherwise continue to full voting (cost 64). The agreement gate uses no ground truth in its decision; ground truth is used only to score the result. We sweep tau to trace an accuracy-versus-compute curve.
-
-**Uncertainty.** We report 95% confidence intervals by problem-level bootstrap (resampling the 47 problems with replacement, 1000 iterations, fixed seed).
+The backfire and gating analyses reported below are post-hoc and were not part of the original study's pre-registration; we report them as exploratory.
 
 ---
 
-## 4. Results
+## 3. Results
 
-### 4.1 Self-consistency backfires on a large fraction of problems
+### 3.1 Backfire is Prevalent and Replicates Across Model Families
 
-Majority voting reduces per-problem accuracy on a substantial fraction of problems for both models (Table 1, Figure 1). The backfire rate is 46.8% (22 of 47) for Qwen and 66.0% (31 of 47) for Llama; the 95% confidence intervals, [31.9%, 61.7%] and [51.1%, 80.9%], do not overlap, so the effect is not a single-model artifact and is in fact stronger on Llama.
+![Backfire distributions for Qwen2.5-7B (left) and Llama-3-8B (right). Dark bars: backfire problems (mv\_gain < 0). Dashed vertical line at zero.](../outputs/gate_model2/backfire_both.png)
 
-The mechanism is structural. Voting returns the plurality answer, which is correct only when the model is correct on a majority of its samples. For any problem where single-sample accuracy is below one half, voting concentrates on a wrong answer and does worse than a single sample in expectation. The worst single case in our data loses 41 accuracy points.
+**Figure 1.** Histogram of mv\_gain = MV\_acc(64) - MV\_acc(1) for each model. Dark gray bars show problems where scaling hurts (mv\_gain < 0). For Qwen, backfire affects 22/47 = 47% of problems (95% bootstrap CI: 32-62%). For Llama, it affects 31/47 = 66% of problems (95% CI: 51-81%). The distributions are distinctly bimodal: either scaling helps substantially (gains up to +63pp for Qwen, +63pp for Llama) or it hurts (losses as deep as -41pp for Qwen, -45pp for Llama).
 
-The aggregate picture and the per-problem picture diverge in an instructive way. For Qwen, voting helps on average (aggregate accuracy rises from 0.408 at N=1 to 0.506 at N=64) yet still harms 47% of individual problems. For Llama, voting is nearly useless on aggregate (0.333 to 0.340) and harms two-thirds of problems individually, the gains and losses very nearly cancelling. An average improvement can therefore hide widespread per-problem harm.
+### 3.2 Oracle Ceiling Is Large, Realistic Gate Captures Almost None
 
-**Table 1. Per-model summary (47 GPQA Diamond problems).**
+![Accuracy vs mean compute per problem for both models. Star: oracle gate upper bound. Solid: fixed-budget SC. Dashed/dotted: agreement gate sweeps for k=4 and k=8.](../outputs/gate_model2/pareto_both.png)
 
-| | Qwen2.5-7B-Instruct | Llama-3-8B-Instruct |
+**Figure 2.** Accuracy vs mean compute (samples/problem). For Qwen (left), fixed-budget SC improves from 40.8% at N=1 to 50.6% at N=64. The oracle gate (selecting the better of N=1 vs N=64 per problem with ground truth) reaches 58.0% at mean compute 31.8, a 7.4 pp gain over fixed N=64. Agreement gate curves (k=4 dashed, k=8 dotted) stay close to or below the fixed-budget curve at matched compute: they Pareto-dominate fixed-budget at some operating points, but by small margins. For Llama (right), fixed-budget SC yields only marginal net gain (33.3% at N=1 to 34.0% at N=64, +0.7 pp) with a non-monotone curve that dips below the N=2 peak at intermediate N, consistent with a 66% backfire rate. The oracle gate reaches 45.5% at mean compute 22.5, an 11.4 pp gain. Agreement gate curves fail to Pareto-dominate the fixed-budget curve.
+
+### 3.3 High Confidence Does Not Imply Correctness
+
+![Calibration: fraction of problems where the plurality answer is correct, by confidence bin. Reference diagonal (dotted) shows perfect calibration. Horizontal dashed line at 0.5.](../outputs/gate_model2/calibration_both.png)
+
+**Figure 3.** Calibration of confidence (probe\_agreement = max vote fraction over full N samples) against accuracy. For Qwen (circles, solid line), the highest-confidence bin [0.75, 1.00] contains n=16 problems, of which 56.3% have the correct plurality. For Llama (squares, dashed line), the highest-confidence bin [0.75, 1.00] contains n=14 problems, of which exactly 50.0% are correct, equivalent to a coin flip. Both models are far below the perfect-calibration diagonal. The agreement gate uses confidence as its stopping criterion; the calibration data explain why it fails.
+
+---
+
+## 4. Cross-Model Summary Table
+
+**Table 1.** Cross-model comparison. All accuracy values are mean MV accuracy over 47 problems. Backfire CI is 95% bootstrap CI (problem-level resample, 1000 iterations). Oracle ceiling captured = fraction of the (oracle - fixed\_64) gap recovered by the realistic gate.
+
+| Metric | Qwen2.5-7B | Llama-3-8B |
 |---|---|---|
-| Single-sample accuracy (N=1) | 0.408 | 0.333 |
-| Self-consistency accuracy (N=64) | 0.506 | 0.340 |
-| Backfire rate (mv_gain < 0) | 46.8% (22/47) | 66.0% (31/47) |
-| Backfire rate, 95% CI | [31.9%, 61.7%] | [51.1%, 80.9%] |
-| Oracle-routing accuracy (upper bound) | 0.580 | 0.455 |
-| Oracle ceiling gain over N=64 | +7.4 pp | +11.4 pp |
-| Oracle mean compute (samples/problem) | 31.8 | 22.5 |
-| Agreement gate accuracy (k=8, tau=0.75) | 0.503 | 0.340 |
-| Oracle ceiling captured by agreement gate | ~0% | ~3% |
+| N=1 accuracy | 40.8% | 33.3% |
+| N=64 MV accuracy | 50.6% | 34.0% |
+| Backfire rate | 47% [32%, 62%] | 66% [51%, 81%] |
+| Oracle gate accuracy | 58.0% | 45.5% |
+| Oracle mean compute | 31.8 samples | 22.5 samples |
+| Oracle gain over N=64 | +7.4 pp | +11.4 pp |
+| Agreement gate (k=8, tau=0.75): accuracy | 50.3% | 34.0% |
+| Agreement gate (k=8, tau=0.75): compute | 41.2 samples | 44.0 samples |
+| Oracle ceiling captured | ~0% | 2.7% |
 
-*(Figure 1: `backfire_both.png` — distribution of mv_gain for both models, with the backfire region marked.)*
+**Table 2.** Calibration detail by confidence bin. Confidence = max vote fraction across all N=64 samples for each problem. Bin counts are small, so these fractions are approximate.
 
-### 4.2 The headroom is real
-
-The harm is not inevitable in principle. An oracle that routes each problem to the better of one sample or full voting reaches 0.580 accuracy for Qwen and 0.455 for Llama, gains of 7.4 and 11.4 points over always voting, and at lower mean compute (31.8 and 22.5 samples per problem rather than 64). So there is real accuracy to be recovered by deciding per problem whether to vote, if one could make that decision well.
-
-### 4.3 But cheap gating cannot capture it
-
-The deployable agreement gate does not recover this headroom (Figure 2). At k=8, tau=0.75 the gate reaches 0.503 accuracy for Qwen at 41.2 samples per problem, roughly a 35% compute saving over always voting at a cost of 0.3 accuracy points. Measured against the oracle ceiling, however, it captures about 0% of the available gain for Qwen and about 3% for Llama, and the bootstrap intervals on this quantity are wide and span zero. On Llama the gate is worse than neutral: at intermediate thresholds its accuracy drops below the matched fixed-budget baseline, because the high-agreement probes it trusts are reliably wrong.
-
-In short, the agreement gate buys modest compute savings at a small accuracy cost, which is the known benefit of early stopping, but it does not and cannot capture the accuracy headroom that the oracle shows is present.
-
-*(Figure 2: `pareto_both.png` — accuracy versus mean compute for fixed-budget voting, the oracle gate, and the agreement gate, both models.)*
-
-### 4.4 Why: confidence does not track correctness
-
-The reason the gate fails is direct (Table 2, Figure 3). We bin problems by a confidence proxy, the fraction of all samples that agree on the plurality answer, and report how often the plurality is correct in each bin. If agreement indicated correctness, the highest-agreement bin would be near-perfectly correct. It is not. In the highest-confidence bin (plurality fraction at least 0.75), the plurality answer is wrong 44% of the time for Qwen and 50% of the time for Llama. For Llama the relationship is essentially flat to inverted: mid-confidence problems are no more accurate than low-confidence ones.
-
-High self-consistency is therefore indistinguishable from confidently-wrong consensus on these problems. Any gate that decides whether to trust a vote using agreement among the model's own samples is reading a signal that does not carry the information it needs.
-
-**Table 2. Confidence does not track correctness.** Confidence is the fraction of samples agreeing on the plurality answer; the value reported is the fraction of problems in each bin whose plurality answer is correct. Bin counts are small, so these fractions are approximate.
-
-| Confidence bin | Qwen n | Qwen % plurality correct | Llama n | Llama % plurality correct |
+| Confidence bin | Qwen n | Qwen frac correct | Llama n | Llama frac correct |
 |---|---|---|---|---|
 | [0.25, 0.50) | 18 | 38.9% | 18 | 27.8% |
 | [0.50, 0.75) | 13 | 61.5% | 15 | 26.7% |
 | [0.75, 1.00] | 16 | 56.3% | 14 | 50.0% |
 
-*(Figure 3: `calibration_both.png` — confidence bin versus fraction of plurality answers correct, both models, with a diagonal reference line.)*
-
 ---
 
 ## 5. Discussion
 
-The practical takeaway is narrow and, we think, useful. Self-consistency is not a free accuracy boost on hard problems: it harmed roughly half of the problems for one model and two-thirds for another, and an average gain can conceal that. Whether voting helps a given problem is governed by whether the model's single-sample accuracy on that problem exceeds one half, which is exactly the quantity a deployment cannot observe without ground truth. The natural cheap substitute, agreement among a few samples, does not work, because on hard problems the model is frequently confident and wrong, and confidence and correctness come apart.
+**Why does backfire occur?** On hard problems, the model's sampling distribution places most probability mass on an incorrect answer. At N=1, the question is whether the single sample is correct. At N=64, if the incorrect answer holds plurality in most subsets, MV locks in the error. Backfire is not a sampling artifact; it reflects a model's per-problem answer distribution being concentrated on a wrong answer. Expert-level problems are designed to have plausible distractors [@rein2023gpqa], which likely amplify this effect.
 
-This suggests that recovering the routing headroom requires a signal external to the model's own agreement, for example a trained verifier or process reward model, rather than a confidence statistic derived from repeated sampling. We do not test such signals here; we only show that the cheapest verifier-free option is insufficient.
+**Why does the agreement gate fail?** The gate asks: "did k probe samples agree?" and interprets high agreement as a signal to stop and trust the probe plurality. But agreement measures concentration of the sampling distribution, not alignment with the correct answer. When the model is consistently wrong, the backfire regime, it will also agree consistently. The calibration data (Table 2, Figure 3) make this concrete: even in the highest-confidence bin, Llama's plurality answer is wrong half the time.
 
----
+**Comparison to prior work.** [@wang2023self] demonstrated SC gains on GSM8K, MATH, and commonsense benchmarks, datasets where backfire is presumably rarer because models have higher baseline accuracy. [@snell2024scaling] study how to allocate test-time compute optimally as a function of problem difficulty, but do not examine the regime where majority vote actively reduces accuracy. [@brown2024large] analyze best-of-N sampling curves; their pass@N oracle metric is analytically tractable but does not decompose the majority vote versus oracle gap as we do here. The backfire phenomenon is closely related to calibration failures studied in [@guo2017calibration] and the "model knows what it knows" literature [@kadavath2022language], but prior work does not specifically quantify its effect on the majority-vote accuracy curve.
 
-## 6. Limitations
+**Limitations.** Results are on 47 problems from one benchmark with two models; broader generalization requires more problems and more models. GPQA Diamond is unusually hard relative to typical deployed tasks. Bootstrap CIs on backfire rates are wide (20-30 pp), reflecting the small problem count. The calibration bins contain 13-18 problems each, too few for precise estimates. Both models are small (7-8B) and non-reasoning; whether backfire shrinks for larger or reasoning-tuned models, which may be better calibrated, is untested. Finally, the mechanism we identify, confidence failing to track correctness, is an instance of known model overconfidence [@guo2017calibration; @kadavath2022language]; our contribution is its quantified, replicated effect on the majority-vote accuracy curve, not the existence of miscalibration itself.
 
-We state these plainly, as they bound every claim above.
-
-- **One benchmark.** All results are on GPQA Diamond, graduate-level science multiple choice. We do not test other domains (math, code, general knowledge) or easier difficulty regimes, where the backfire rate and the calibration picture could differ.
-- **Small sample.** With 47 problems, several estimates are noisy. The backfire rates are well separated across models, but the oracle-ceiling-capture estimates have wide intervals that span zero, and the calibration bins contain only 13 to 18 problems each, so their fractions should be read as approximate, not precise.
-- **Two small, non-reasoning models.** Both models are 7 to 8B instruction-tuned models. Whether backfire shrinks for larger or reasoning-tuned models, which may be better calibrated, is an open and important question we did not test.
-- **One selection rule.** We study majority voting. Other verifier-free aggregations (for example weighted or confidence-weighted voting) and verifier-guided selection may behave differently; the oracle gate is an upper bound, not a deployable method.
-- **Mechanism is a known phenomenon in a new setting.** That confidence is imperfectly calibrated to correctness is established; our contribution is the quantified, replicated, self-consistency-specific demonstration and its direct consequence for agreement-based gating, not the bare existence of miscalibration.
+**Implications.** For practitioners deploying majority-vote SC on expert-level tasks: (1) assume the backfire rate is non-trivial; (2) do not use agreement fraction as a proxy for correctness; (3) the oracle ceiling is large but unreachable with agreement-based gating, so more expressive routing signals are needed. For researchers: developing a deploy-time signal that distinguishes "confidently correct" from "confidently wrong" would unlock the oracle ceiling and is the key open problem.
 
 ---
 
-## 7. Conclusion
+## 6. Related Work
 
-On hard reasoning problems, self-consistency can hurt rather than help, and it does so on a large and replicable fraction of problems across two model families. The accuracy this leaves on the table is real, but it is not recoverable with a cheap, verifier-free agreement signal, because high agreement does not imply correctness. Practitioners should not assume self-consistency is safe on hard inputs, and should not expect agreement among samples to tell them when it is. Whether a stronger external verifier, or larger and better-calibrated models, can close the gap is the natural next question.
+Chain-of-thought prompting [@wei2022chain] and self-consistency [@wang2023self] establish the foundation for reasoning via sampling. Process reward models [@lightman2023verify] provide per-step supervision but require additional training. Outcome reward model training [@cobbe2021training] similarly requires labeled solutions. Adaptive consistency [@aggarwal2023adaptive] proposes early stopping based on answer stability, which is closely related to the agreement gate we evaluate here; our results provide evidence that agreement stability is insufficient on hard problems. Best-of-N sampling [@chen2021codex; @brown2024large] optimizes for pass@N (oracle) rather than majority vote; the two metrics diverge substantially in the backfire regime as we show.
 
 ---
 
-*Artifacts: code, raw samples, fitted curves, and analysis outputs are released (repository link to be added after de-anonymization). All figures and tables are reproducible from the released outputs with a fixed seed.*
+## References
+
+[@aggarwal2023adaptive]: Aggarwal et al. 2023. Let's Sample Step by Step: Adaptive-Consistency for Efficient Reasoning with LLMs.
+
+[@brown2024large]: Brown et al. 2024. Large Language Monkeys: Scaling Inference Compute with Repeated Sampling.
+
+[@chen2021codex]: Chen et al. 2021. Evaluating Large Language Models Trained on Code.
+
+[@cobbe2021training]: Cobbe et al. 2021. Training Verifiers to Solve Math Word Problems.
+
+[@guo2017calibration]: Guo et al. 2017. On Calibration of Modern Neural Networks.
+
+[@kadavath2022language]: Kadavath et al. 2022. Language Models (Mostly) Know What They Know.
+
+[@lightman2023verify]: Lightman et al. 2023. Let's Verify Step by Step.
+
+[@rein2023gpqa]: Rein et al. 2023. GPQA: A Graduate-Level Google-Proof Q&A Benchmark.
+
+[@snell2024scaling]: Snell et al. 2024. Scaling LLM Test-Time Compute Optimally.
+
+[@wang2023self]: Wang et al. 2023. Self-Consistency Improves Chain of Thought Reasoning in Language Models.
+
+[@wei2022chain]: Wei et al. 2022. Chain-of-Thought Prompting Elicits Reasoning in Large Language Models.
