@@ -27,6 +27,8 @@ outputs/*
 !outputs/convergence_breakdown.json
 !outputs/stratified_problems.json
 !outputs/h3_ablation.json
+!outputs/samples_for_entropy_N4/
+!outputs/samples_for_entropy_N4/*
 
 # Python cache
 __pycache__/

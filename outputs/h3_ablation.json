@@ -10,12 +10,18 @@
       "auc": 0.6504,
       "source": "existing"
     },
-    "entropy_N4": null,
+    "entropy_N4": {
+      "auc": 0.6377,
+      "source": "computed"
+    },
     "nll_N1": {
       "auc": 0.6359,
       "source": "existing"
     },
-    "nll_N4": null,
+    "nll_N4": {
+      "auc": 0.6304,
+      "source": "computed"
+    },
     "diversity_mean_N4": {
       "auc": 0.5236,
       "source": "existing"
@@ -33,5 +39,6 @@
       "source": "computed"
     }
   },
-  "interpretation": "signal-class: entropy_N1 beats diversity at any N tested; doubling traces does not close the gap; max aggregation outperforms mean, suggesting outlier trace pairs carry more elasticity signal"
+  "interpretation": "Entropy is already saturated at N=1; additional samples don't help. The entropy advantage over diversity is structural.",
+  "n_problems_n4": 47
 }
