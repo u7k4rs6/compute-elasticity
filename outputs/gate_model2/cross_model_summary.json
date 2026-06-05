@@ -1,0 +1,89 @@
+{
+  "model_1": {
+    "id": "Qwen/Qwen2.5-7B-Instruct-Turbo",
+    "label": "Qwen2.5-7B",
+    "n_problems": 47,
+    "n1_acc": 0.4075,
+    "n64_acc": 0.506,
+    "backfire_rate": 0.4681,
+    "backfire_ci_95": [
+      0.3191,
+      0.617
+    ],
+    "oracle_acc": 0.5796,
+    "oracle_compute": 31.83,
+    "gate_k8_tau075": {
+      "acc": 0.5028,
+      "compute": 41.24
+    },
+    "fraction_oracle_ceiling_captured": 0.0001,
+    "ceiling_ci_95": [
+      -2.7045,
+      1.6286
+    ],
+    "calibration": [
+      {
+        "bin_label": "[0.25, 0.50)",
+        "n": 18,
+        "fraction_correct": 0.3888888888888889
+      },
+      {
+        "bin_label": "[0.50, 0.75)",
+        "n": 13,
+        "fraction_correct": 0.6153846153846154
+      },
+      {
+        "bin_label": "[0.75, 1.00]",
+        "n": 16,
+        "fraction_correct": 0.5625
+      }
+    ]
+  },
+  "model_2": {
+    "id": "meta-llama/Meta-Llama-3-8B-Instruct-Lite",
+    "label": "Llama-3-8B",
+    "n_problems": 47,
+    "parse_rate": 0.9811,
+    "n1_acc": 0.3331,
+    "n64_acc": 0.3404,
+    "backfire_rate": 0.6596,
+    "backfire_ci_95": [
+      0.5106,
+      0.8085
+    ],
+    "oracle_acc": 0.4545,
+    "oracle_compute": 22.45,
+    "gate_k8_tau075": {
+      "acc": 0.3397,
+      "compute": 43.96
+    },
+    "fraction_oracle_ceiling_captured": 0.0273,
+    "ceiling_ci_95": [
+      -1.3939,
+      1.0161
+    ],
+    "calibration": [
+      {
+        "bin_label": "[0.25, 0.50)",
+        "n": 18,
+        "fraction_correct": 0.2777777777777778
+      },
+      {
+        "bin_label": "[0.50, 0.75)",
+        "n": 15,
+        "fraction_correct": 0.26666666666666666
+      },
+      {
+        "bin_label": "[0.75, 1.00]",
+        "n": 14,
+        "fraction_correct": 0.5
+      }
+    ]
+  },
+  "cross_model_verdict": "BACKFIRE REPLICATES AND MECHANISM CONFIRMED: Both models show substantial backfire rates (47% Qwen, 66% Llama). Even in the highest-confidence bin, plurality is wrong 44% (Qwen) and 50% (Llama) of the time, confirming that high self-consistency does not imply correctness. Realistic gate captures 0.0% (Qwen) and 2.7% (Llama) of the oracle ceiling.",
+  "figures": [
+    "outputs/gate_model2/backfire_both.png",
+    "outputs/gate_model2/pareto_both.png",
+    "outputs/gate_model2/calibration_both.png"
+  ]
+}

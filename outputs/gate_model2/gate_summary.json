@@ -1,0 +1,205 @@
+{
+  "model": "meta-llama/Meta-Llama-3-8B-Instruct-Lite",
+  "n_problems": 47,
+  "parse_rate": 0.9811,
+  "n_parsed": 2951,
+  "n_total_samples": 3008,
+  "parse_rate_flagged": false,
+  "fixed_budget": {
+    "1": {
+      "acc": 0.3331,
+      "compute": 1
+    },
+    "2": {
+      "acc": 0.3462,
+      "compute": 2
+    },
+    "4": {
+      "acc": 0.3443,
+      "compute": 4
+    },
+    "8": {
+      "acc": 0.346,
+      "compute": 8
+    },
+    "16": {
+      "acc": 0.3415,
+      "compute": 16
+    },
+    "32": {
+      "acc": 0.3335,
+      "compute": 32
+    },
+    "64": {
+      "acc": 0.3404,
+      "compute": 64
+    }
+  },
+  "backfire": {
+    "n_backfire": 31,
+    "n_positive_gain": 16,
+    "n_zero_gain": 0,
+    "fraction_backfire": 0.6596,
+    "mean_gain": 0.0073,
+    "median_gain": -0.0781,
+    "min_gain": -0.4531,
+    "max_gain": 0.625
+  },
+  "oracle_gate": {
+    "acc": 0.4545,
+    "mean_compute": 22.45,
+    "fraction_go_to_64": 0.3404,
+    "gain_over_fixed_64": 0.114,
+    "note": "upper bound: uses ground truth to select best of {N=1, N=64}"
+  },
+  "realistic_gate": {
+    "k4": {
+      "tau_0_5": {
+        "acc": 0.3462,
+        "compute": 5.98,
+        "stop_rate": 0.967
+      },
+      "tau_0_55": {
+        "acc": 0.3407,
+        "compute": 31.96,
+        "stop_rate": 0.5341
+      },
+      "tau_0_6": {
+        "acc": 0.3407,
+        "compute": 31.96,
+        "stop_rate": 0.5341
+      },
+      "tau_0_65": {
+        "acc": 0.3407,
+        "compute": 31.96,
+        "stop_rate": 0.5341
+      },
+      "tau_0_7": {
+        "acc": 0.3407,
+        "compute": 31.96,
+        "stop_rate": 0.5341
+      },
+      "tau_0_75": {
+        "acc": 0.3407,
+        "compute": 31.96,
+        "stop_rate": 0.5341
+      },
+      "tau_0_8": {
+        "acc": 0.3405,
+        "compute": 52.38,
+        "stop_rate": 0.1937
+      },
+      "tau_0_85": {
+        "acc": 0.3405,
+        "compute": 52.38,
+        "stop_rate": 0.1937
+      },
+      "tau_0_9": {
+        "acc": 0.3405,
+        "compute": 52.38,
+        "stop_rate": 0.1937
+      },
+      "tau_0_95": {
+        "acc": 0.3405,
+        "compute": 52.38,
+        "stop_rate": 0.1937
+      },
+      "tau_1_0": {
+        "acc": 0.3405,
+        "compute": 52.38,
+        "stop_rate": 0.1937
+      }
+    },
+    "k8": {
+      "tau_0_5": {
+        "acc": 0.3435,
+        "compute": 17.43,
+        "stop_rate": 0.8316
+      },
+      "tau_0_55": {
+        "acc": 0.3399,
+        "compute": 32.17,
+        "stop_rate": 0.5684
+      },
+      "tau_0_6": {
+        "acc": 0.3399,
+        "compute": 32.17,
+        "stop_rate": 0.5684
+      },
+      "tau_0_65": {
+        "acc": 0.3397,
+        "compute": 43.96,
+        "stop_rate": 0.3579
+      },
+      "tau_0_7": {
+        "acc": 0.3397,
+        "compute": 43.96,
+        "stop_rate": 0.3579
+      },
+      "tau_0_75": {
+        "acc": 0.3397,
+        "compute": 43.96,
+        "stop_rate": 0.3579
+      },
+      "tau_0_8": {
+        "acc": 0.3403,
+        "compute": 52.67,
+        "stop_rate": 0.2023
+      },
+      "tau_0_85": {
+        "acc": 0.3403,
+        "compute": 52.67,
+        "stop_rate": 0.2023
+      },
+      "tau_0_9": {
+        "acc": 0.3405,
+        "compute": 59.84,
+        "stop_rate": 0.0744
+      },
+      "tau_0_95": {
+        "acc": 0.3405,
+        "compute": 59.84,
+        "stop_rate": 0.0744
+      },
+      "tau_1_0": {
+        "acc": 0.3405,
+        "compute": 59.84,
+        "stop_rate": 0.0744
+      }
+    }
+  },
+  "bootstrap_ci_95": {
+    "k=4_tau=0.5": {
+      "compute": 5.98,
+      "acc": 0.3462,
+      "ci_lo": 0.2535,
+      "ci_hi": 0.4435
+    },
+    "k=8_tau=0.5": {
+      "compute": 17.43,
+      "acc": 0.3435,
+      "ci_lo": 0.2363,
+      "ci_hi": 0.4609
+    }
+  },
+  "pareto_analysis": {
+    "k4": {
+      "pareto_dominates_fixed_budget": false,
+      "best_gain_vs_matched_compute": 0.0071,
+      "best_gain_tau": 0.8
+    },
+    "k8": {
+      "pareto_dominates_fixed_budget": false,
+      "best_gain_vs_matched_compute": 0.007,
+      "best_gain_tau": 0.9
+    }
+  },
+  "verdict": {
+    "fixed_budget_acc_64": 0.3404,
+    "oracle_acc": 0.4545,
+    "oracle_ceiling_gain": 0.114,
+    "best_gate_acc_k8": 0.3435,
+    "fraction_oracle_ceiling_captured_k8": 0.0273,
+    "realistic_gate_pareto_dominates": false
+  }
+}
