@@ -1,0 +1,202 @@
+{
+  "n_problems": 47,
+  "n_draws_per_problem": 2000,
+  "fixed_budget": {
+    "1": {
+      "acc": 0.4075,
+      "compute": 1
+    },
+    "2": {
+      "acc": 0.4088,
+      "compute": 2
+    },
+    "4": {
+      "acc": 0.433,
+      "compute": 4
+    },
+    "8": {
+      "acc": 0.4514,
+      "compute": 8
+    },
+    "16": {
+      "acc": 0.4674,
+      "compute": 16
+    },
+    "32": {
+      "acc": 0.4797,
+      "compute": 32
+    },
+    "64": {
+      "acc": 0.506,
+      "compute": 64
+    }
+  },
+  "backfire": {
+    "n_backfire": 22,
+    "n_positive_gain": 23,
+    "n_zero_gain": 2,
+    "fraction_backfire": 0.4681,
+    "mean_gain": 0.0985,
+    "median_gain": 0.0,
+    "min_gain": -0.4091,
+    "max_gain": 0.6344
+  },
+  "oracle_gate": {
+    "acc": 0.5796,
+    "mean_compute": 31.83,
+    "fraction_go_to_64": 0.4894,
+    "gain_over_fixed_64": 0.0737,
+    "note": "upper bound: uses ground truth to select best of {N=1, N=64} per problem"
+  },
+  "realistic_gate": {
+    "k4": {
+      "tau_0_5": {
+        "acc": 0.4365,
+        "compute": 5.34,
+        "stop_rate": 0.9776
+      },
+      "tau_0_55": {
+        "acc": 0.4862,
+        "compute": 29.64,
+        "stop_rate": 0.5727
+      },
+      "tau_0_6": {
+        "acc": 0.4862,
+        "compute": 29.64,
+        "stop_rate": 0.5727
+      },
+      "tau_0_65": {
+        "acc": 0.4862,
+        "compute": 29.64,
+        "stop_rate": 0.5727
+      },
+      "tau_0_7": {
+        "acc": 0.4862,
+        "compute": 29.64,
+        "stop_rate": 0.5727
+      },
+      "tau_0_75": {
+        "acc": 0.4862,
+        "compute": 29.64,
+        "stop_rate": 0.5727
+      },
+      "tau_0_8": {
+        "acc": 0.504,
+        "compute": 49.77,
+        "stop_rate": 0.2372
+      },
+      "tau_0_85": {
+        "acc": 0.504,
+        "compute": 49.77,
+        "stop_rate": 0.2372
+      },
+      "tau_0_9": {
+        "acc": 0.504,
+        "compute": 49.77,
+        "stop_rate": 0.2372
+      },
+      "tau_0_95": {
+        "acc": 0.504,
+        "compute": 49.77,
+        "stop_rate": 0.2372
+      },
+      "tau_1_0": {
+        "acc": 0.504,
+        "compute": 49.77,
+        "stop_rate": 0.2372
+      }
+    },
+    "k8": {
+      "tau_0_5": {
+        "acc": 0.4682,
+        "compute": 16.06,
+        "stop_rate": 0.856
+      },
+      "tau_0_55": {
+        "acc": 0.4922,
+        "compute": 30.07,
+        "stop_rate": 0.606
+      },
+      "tau_0_6": {
+        "acc": 0.4922,
+        "compute": 30.07,
+        "stop_rate": 0.606
+      },
+      "tau_0_65": {
+        "acc": 0.5028,
+        "compute": 41.24,
+        "stop_rate": 0.4064
+      },
+      "tau_0_7": {
+        "acc": 0.5028,
+        "compute": 41.24,
+        "stop_rate": 0.4064
+      },
+      "tau_0_75": {
+        "acc": 0.5028,
+        "compute": 41.24,
+        "stop_rate": 0.4064
+      },
+      "tau_0_8": {
+        "acc": 0.5055,
+        "compute": 50.08,
+        "stop_rate": 0.2485
+      },
+      "tau_0_85": {
+        "acc": 0.5055,
+        "compute": 50.08,
+        "stop_rate": 0.2485
+      },
+      "tau_0_9": {
+        "acc": 0.506,
+        "compute": 57.31,
+        "stop_rate": 0.1195
+      },
+      "tau_0_95": {
+        "acc": 0.506,
+        "compute": 57.31,
+        "stop_rate": 0.1195
+      },
+      "tau_1_0": {
+        "acc": 0.506,
+        "compute": 57.31,
+        "stop_rate": 0.1195
+      }
+    }
+  },
+  "bootstrap_ci_95": {
+    "k=4_tau=0.5": {
+      "compute": 5.34,
+      "acc": 0.4365,
+      "ci_lo": 0.3372,
+      "ci_hi": 0.5356
+    },
+    "k=8_tau=0.5": {
+      "compute": 16.06,
+      "acc": 0.4682,
+      "ci_lo": 0.3572,
+      "ci_hi": 0.5817
+    }
+  },
+  "pareto_analysis": {
+    "k4": {
+      "pareto_dominates_fixed_budget": true,
+      "best_gain_vs_matched_compute": 0.0243,
+      "best_gain_tau": 0.8
+    },
+    "k8": {
+      "pareto_dominates_fixed_budget": true,
+      "best_gain_vs_matched_compute": 0.0262,
+      "best_gain_tau": 0.9
+    }
+  },
+  "verdict": {
+    "realistic_gate_pareto_dominates_fixed_budget": true,
+    "best_gate_acc_k8": 0.506,
+    "fixed_budget_acc_64": 0.506,
+    "oracle_acc": 0.5796,
+    "oracle_ceiling_gain": 0.0737,
+    "fraction_oracle_ceiling_captured_k8": 0.0001,
+    "summary": "Realistic gate DOES Pareto-dominate fixed-budget at some operating point."
+  }
+}
