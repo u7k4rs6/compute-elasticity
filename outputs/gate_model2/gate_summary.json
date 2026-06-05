@@ -198,6 +198,13 @@
       "oracle_acc": 0.4557599260820777,
       "oracle_ceiling_gain": 0.1153343941671841,
       "fraction_oracle_ceiling_captured_k8": -0.011160886150641506
+    },
+    "grid_oracle": {
+      "grid_oracle_acc": 0.4855,
+      "grid_denom": 0.1451,
+      "agreement_gate_k8_tau075_ceiling_vs_grid": -0.0089,
+      "entropy_gate_best_ceiling_vs_grid": null,
+      "NOTE_A3": "gate ceiling captures reported are MAXIMUM over sweep (best-case). Denominators here use the grid oracle (max over all N), not the binary oracle (max of N=1 vs N=64) used in PH1-PH4."
     }
   },
   "confirmatory": {
@@ -641,6 +648,13 @@
       "oracle_acc": 0.39576117628147495,
       "oracle_ceiling_gain": 0.09112541469207097,
       "fraction_oracle_ceiling_captured_k8": -0.016242806195535683
+    },
+    "grid_oracle": {
+      "grid_oracle_acc": 0.424,
+      "grid_denom": 0.1194,
+      "agreement_gate_k8_tau075_ceiling_vs_grid": -0.0124,
+      "entropy_gate_best_ceiling_vs_grid": 0.0072,
+      "NOTE_A3": "gate ceiling captures reported are MAXIMUM over sweep (best-case). Denominators here use the grid oracle (max over all N), not the binary oracle (max of N=1 vs N=64) used in PH1-PH4."
     }
   },
   "pooled": {
@@ -1084,6 +1098,13 @@
       "oracle_acc": 0.4100033037593958,
       "oracle_ceiling_gain": 0.09687199062808266,
       "fraction_oracle_ceiling_captured_k8": -0.014780517800189857
+    },
+    "grid_oracle": {
+      "grid_oracle_acc": 0.4386,
+      "grid_denom": 0.1255,
+      "agreement_gate_k8_tau075_ceiling_vs_grid": -0.0114,
+      "entropy_gate_best_ceiling_vs_grid": -0.0609,
+      "NOTE_A3": "gate ceiling captures reported are MAXIMUM over sweep (best-case). Denominators here use the grid oracle (max over all N), not the binary oracle (max of N=1 vs N=64) used in PH1-PH4."
     }
   },
   "bootstrap_ci_95_backfire_pooled": [

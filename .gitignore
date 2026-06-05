@@ -45,6 +45,8 @@ outputs/*
 !outputs/gate_model2/mv_curves/
 !outputs/gate_model2/mv_curves/*
 !outputs/gate_model2/confirmatory_results.json
+!outputs/entropy_local/
+!outputs/entropy_local/*
 
 # Python cache
 __pycache__/

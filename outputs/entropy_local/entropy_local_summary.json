@@ -1,0 +1,148 @@
+{
+  "EXPLORATORY": true,
+  "description": "Phase 14a entropy re-analysis. Localized entropy variants (answer-token, last-10-tokens) unavailable: Phase 13 sampling stored only response-mean scalar, not per-token arrays. ROC-AUC and gate analysis use mean/std/min of response-mean entropy. Grid oracle and updated gate ceiling captures in gate_summary files.",
+  "entropy_analysis": {
+    "EXPLORATORY": true,
+    "Qwen2.5-7B": {
+      "EXPLORATORY": true,
+      "model": "Qwen2.5-7B",
+      "n_problems_with_entropy": 151,
+      "n_backfire": 91,
+      "backfire_rate": 0.6026,
+      "LOCALIZATION_NOTE": "Per-token logprob arrays NOT stored in Phase 13 sampling. True localized entropy (final-answer-token, last-10-tokens) is not computable from stored data. Only response-mean mean_token_entropy scalar is available per sample.",
+      "roc_auc": {
+        "mean_entropy": 0.6306,
+        "std_entropy": 0.6016,
+        "min_entropy": 0.6161,
+        "interpretation": "AUC = P(signal_backfire > signal_gain). Higher signal = predict backfire. AUC > 0.5: backfire problems have higher entropy."
+      },
+      "overlap_description": {
+        "mean_entropy": "weak tendency for backfire problems to have higher entropy (AUC=0.631)",
+        "std_entropy": "weak tendency for backfire problems to have higher entropy (AUC=0.602)",
+        "min_entropy": "weak tendency for backfire problems to have higher entropy (AUC=0.616)"
+      },
+      "entropy_gate_k4_sweep": {
+        "k": 4,
+        "n_thresholds": 40,
+        "NOTE_A3": "Best ceiling capture is the MAXIMUM over the threshold sweep (best-case gate performance). Reported for comparability with PH4.",
+        "best_ceiling_captured_vs_binary_oracle": 0.0054,
+        "best_threshold": 0.109,
+        "best_gate_acc": 0.3184,
+        "best_gate_compute": 61.0,
+        "phase13_reference_best_ceiling_captured": 0.00523124361420456
+      },
+      "baseline": {
+        "fixed_64_acc": 0.3179,
+        "binary_oracle_acc": 0.4191,
+        "oracle_headroom": 0.1012
+      }
+    },
+    "Llama-3-8B": {
+      "EXPLORATORY": true,
+      "model": "Llama-3-8B",
+      "n_problems_with_entropy": 151,
+      "n_backfire": 99,
+      "backfire_rate": 0.6556,
+      "LOCALIZATION_NOTE": "Per-token logprob arrays NOT stored in Phase 13 sampling. True localized entropy (final-answer-token, last-10-tokens) is not computable from stored data. Only response-mean mean_token_entropy scalar is available per sample.",
+      "roc_auc": {
+        "mean_entropy": 0.5227,
+        "std_entropy": 0.5365,
+        "min_entropy": 0.4619,
+        "interpretation": "AUC = P(signal_backfire > signal_gain). Higher signal = predict backfire. AUC > 0.5: backfire problems have higher entropy."
+      },
+      "overlap_description": {
+        "mean_entropy": "no meaningful separation (AUC near 0.5)",
+        "std_entropy": "no meaningful separation (AUC near 0.5)",
+        "min_entropy": "no meaningful separation (AUC near 0.5)"
+      },
+      "entropy_gate_k4_sweep": {
+        "k": 4,
+        "n_thresholds": 40,
+        "NOTE_A3": "Best ceiling capture is the MAXIMUM over the threshold sweep (best-case gate performance). Reported for comparability with PH4.",
+        "best_ceiling_captured_vs_binary_oracle": 0.0053,
+        "best_threshold": 0.1387,
+        "best_gate_acc": 0.3051,
+        "best_gate_compute": 61.0,
+        "phase13_reference_best_ceiling_captured": 0.009411379876160805
+      },
+      "baseline": {
+        "fixed_64_acc": 0.3046,
+        "binary_oracle_acc": 0.3947,
+        "oracle_headroom": 0.09
+      }
+    }
+  },
+  "grid_oracle": {
+    "EXPLORATORY": true,
+    "Qwen2.5-7B": {
+      "exploratory": {
+        "n_problems": 47,
+        "fixed_64_acc": 0.5038,
+        "binary_oracle_acc": 0.5775,
+        "binary_oracle_gain_over_64": 0.0737,
+        "grid_oracle_acc": 0.6079,
+        "grid_oracle_mean_compute": 25.15,
+        "grid_oracle_gain_over_64": 0.1041,
+        "grid_vs_binary_gain": 0.0304,
+        "NOTE_A3": "All entropy/agreement gate ceiling-capture values in phase-13 analysis are the MAXIMUM over the respective threshold sweep (best-case gate performance against the binary oracle). Grid-oracle ceiling captures below recompute against the wider denominator."
+      },
+      "confirmatory": {
+        "n_problems": 151,
+        "fixed_64_acc": 0.3179,
+        "binary_oracle_acc": 0.4191,
+        "binary_oracle_gain_over_64": 0.1012,
+        "grid_oracle_acc": 0.4422,
+        "grid_oracle_mean_compute": 15.25,
+        "grid_oracle_gain_over_64": 0.1244,
+        "grid_vs_binary_gain": 0.0232,
+        "NOTE_A3": "All entropy/agreement gate ceiling-capture values in phase-13 analysis are the MAXIMUM over the respective threshold sweep (best-case gate performance against the binary oracle). Grid-oracle ceiling captures below recompute against the wider denominator."
+      },
+      "pooled": {
+        "n_problems": 198,
+        "fixed_64_acc": 0.362,
+        "binary_oracle_acc": 0.4567,
+        "binary_oracle_gain_over_64": 0.0947,
+        "grid_oracle_acc": 0.4816,
+        "grid_oracle_mean_compute": 17.6,
+        "grid_oracle_gain_over_64": 0.1195,
+        "grid_vs_binary_gain": 0.0249,
+        "NOTE_A3": "All entropy/agreement gate ceiling-capture values in phase-13 analysis are the MAXIMUM over the respective threshold sweep (best-case gate performance against the binary oracle). Grid-oracle ceiling captures below recompute against the wider denominator."
+      }
+    },
+    "Llama-3-8B": {
+      "exploratory": {
+        "n_problems": 47,
+        "fixed_64_acc": 0.3404,
+        "binary_oracle_acc": 0.4545,
+        "binary_oracle_gain_over_64": 0.114,
+        "grid_oracle_acc": 0.4855,
+        "grid_oracle_mean_compute": 16.0,
+        "grid_oracle_gain_over_64": 0.1451,
+        "grid_vs_binary_gain": 0.0311,
+        "NOTE_A3": "All entropy/agreement gate ceiling-capture values in phase-13 analysis are the MAXIMUM over the respective threshold sweep (best-case gate performance against the binary oracle). Grid-oracle ceiling captures below recompute against the wider denominator."
+      },
+      "confirmatory": {
+        "n_problems": 151,
+        "fixed_64_acc": 0.3046,
+        "binary_oracle_acc": 0.3947,
+        "binary_oracle_gain_over_64": 0.09,
+        "grid_oracle_acc": 0.424,
+        "grid_oracle_mean_compute": 19.25,
+        "grid_oracle_gain_over_64": 0.1194,
+        "grid_vs_binary_gain": 0.0294,
+        "NOTE_A3": "All entropy/agreement gate ceiling-capture values in phase-13 analysis are the MAXIMUM over the respective threshold sweep (best-case gate performance against the binary oracle). Grid-oracle ceiling captures below recompute against the wider denominator."
+      },
+      "pooled": {
+        "n_problems": 198,
+        "fixed_64_acc": 0.3131,
+        "binary_oracle_acc": 0.4089,
+        "binary_oracle_gain_over_64": 0.0957,
+        "grid_oracle_acc": 0.4386,
+        "grid_oracle_mean_compute": 18.48,
+        "grid_oracle_gain_over_64": 0.1255,
+        "grid_vs_binary_gain": 0.0298,
+        "NOTE_A3": "All entropy/agreement gate ceiling-capture values in phase-13 analysis are the MAXIMUM over the respective threshold sweep (best-case gate performance against the binary oracle). Grid-oracle ceiling captures below recompute against the wider denominator."
+      }
+    }
+  }
+}
