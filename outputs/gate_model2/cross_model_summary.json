@@ -2,88 +2,299 @@
   "model_1": {
     "id": "Qwen/Qwen2.5-7B-Instruct-Turbo",
     "label": "Qwen2.5-7B",
-    "n_problems": 47,
-    "n1_acc": 0.4075,
-    "n64_acc": 0.506,
-    "backfire_rate": 0.4681,
-    "backfire_ci_95": [
-      0.3191,
-      0.617
-    ],
-    "oracle_acc": 0.5796,
-    "oracle_compute": 31.83,
-    "gate_k8_tau075": {
-      "acc": 0.5028,
-      "compute": 41.24
+    "exploratory": {
+      "n_problems": 47,
+      "n1_acc": 0.418,
+      "n64_acc": 0.5318,
+      "backfire_rate": 0.4468,
+      "backfire_n": 21,
+      "mv_gain_min": -0.4091,
+      "mv_gain_max": 0.6308,
+      "oracle_acc": 0.5996,
+      "oracle_compute": 33.17,
+      "oracle_gain_over_64": 0.0678,
+      "gate_k8_tau075": {
+        "acc": 0.5274,
+        "compute": 40.47
+      },
+      "fraction_oracle_ceiling_captured_k8": -0.065,
+      "entropy_gate_best_ceiling_captured": null,
+      "calibration": [
+        {
+          "bin_label": "[0.25, 0.50)",
+          "n": 17,
+          "fraction_correct": 0.35294117647058826
+        },
+        {
+          "bin_label": "[0.50, 0.75)",
+          "n": 14,
+          "fraction_correct": 0.7142857142857143
+        },
+        {
+          "bin_label": "[0.75, 1.00]",
+          "n": 16,
+          "fraction_correct": 0.5625
+        }
+      ]
     },
-    "fraction_oracle_ceiling_captured": 0.0001,
-    "ceiling_ci_95": [
-      -2.7045,
-      1.6286
-    ],
-    "calibration": [
-      {
-        "bin_label": "[0.25, 0.50)",
-        "n": 18,
-        "fraction_correct": 0.3888888888888889
+    "confirmatory": {
+      "n_problems": 151,
+      "n1_acc": 0.3182,
+      "n64_acc": 0.3179,
+      "backfire_rate": 0.6026,
+      "backfire_n": 91,
+      "mv_gain_min": -0.4688,
+      "mv_gain_max": 0.6562,
+      "oracle_acc": 0.4192,
+      "oracle_compute": 20.19,
+      "oracle_gain_over_64": 0.1013,
+      "gate_k8_tau075": {
+        "acc": 0.3187,
+        "compute": 40.28
       },
-      {
-        "bin_label": "[0.50, 0.75)",
-        "n": 13,
-        "fraction_correct": 0.6153846153846154
+      "fraction_oracle_ceiling_captured_k8": 0.008,
+      "entropy_gate_best_ceiling_captured": 0.0052,
+      "calibration": [
+        {
+          "bin_label": "[0.25, 0.50)",
+          "n": 39,
+          "fraction_correct": 0.3333333333333333
+        },
+        {
+          "bin_label": "[0.50, 0.75)",
+          "n": 69,
+          "fraction_correct": 0.18840579710144928
+        },
+        {
+          "bin_label": "[0.75, 1.00]",
+          "n": 43,
+          "fraction_correct": 0.5116279069767442
+        }
+      ]
+    },
+    "pooled": {
+      "n_problems": 198,
+      "n1_acc": 0.3419,
+      "n64_acc": 0.3687,
+      "backfire_rate": 0.5657,
+      "backfire_n": 112,
+      "mv_gain_min": -0.4688,
+      "mv_gain_max": 0.6562,
+      "oracle_acc": 0.462,
+      "oracle_compute": 23.27,
+      "oracle_gain_over_64": 0.0933,
+      "gate_k8_tau075": {
+        "acc": 0.368,
+        "compute": 40.38
       },
-      {
-        "bin_label": "[0.75, 1.00]",
-        "n": 16,
-        "fraction_correct": 0.5625
-      }
+      "fraction_oracle_ceiling_captured_k8": -0.0066,
+      "entropy_gate_best_ceiling_captured": -0.5383,
+      "calibration": [
+        {
+          "bin_label": "[0.25, 0.50)",
+          "n": 56,
+          "fraction_correct": 0.3392857142857143
+        },
+        {
+          "bin_label": "[0.50, 0.75)",
+          "n": 83,
+          "fraction_correct": 0.27710843373493976
+        },
+        {
+          "bin_label": "[0.75, 1.00]",
+          "n": 59,
+          "fraction_correct": 0.5254237288135594
+        }
+      ]
+    },
+    "backfire_ci_pooled_95": [
+      0.494949494949495,
+      0.6363636363636364
     ]
   },
   "model_2": {
     "id": "meta-llama/Meta-Llama-3-8B-Instruct-Lite",
     "label": "Llama-3-8B",
-    "n_problems": 47,
-    "parse_rate": 0.9811,
-    "n1_acc": 0.3331,
-    "n64_acc": 0.3404,
-    "backfire_rate": 0.6596,
-    "backfire_ci_95": [
-      0.5106,
-      0.8085
-    ],
-    "oracle_acc": 0.4545,
-    "oracle_compute": 22.45,
-    "gate_k8_tau075": {
-      "acc": 0.3397,
-      "compute": 43.96
+    "exploratory": {
+      "n_problems": 47,
+      "n1_acc": 0.341,
+      "n64_acc": 0.3404,
+      "backfire_rate": 0.6596,
+      "backfire_n": 31,
+      "mv_gain_min": -0.4603,
+      "mv_gain_max": 0.625,
+      "oracle_acc": 0.4558,
+      "oracle_compute": 22.45,
+      "oracle_gain_over_64": 0.1153,
+      "gate_k8_tau075": {
+        "acc": 0.3391,
+        "compute": 43.11
+      },
+      "fraction_oracle_ceiling_captured_k8": -0.0112,
+      "entropy_gate_best_ceiling_captured": null,
+      "calibration": [
+        {
+          "bin_label": "[0.25, 0.50)",
+          "n": 17,
+          "fraction_correct": 0.23529411764705882
+        },
+        {
+          "bin_label": "[0.50, 0.75)",
+          "n": 16,
+          "fraction_correct": 0.3125
+        },
+        {
+          "bin_label": "[0.75, 1.00]",
+          "n": 14,
+          "fraction_correct": 0.5
+        }
+      ]
     },
-    "fraction_oracle_ceiling_captured": 0.0273,
-    "ceiling_ci_95": [
-      -1.3939,
-      1.0161
-    ],
-    "calibration": [
-      {
-        "bin_label": "[0.25, 0.50)",
-        "n": 18,
-        "fraction_correct": 0.2777777777777778
+    "confirmatory": {
+      "n_problems": 151,
+      "n1_acc": 0.2518,
+      "n64_acc": 0.3046,
+      "backfire_rate": 0.6556,
+      "backfire_n": 99,
+      "mv_gain_min": -0.4531,
+      "mv_gain_max": 0.7049,
+      "oracle_acc": 0.3958,
+      "oracle_compute": 20.19,
+      "oracle_gain_over_64": 0.0911,
+      "gate_k8_tau075": {
+        "acc": 0.3032,
+        "compute": 46.47
       },
-      {
-        "bin_label": "[0.50, 0.75)",
-        "n": 15,
-        "fraction_correct": 0.26666666666666666
+      "fraction_oracle_ceiling_captured_k8": -0.0162,
+      "entropy_gate_best_ceiling_captured": 0.0094,
+      "calibration": [
+        {
+          "bin_label": "[0.25, 0.50)",
+          "n": 62,
+          "fraction_correct": 0.3225806451612903
+        },
+        {
+          "bin_label": "[0.50, 0.75)",
+          "n": 68,
+          "fraction_correct": 0.3382352941176471
+        },
+        {
+          "bin_label": "[0.75, 1.00]",
+          "n": 21,
+          "fraction_correct": 0.14285714285714285
+        }
+      ]
+    },
+    "pooled": {
+      "n_problems": 198,
+      "n1_acc": 0.2729,
+      "n64_acc": 0.3131,
+      "backfire_rate": 0.6566,
+      "backfire_n": 130,
+      "mv_gain_min": -0.4603,
+      "mv_gain_max": 0.7049,
+      "oracle_acc": 0.41,
+      "oracle_compute": 20.73,
+      "oracle_gain_over_64": 0.0969,
+      "gate_k8_tau075": {
+        "acc": 0.3117,
+        "compute": 45.63
       },
-      {
-        "bin_label": "[0.75, 1.00]",
-        "n": 14,
-        "fraction_correct": 0.5
-      }
+      "fraction_oracle_ceiling_captured_k8": -0.0148,
+      "entropy_gate_best_ceiling_captured": -0.0788,
+      "calibration": [
+        {
+          "bin_label": "[0.25, 0.50)",
+          "n": 79,
+          "fraction_correct": 0.3037974683544304
+        },
+        {
+          "bin_label": "[0.50, 0.75)",
+          "n": 84,
+          "fraction_correct": 0.3333333333333333
+        },
+        {
+          "bin_label": "[0.75, 1.00]",
+          "n": 35,
+          "fraction_correct": 0.2857142857142857
+        }
+      ]
+    },
+    "backfire_ci_pooled_95": [
+      0.5909090909090909,
+      0.7171717171717171
     ]
   },
-  "cross_model_verdict": "BACKFIRE REPLICATES AND MECHANISM CONFIRMED: Both models show substantial backfire rates (47% Qwen, 66% Llama). Even in the highest-confidence bin, plurality is wrong 44% (Qwen) and 50% (Llama) of the time, confirming that high self-consistency does not imply correctness. Realistic gate captures 0.0% (Qwen) and 2.7% (Llama) of the oracle ceiling.",
+  "confirmatory_hypotheses": {
+    "PH1": {
+      "hypothesis": "Backfire rate >= 0.33 for BOTH models",
+      "threshold": 0.33,
+      "model_1": {
+        "value": 0.6026,
+        "ci_95": [
+          0.5298,
+          0.6821
+        ]
+      },
+      "model_2": {
+        "value": 0.6556,
+        "ci_95": [
+          0.5826,
+          0.7351
+        ]
+      },
+      "pass": true
+    },
+    "PH2": {
+      "hypothesis": "Agreement gate (k=8, tau=0.75) captures <= 10% of oracle ceiling for BOTH",
+      "threshold": 0.1,
+      "model_1": {
+        "value": 0.008,
+        "ci_95": [
+          -0.8911,
+          0.6805
+        ]
+      },
+      "model_2": {
+        "value": -0.0162,
+        "ci_95": [
+          -0.9286,
+          0.7423
+        ]
+      },
+      "pass": true
+    },
+    "PH3": {
+      "hypothesis": "Top-confidence bin accuracy <= 0.70 for BOTH models",
+      "threshold": 0.7,
+      "model_1": {
+        "value": 0.5116
+      },
+      "model_2": {
+        "value": 0.1429
+      },
+      "pass": true
+    },
+    "PH4": {
+      "hypothesis": "Entropy gate captures <= 10% of oracle ceiling for BOTH models",
+      "threshold": 0.1,
+      "contingent_on_logprobs": true,
+      "model_1": {
+        "logprobs_available": true,
+        "best_ceiling_captured": 0.0052
+      },
+      "model_2": {
+        "logprobs_available": true,
+        "best_ceiling_captured": 0.0094
+      },
+      "pass": true,
+      "note": ""
+    }
+  },
   "figures": [
     "outputs/gate_model2/backfire_both.png",
     "outputs/gate_model2/pareto_both.png",
-    "outputs/gate_model2/calibration_both.png"
+    "outputs/gate_model2/calibration_both.png",
+    "outputs/gate_model2/gate_sweep_both.png"
   ]
 }

@@ -36,12 +36,15 @@ outputs/*
 !outputs/realizable/h3_difficulty_control.json
 !outputs/gate/
 !outputs/gate/*
+!outputs/samples/
+!outputs/samples/*
 !outputs/samples_model2/
 !outputs/samples_model2/*
 !outputs/gate_model2/
 !outputs/gate_model2/*
 !outputs/gate_model2/mv_curves/
 !outputs/gate_model2/mv_curves/*
+!outputs/gate_model2/confirmatory_results.json
 
 # Python cache
 __pycache__/

@@ -1,0 +1,66 @@
+{
+  "PH1": {
+    "hypothesis": "Backfire rate >= 0.33 for BOTH models",
+    "threshold": 0.33,
+    "model_1": {
+      "value": 0.6026,
+      "ci_95": [
+        0.5298,
+        0.6821
+      ]
+    },
+    "model_2": {
+      "value": 0.6556,
+      "ci_95": [
+        0.5826,
+        0.7351
+      ]
+    },
+    "pass": true
+  },
+  "PH2": {
+    "hypothesis": "Agreement gate (k=8, tau=0.75) captures <= 10% of oracle ceiling for BOTH",
+    "threshold": 0.1,
+    "model_1": {
+      "value": 0.008,
+      "ci_95": [
+        -0.8911,
+        0.6805
+      ]
+    },
+    "model_2": {
+      "value": -0.0162,
+      "ci_95": [
+        -0.9286,
+        0.7423
+      ]
+    },
+    "pass": true
+  },
+  "PH3": {
+    "hypothesis": "Top-confidence bin accuracy <= 0.70 for BOTH models",
+    "threshold": 0.7,
+    "model_1": {
+      "value": 0.5116
+    },
+    "model_2": {
+      "value": 0.1429
+    },
+    "pass": true
+  },
+  "PH4": {
+    "hypothesis": "Entropy gate captures <= 10% of oracle ceiling for BOTH models",
+    "threshold": 0.1,
+    "contingent_on_logprobs": true,
+    "model_1": {
+      "logprobs_available": true,
+      "best_ceiling_captured": 0.0052
+    },
+    "model_2": {
+      "logprobs_available": true,
+      "best_ceiling_captured": 0.0094
+    },
+    "pass": true,
+    "note": ""
+  }
+}
