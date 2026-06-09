@@ -1,0 +1,109 @@
+{
+  "EXPLORATORY": true,
+  "description": "Phase 14a re-analysis: localized entropy (NOT computable), grid oracle accuracy and ceiling captures, entropy threshold documentation.",
+  "task1_entropy_auc": {
+    "LOCALIZATION_NOTE": "Per-token logprob arrays were NOT stored during Phase 13 sampling (only the mean_token_entropy scalar per sample was saved). True final-20-token localized entropy is NOT computable from existing data. Mean-entropy AUC below uses the stored scalar and replicates the Phase 14a value.",
+    "mean_entropy_auc_confirmatory_151": {
+      "Qwen2.5-7B": {
+        "roc_auc": 0.6306,
+        "interpretation": "AUC = P(signal_backfire > signal_gain). Higher signal = predict backfire. AUC > 0.5: backfire problems have higher entropy."
+      },
+      "Llama-3-8B": {
+        "roc_auc": 0.5227,
+        "interpretation": "AUC = P(signal_backfire > signal_gain). Higher signal = predict backfire. AUC > 0.5: backfire problems have higher entropy."
+      }
+    },
+    "localized_entropy_auc": {
+      "status": "NOT_COMPUTABLE",
+      "reason": "per-token logprob arrays not stored in Phase 13 sampling"
+    }
+  },
+  "task2_grid_oracle": {
+    "confirmatory_151": {
+      "Qwen2.5-7B": {
+        "mv1_acc": 0.3182,
+        "mv64_acc": 0.3179,
+        "grid_oracle_acc": 0.4422,
+        "grid_oracle_ceiling_vs_n1": 0.124,
+        "agreement_gate_k8_tau075": {
+          "acc": 0.3187,
+          "ceiling_capture_n1_baseline": 0.0039
+        },
+        "entropy_gate_best": {
+          "threshold": 0.11265995685464802,
+          "acc": 0.3184,
+          "ceiling_capture_n1_baseline": 0.0016,
+          "NOTE": "threshold selected on confirmatory 151 problems"
+        }
+      },
+      "Llama-3-8B": {
+        "mv1_acc": 0.2518,
+        "mv64_acc": 0.3046,
+        "grid_oracle_acc": 0.424,
+        "grid_oracle_ceiling_vs_n1": 0.1722,
+        "agreement_gate_k8_tau075": {
+          "acc": 0.3032,
+          "ceiling_capture_n1_baseline": 0.2983
+        },
+        "entropy_gate_best": {
+          "threshold": 0.13888462559269987,
+          "acc": 0.3055,
+          "ceiling_capture_n1_baseline": 0.3119,
+          "NOTE": "threshold selected on confirmatory 151 problems"
+        }
+      }
+    },
+    "pooled_198": {
+      "Qwen2.5-7B": {
+        "mv1_acc": 0.3419,
+        "mv64_acc": 0.3687,
+        "grid_oracle_acc": 0.4816,
+        "grid_oracle_ceiling_vs_n1": 0.1397,
+        "agreement_gate_k8_tau075": {
+          "acc": 0.368,
+          "ceiling_capture_n1_baseline": 0.1871
+        },
+        "entropy_gate_best": {
+          "threshold": 0.11265995685464802,
+          "acc": 0.3184,
+          "ceiling_capture_n1_baseline": -0.1681,
+          "NOTE": "threshold selected on confirmatory 151 problems"
+        }
+      },
+      "Llama-3-8B": {
+        "mv1_acc": 0.2729,
+        "mv64_acc": 0.3131,
+        "grid_oracle_acc": 0.4386,
+        "grid_oracle_ceiling_vs_n1": 0.1657,
+        "agreement_gate_k8_tau075": {
+          "acc": 0.3117,
+          "ceiling_capture_n1_baseline": 0.2339
+        },
+        "entropy_gate_best": {
+          "threshold": 0.13888462559269987,
+          "acc": 0.3055,
+          "ceiling_capture_n1_baseline": 0.1965,
+          "NOTE": "threshold selected on confirmatory 151 problems"
+        }
+      }
+    }
+  },
+  "task3_entropy_threshold": {
+    "Qwen2.5-7B": {
+      "threshold": 0.11265995685464802,
+      "gate_acc": 0.3184105960264901,
+      "mean_compute_tokens": 60.57662251655629,
+      "ceiling_captured_vs_binary_oracle": 0.00523124361420456,
+      "n_sweep_thresholds": 40,
+      "NOTE_baseline": "ceiling_captured uses the binary oracle (max of MV_acc(1), MV_acc(64)) and MV_acc(64) as fixed baseline, as defined in Phase 13 pre-registration. See task2_grid_oracle for ceiling captures vs the grid oracle."
+    },
+    "Llama-3-8B": {
+      "threshold": 0.13888462559269987,
+      "gate_acc": 0.30549337748344374,
+      "mean_compute_tokens": 61.11304635761589,
+      "ceiling_captured_vs_binary_oracle": 0.009411379876160805,
+      "n_sweep_thresholds": 40,
+      "NOTE_baseline": "ceiling_captured uses the binary oracle (max of MV_acc(1), MV_acc(64)) and MV_acc(64) as fixed baseline, as defined in Phase 13 pre-registration. See task2_grid_oracle for ceiling captures vs the grid oracle."
+    }
+  }
+}
