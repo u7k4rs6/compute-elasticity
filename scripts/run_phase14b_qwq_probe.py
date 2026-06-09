@@ -59,7 +59,9 @@ COST_ABORT_USD: float = 6.0
 MAX_CONCURRENT: int = 4  # M2.7 is slow; fewer concurrent avoids 429s
 MAX_RETRIES: int = 5
 CONNECT_TIMEOUT: float = 30.0
-READ_TIMEOUT: float = 600.0  # M2.7 reasoning can take ~85s; 600s avoids spurious retries
+READ_TIMEOUT: float = (
+    600.0  # M2.7 reasoning can take ~85s; 600s avoids spurious retries
+)
 # 16384 gives room for both thinking tokens and the visible final answer.
 # 8192 was too small: model maxed out mid-think, leaving empty content.
 MAX_OUTPUT_TOKENS: int = 16384
@@ -734,50 +736,87 @@ def run_analysis() -> None:
         float(np.mean(parse_rates)),
     )
 
-    # MV curves
+    # MV curves — skip problems with <2 valid answers (can't compute MV)
     logger.info("Computing MV curves...")
     curves: list[dict[str, float]] = []
+    valid_mask: list[bool] = []
     for answers, gt in zip(answers_list, ground_truths):
-        curves.append(_mv_curve(answers, gt))
+        if len(answers) >= 2:
+            curves.append(_mv_curve(answers, gt))
+            valid_mask.append(True)
+        else:
+            curves.append({})
+            valid_mask.append(False)
+
+    n_valid = sum(valid_mask)
+    n_skipped = n_problems - n_valid
+    if n_skipped:
+        logger.warning(
+            "%d/%d problems skipped (< 2 valid answers); analysis on %d problems",
+            n_skipped,
+            n_problems,
+            n_valid,
+        )
+
+    valid_curves = [c for c, ok in zip(curves, valid_mask) if ok]
+    valid_gts = [gt for gt, ok in zip(ground_truths, valid_mask) if ok]
+    valid_answers = [a for a, ok in zip(answers_list, valid_mask) if ok]
+    valid_mv16 = [
+        c.get(str(N_PER_PROBLEM), c.get(str(max(_N_VALUES)), 0.0)) for c in valid_curves
+    ]
 
     # Backfire rate
-    mv_gains = [c.get(str(N_PER_PROBLEM), 0.0) - c.get("1", 0.0) for c in curves]
+    mv_gains = [
+        c.get(str(N_PER_PROBLEM), c.get(str(max(_N_VALUES)), 0.0)) - c.get("1", 0.0)
+        for c in valid_curves
+    ]
     backfire_flags = [1 if g < 0 else 0 for g in mv_gains]
-    backfire_rate = float(np.mean(backfire_flags))
-    bf_ci_lo, bf_ci_hi = _bootstrap_rate(backfire_flags)
+    backfire_rate = float(np.mean(backfire_flags)) if backfire_flags else 0.0
+    bf_ci_lo, bf_ci_hi = (
+        _bootstrap_rate(backfire_flags) if len(backfire_flags) > 1 else (0.0, 0.0)
+    )
 
-    # MV acc at N=16 and N=1
-    mv1_accs = [c.get("1", 0.0) for c in curves]
-    mv16_accs = [c.get(str(N_PER_PROBLEM), 0.0) for c in curves]
-    mv1_mean = float(np.mean(mv1_accs))
-    mv16_mean = float(np.mean(mv16_accs))
+    # MV acc at N=8 and N=1
+    mv1_accs = [c.get("1", 0.0) for c in valid_curves]
+    mv16_accs = valid_mv16
+    mv1_mean = float(np.mean(mv1_accs)) if mv1_accs else 0.0
+    mv16_mean = float(np.mean(mv16_accs)) if mv16_accs else 0.0
     mv_gain_mean = mv16_mean - mv1_mean
 
     # Grid oracle (over available N values)
     grid_oracle_per_problem = [
-        max(c.get(str(n), 0.0) for n in _N_VALUES if str(n) in c) for c in curves
+        max((c.get(str(n), 0.0) for n in _N_VALUES), default=0.0) for c in valid_curves
     ]
-    grid_oracle_acc = float(np.mean(grid_oracle_per_problem))
+    grid_oracle_acc = (
+        float(np.mean(grid_oracle_per_problem)) if grid_oracle_per_problem else 0.0
+    )
     grid_oracle_best_n = [
         max(
             (n for n in _N_VALUES if str(n) in c),
             key=lambda n: c.get(str(n), 0.0),
+            default=1,
         )
-        for c in curves
+        for c in valid_curves
     ]
-    grid_oracle_compute = float(np.mean(grid_oracle_best_n))
-
-    binary_oracle_acc, binary_oracle_compute = _oracle_acc(curves)
-
-    # Agreement gate sweep (subset k={4,8})
-    logger.info("Running agreement gate sweep...")
-    gate_results = _agreement_gate_sweep(
-        answers_list, ground_truths, mv16_accs, [4, 8], _AGREEMENT_TAUS
+    grid_oracle_compute = (
+        float(np.mean(grid_oracle_best_n)) if grid_oracle_best_n else 1.0
     )
 
-    # Best gate result (k=8)
-    k8_results = [r for r in gate_results if r["k"] == 8]
-    best_k8 = max(k8_results, key=lambda r: r["gate_acc"])
+    binary_oracle_acc, binary_oracle_compute = _oracle_acc(valid_curves)
+
+    # Agreement gate sweep (k=4 only since N_PER_PROBLEM=8)
+    logger.info("Running agreement gate sweep...")
+    gate_results = _agreement_gate_sweep(
+        valid_answers, valid_gts, mv16_accs, _AGREEMENT_K_VALUES, _AGREEMENT_TAUS
+    )
+
+    # Best gate result (k=4, highest k available)
+    k4_results = [r for r in gate_results if r["k"] == _AGREEMENT_K_VALUES[-1]]
+    best_k8 = (
+        max(k4_results, key=lambda r: r["gate_acc"])
+        if k4_results
+        else {"gate_acc": mv16_mean, "k": 4, "tau": 0.5}
+    )
     agree_ceiling_captured = (
         (best_k8["gate_acc"] - mv16_mean) / (binary_oracle_acc - mv16_mean)
         if binary_oracle_acc > mv16_mean
@@ -789,7 +828,7 @@ def run_analysis() -> None:
     calibration: list[dict[str, Any]] = []
     for lo, hi in conf_bins:
         bin_correct = []
-        for answers, gt in zip(answers_list, ground_truths):
+        for answers, gt in zip(valid_answers, valid_gts):
             if not answers:
                 continue
             counts: dict[str, int] = {}
@@ -828,7 +867,9 @@ def run_analysis() -> None:
             "Pre-registered PH1-PH4 on confirmatory set are unchanged."
         ),
         "model": MODEL_QWQ,
-        "n_problems": n_problems,
+        "n_problems_total": n_problems,
+        "n_problems_analyzed": n_valid,
+        "n_problems_skipped_low_parse": n_skipped,
         "n_per_problem": N_PER_PROBLEM,
         "temperature": TEMPERATURE,
         "parse_rate_mean": float(np.mean(parse_rates)),
@@ -856,7 +897,7 @@ def run_analysis() -> None:
 
     # B5: Figure
     _make_figure(
-        curves,
+        valid_curves,
         mv_gains,
         backfire_rate,
         bf_ci_lo,
@@ -871,7 +912,9 @@ def run_analysis() -> None:
     print("\n" + "=" * 70)
     print("[EXPLORATORY] Phase 14b: QwQ-32B Probe Summary")
     print("=" * 70)
-    print(f"Problems: {n_problems}, N={N_PER_PROBLEM}, T={TEMPERATURE}")
+    print(
+        f"Problems: {n_valid}/{n_problems} analyzable, N={N_PER_PROBLEM}, T={TEMPERATURE}"
+    )
     print(f"Parse rate: {np.mean(parse_rates):.3f}")
     print(f"MV acc(1):  {mv1_mean:.4f}")
     print(f"MV acc(16): {mv16_mean:.4f}")

@@ -1,0 +1,132 @@
+{
+  "EXPLORATORY": true,
+  "NOTE": "All Phase 14b QwQ-32B results are post-hoc EXPLORATORY. Pre-registered PH1-PH4 on confirmatory set are unchanged.",
+  "model": "MiniMaxAI/MiniMax-M2.7",
+  "n_problems_total": 47,
+  "n_problems_analyzed": 37,
+  "n_problems_skipped_low_parse": 10,
+  "n_per_problem": 8,
+  "temperature": 0.7,
+  "parse_rate_mean": 0.6839243498817967,
+  "mv1_acc": 0.8902831402831403,
+  "mv16_acc": 0.5135135135135135,
+  "mv_gain": -0.3767696267696268,
+  "backfire_rate": 0.40540540540540543,
+  "backfire_ci_95": [
+    0.2702702702702703,
+    0.5675675675675675
+  ],
+  "binary_oracle_acc": 0.8902831402831403,
+  "binary_oracle_compute": 1.0,
+  "grid_oracle_acc": 0.9009009009009008,
+  "grid_oracle_compute": 1.1891891891891893,
+  "agree_gate_best_k8": {
+    "k": 4,
+    "tau": 0.5,
+    "gate_acc": 0.8427837837837838,
+    "gate_compute": 4.324324324324325,
+    "fixed64_acc": 0.5135135135135135
+  },
+  "agree_gate_ceiling_captured": 0.8739299743808712,
+  "calibration": [
+    {
+      "bin": "[0.25, 0.50)",
+      "n": 0,
+      "frac_correct": null
+    },
+    {
+      "bin": "[0.50, 0.75)",
+      "n": 1,
+      "frac_correct": 0.0
+    },
+    {
+      "bin": "[0.75, 1.01)",
+      "n": 36,
+      "frac_correct": 0.9166666666666666
+    }
+  ],
+  "token_usage": {
+    "total_input_tokens": 141744,
+    "total_output_tokens": 3234042,
+    "total_cost_usd": 3.9233736
+  },
+  "gate_sweep": [
+    {
+      "k": 4,
+      "tau": 0.5,
+      "gate_acc": 0.8427837837837838,
+      "gate_compute": 4.324324324324325,
+      "fixed64_acc": 0.5135135135135135
+    },
+    {
+      "k": 4,
+      "tau": 0.55,
+      "gate_acc": 0.8374324324324324,
+      "gate_compute": 4.434162162162162,
+      "fixed64_acc": 0.5135135135135135
+    },
+    {
+      "k": 4,
+      "tau": 0.6,
+      "gate_acc": 0.8374324324324324,
+      "gate_compute": 4.434162162162162,
+      "fixed64_acc": 0.5135135135135135
+    },
+    {
+      "k": 4,
+      "tau": 0.65,
+      "gate_acc": 0.8374324324324324,
+      "gate_compute": 4.434162162162162,
+      "fixed64_acc": 0.5135135135135135
+    },
+    {
+      "k": 4,
+      "tau": 0.7,
+      "gate_acc": 0.8374324324324324,
+      "gate_compute": 4.434162162162162,
+      "fixed64_acc": 0.5135135135135135
+    },
+    {
+      "k": 4,
+      "tau": 0.75,
+      "gate_acc": 0.8374324324324324,
+      "gate_compute": 4.434162162162162,
+      "fixed64_acc": 0.5135135135135135
+    },
+    {
+      "k": 4,
+      "tau": 0.8,
+      "gate_acc": 0.8257432432432432,
+      "gate_compute": 4.6365945945945946,
+      "fixed64_acc": 0.5135135135135135
+    },
+    {
+      "k": 4,
+      "tau": 0.85,
+      "gate_acc": 0.8257432432432432,
+      "gate_compute": 4.6365945945945946,
+      "fixed64_acc": 0.5135135135135135
+    },
+    {
+      "k": 4,
+      "tau": 0.9,
+      "gate_acc": 0.8257432432432432,
+      "gate_compute": 4.6365945945945946,
+      "fixed64_acc": 0.5135135135135135
+    },
+    {
+      "k": 4,
+      "tau": 0.95,
+      "gate_acc": 0.8257432432432432,
+      "gate_compute": 4.6365945945945946,
+      "fixed64_acc": 0.5135135135135135
+    },
+    {
+      "k": 4,
+      "tau": 1.0,
+      "gate_acc": 0.8257432432432432,
+      "gate_compute": 4.6365945945945946,
+      "fixed64_acc": 0.5135135135135135
+    }
+  ]
+}
