@@ -1,0 +1,85 @@
+{
+  "EXPLORATORY": true,
+  "description": "Phase 15: log-prob margin gate (NOT COMPUTABLE from existing data) and per-domain backfire rates (biology/chemistry/physics) for both models.",
+  "margin_gate": {
+    "status": "NOT_COMPUTABLE",
+    "reason": "Per-token logprob arrays (tokens/token_logprobs/top_logprobs) were not stored during Phase 13 sampling. Final-answer log-prob margin = logprob(rank-1) - logprob(rank-2) at the extracted answer token requires per-token arrays. Only the mean_token_entropy scalar was saved per sample (Qwen2.5-7B only; Llama-3-8B has no entropy data). Re-sampling with per-token logprob storage is required.",
+    "what_is_available": {
+      "Qwen2.5-7B": "mean_token_entropy scalar per sample (confirmatory 151)",
+      "Llama-3-8B": "no entropy or logprob data available"
+    },
+    "reference_phase14a": {
+      "mean_entropy_auc_qwen": 0.6306,
+      "mean_entropy_auc_llama": 0.5227,
+      "note": "These AUC values use mean per-token entropy (not final-answer margin), computed in Phase 14a from the stored mean_token_entropy scalar."
+    },
+    "auc_comparison": {
+      "margin_auc_qwen": null,
+      "margin_auc_llama": null,
+      "gate_acc_best_threshold_qwen": null,
+      "gate_acc_best_threshold_llama": null,
+      "ceiling_capture_vs_grid_oracle_qwen": null,
+      "ceiling_capture_vs_grid_oracle_llama": null
+    }
+  },
+  "per_domain_backfire_pooled_198": {
+    "Qwen2.5-7B": {
+      "biology": {
+        "n_problems": 19,
+        "n_backfire": 7,
+        "backfire_rate": 0.3684,
+        "mean_mv_gain": 0.1545,
+        "median_mv_gain": 0.1406
+      },
+      "chemistry": {
+        "n_problems": 93,
+        "n_backfire": 62,
+        "backfire_rate": 0.6667,
+        "mean_mv_gain": -0.0163,
+        "median_mv_gain": -0.0625
+      },
+      "physics": {
+        "n_problems": 86,
+        "n_backfire": 43,
+        "backfire_rate": 0.5,
+        "mean_mv_gain": 0.0451,
+        "median_mv_gain": -0.0078
+      },
+      "_pooled": {
+        "n_problems": 198,
+        "n_backfire": 112,
+        "backfire_rate": 0.5657,
+        "mean_mv_gain": 0.0268
+      }
+    },
+    "Llama-3-8B": {
+      "biology": {
+        "n_problems": 19,
+        "n_backfire": 8,
+        "backfire_rate": 0.4211,
+        "mean_mv_gain": 0.1095,
+        "median_mv_gain": 0.0323
+      },
+      "chemistry": {
+        "n_problems": 93,
+        "n_backfire": 64,
+        "backfire_rate": 0.6882,
+        "mean_mv_gain": 0.0244,
+        "median_mv_gain": -0.0469
+      },
+      "physics": {
+        "n_problems": 86,
+        "n_backfire": 58,
+        "backfire_rate": 0.6744,
+        "mean_mv_gain": 0.042,
+        "median_mv_gain": -0.0781
+      },
+      "_pooled": {
+        "n_problems": 198,
+        "n_backfire": 130,
+        "backfire_rate": 0.6566,
+        "mean_mv_gain": 0.0402
+      }
+    }
+  }
+}

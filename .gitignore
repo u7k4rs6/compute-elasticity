@@ -48,6 +48,7 @@ outputs/*
 !outputs/entropy_local/
 !outputs/entropy_local/*
 !outputs/phase14a_results.json
+!outputs/phase15_results.json
 !outputs/samples_qwq/
 !outputs/samples_qwq/*
 !outputs/gate_qwq/
