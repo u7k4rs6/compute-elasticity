@@ -13,7 +13,7 @@
 \definecolor{darkblue}{rgb}{0, 0, 0.5}
 \hypersetup{colorlinks=true, citecolor=darkblue, linkcolor=darkblue, urlcolor=darkblue}
 
-\title{When Self-Consistency Backfires: Majority Vote Hurts the Majority of Expert-Level Problems}
+\title{When Self-Consistency Backfires: Majority Vote Hurts the Majority of Hard Science Problems for Small LLMs}
 
 % Authors must not appear in the submitted version.
 % The submission option handles this automatically, but verify before uploading.
@@ -234,7 +234,12 @@ $\tau=0.75$) reaches 0.368 accuracy for Qwen and 0.312 for Llama,
 statistically indistinguishable from fixed-budget voting at $N=64$ (0.369 and
 0.313). Against the grid oracle ceiling, the agreement gate captures 18.7\%
 of available headroom for Qwen and 23.4\% for Llama: non-trivial fractions of
-a generous ceiling, yet accuracy remains flat. The entropy gate does worse: it
+a generous ceiling, yet accuracy remains flat. The gate spends $k$ probe
+samples on every problem, then either returns the probe plurality (if the
+plurality fraction $\geq \tau$) or proceeds to $N=64$; matched compute means
+the fixed-budget baseline is evaluated at the gate's realized mean
+samples-per-problem rather than a flat $N=64$, so the comparison holds total
+inference cost equal. The entropy gate does worse: it
 captures $-$16.8\% for Qwen (threshold selected on confirmatory 151 fails to
 generalize to exploratory problems) and 19.7\% for Llama, with gate accuracy
 of 0.318 (Qwen, threshold 0.113) and 0.306 (Llama, threshold 0.139) on the
