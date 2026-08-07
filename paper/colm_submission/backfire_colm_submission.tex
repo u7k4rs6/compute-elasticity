@@ -41,10 +41,11 @@ pre-registered on a 151-problem confirmatory split after being observed on
 47 exploratory problems, and all four confirmatory hypotheses passed. A grid
 oracle that routes each problem to the best $N$ across $\{1,2,4,8,16,32,64\}$
 marks a theoretical upper bound 14 accuracy points above $N=1$ for Qwen and
-17 for Llama, but no verifier-free gate approaches it: a plurality-agreement
-gate captures 19\% and 23\% of that headroom respectively, and a
-token-entropy gate captures under 1\%, each leaving accuracy statistically
-indistinguishable from fixed-budget voting. The mechanism is direct:
+17 for Llama, an oracle bound requiring ground truth rather than a deployable
+method. No verifier-free gate reaches it: a plurality-agreement gate captures
+19\% and 23\% of that headroom on the pooled set, and neither it nor a
+token-entropy gate leaves accuracy statistically distinguishable from
+fixed-budget voting. The mechanism is direct:
 confidence does not track correctness on these problems. In the
 highest-agreement bin the plurality answer is correct about half the time for
 Qwen, and for Llama accuracy actually decreases with agreement. We
@@ -64,7 +65,9 @@ accuracy boost: sample more, vote, do at least as well.
 That assumption fails on hard problems. When a model places its highest
 probability on an incorrect answer across independent samples, more samples
 only entrench the wrong vote. We call this \emph{backfire}:
-$\text{mv\_gain} = \text{MV\_acc}(64) - \text{MV\_acc}(1) < 0$. We then ask
+$\text{mv\_gain} = \text{MV\_acc}(64) - \text{MV\_acc}(1) < 0$, where
+$\text{MV\_acc}(N)$ is the expected accuracy of a majority vote over $N$
+samples. We then ask
 the question a cost-conscious practitioner would ask: can a cheap,
 verifier-free signal computed from a few samples tell you which problems to
 vote on and which to skip? We test the two most natural signals, plurality
@@ -85,8 +88,8 @@ families, and to show that two cheap gates cannot prevent it.
   \item We show the per-problem routing headroom is real: a grid oracle (best
         $N$ per problem across $\{1,2,4,8,16,32,64\}$) marks a 14 to 17 point
         ceiling above $N=1$. A plurality-agreement gate captures 19 to 23\% of
-        that headroom; a token-entropy gate captures under 1\%. Neither reaches
-        the oracle nor beats fixed-budget voting meaningfully.
+        that headroom on the pooled set. Neither it nor a token-entropy gate
+        reaches the oracle or beats fixed-budget voting meaningfully.
   \item We give the mechanism: agreement does not track correctness, and for
         the weaker model it is anti-correlated.
 \end{itemize}
@@ -105,8 +108,9 @@ values throughout, but decide PASS/FAIL on the confirmatory set only.
 \textbf{Models.} Two instruction-tuned models from different families, served
 on Together AI: Qwen2.5-7B-Instruct-Turbo and Meta-Llama-3-8B-Instruct-Lite.
 Both are small (7 to 8B) and non-reasoning. $N=64$ samples per problem,
-temperature 0.7, single locked prompt template (SHA-256 verified). Five-pass
-answer extraction; parse rate 99.5\% (Qwen) and 98.6\% (Llama).
+temperature 0.7, single locked prompt template, byte-identical across all runs
+as verified by SHA-256. Five-pass answer extraction; parse rate 99.5\% (Qwen)
+and 98.6\% (Llama).
 
 \textbf{Metrics.} $\text{MV\_acc}(N)$ is expected majority-vote accuracy over
 $N$ samples, ties broken uniformly at random independent of ground truth,
@@ -232,18 +236,25 @@ bound, and the verifier-free agreement and entropy gates.}
 Neither cheap gate recovers the headroom. The agreement gate ($k=8$,
 $\tau=0.75$) reaches 0.368 accuracy for Qwen and 0.312 for Llama,
 statistically indistinguishable from fixed-budget voting at $N=64$ (0.369 and
-0.313). Against the grid oracle ceiling, the agreement gate captures 18.7\%
-of available headroom for Qwen and 23.4\% for Llama: non-trivial fractions of
-a generous ceiling, yet accuracy remains flat. The gate spends $k$ probe
+0.313). Against that ceiling, the agreement gate captures 18.7\%
+of available headroom for Qwen and 23.4\% for Llama (headroom is measured
+against the grid oracle of Section~\ref{sec:oracle}, not the binary oracle in
+Table~\ref{tab:confirmatory}): non-trivial fractions of a generous ceiling,
+yet accuracy remains flat. The gate spends $k$ probe
 samples on every problem, then either returns the probe plurality (if the
 plurality fraction $\geq \tau$) or proceeds to $N=64$; matched compute means
 the fixed-budget baseline is evaluated at the gate's realized mean
 samples-per-problem rather than a flat $N=64$, so the comparison holds total
-inference cost equal. The entropy gate does worse: it
-captures $-$16.8\% for Qwen (threshold selected on confirmatory 151 fails to
-generalize to exploratory problems) and 19.7\% for Llama, with gate accuracy
-of 0.318 (Qwen, threshold 0.113) and 0.306 (Llama, threshold 0.139) on the
-confirmatory set. Mean per-token entropy modestly predicts which problems
+inference cost equal. The entropy gate is evaluated entirely within the
+confirmatory 151, since logprobs exist only for that split. Measured
+consistently within it, the gate captures 0.2\% of the grid-oracle headroom
+for Qwen and 31.2\% for Llama, with gate accuracy of 0.318 (Qwen, threshold
+0.113) and 0.306 (Llama, threshold 0.139). Because this capture is computed
+on a different problem set from the agreement-gate figures above, the two
+should not be read as like-for-like: the entropy percentages are
+confirmatory-151 values and the agreement percentages are pooled-198 values.
+In absolute terms the entropy gate is likewise statistically indistinguishable
+from fixed-budget voting. Mean per-token entropy modestly predicts which problems
 backfire (AUC 0.631 for Qwen, 0.523 for Llama), but predictive signal does
 not translate into routing accuracy because the gate cannot act on that signal
 without misclassifying enough problems to erase the gain. Across the full
@@ -251,11 +262,9 @@ sweep of $k$ and $\tau$, no operating point beats fixed-budget meaningfully
 (Figure~\ref{fig:sweep}). The obvious agreement signal and an uncertainty
 signal both fail.
 
-A note on the entropy gate: logprobs were stored only for the 151 confirmatory
-problems, not the 47 exploratory ones, so the entropy gate is evaluated on
-the confirmatory set only. Localized entropy (computed over final-answer
-tokens only) was not computable from stored data, which retained only the mean
-scalar; this is a limitation of the pipeline rather than a finding.
+Localized entropy (computed over final-answer tokens only) was not computable
+from stored data, which retained only the mean scalar; this is a limitation of
+the pipeline rather than a finding.
 
 \begin{figure}[t]
 \begin{center}
@@ -324,7 +333,24 @@ metric~\citep{brown2024large}; we instead decompose the gap between realizable
 majority vote and the oracle. Adaptive-consistency early
 stopping~\citep{aggarwal2023adaptive} is essentially our agreement gate,
 validated on easier datasets where backfire is rare; our negative result shows
-agreement stability is insufficient on hard problems. The external-signal
+agreement stability is insufficient on hard problems. Closest to our work,
+\citet{chen2024more} show that majority-vote accuracy can rise and then fall
+as the number of LM calls grows, attribute this non-monotonicity to a mixture
+of easy and hard queries within a task (more calls help the easy ones and hurt
+the hard ones), and use that structure to estimate, from a small number of
+samples, the call count that maximizes aggregate performance. We differ in two
+ways. We measure the fraction of individual problems harmed rather than the
+shape of the aggregate curve, which matters because aggregate accuracy here
+looks nearly flat (0.342 to 0.369 for Qwen) while a majority of problems
+degrade underneath it. And our gate results sit in tension with few-sample
+estimation of an optimal call count: on a uniformly hard benchmark, the
+verifier-free signals such estimation would rely on do not recover the
+headroom. \citet{tan2025consistent} study self-consistent errors, where a
+model repeats the same wrong answer across samples, and find that
+consistency-based detectors, of which semantic cross-checking is one
+example~\citep{zhang2023sac3}, fail on exactly those cases, which leads them to
+argue for an external verifier; their setting is error detection rather than
+compute allocation, but the conclusion converges with ours. The external-signal
 direction this motivates, trained verifiers and process reward
 models~\citep{cobbe2021training, lightman2023verify}, is the natural way to
 reach the oracle headroom, which our two verifier-free gates cannot.
@@ -362,6 +388,14 @@ why we report on all 198.
 \textbf{Oracle and ratio.} The oracle is an upper bound, not deployable, and
 the fraction-of-oracle-captured ratio is noisy (small denominator), so we lead
 gate claims with absolute accuracy.
+
+\textbf{Entropy threshold selection.} The entropy threshold was chosen by an
+in-sample argmax over 40 candidate values on the confirmatory 151, maximizing
+capture against the binary $\{N=1, N=64\}$ oracle relative to an
+$\text{MV\_acc}(64)$ baseline, whereas the capture figures we report in
+Section~\ref{sec:gates} are measured against the grid oracle relative to
+$\text{MV\_acc}(1)$. Because selection and evaluation use the same problems,
+the entropy gate's reported capture is optimistic.
 
 \textbf{Limited gate family.} We evaluate two verifier-free signals, plurality
 agreement and mean token entropy. Richer signals such as final-answer log-probability
