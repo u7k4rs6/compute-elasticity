@@ -105,7 +105,8 @@
           "n": 59,
           "fraction_correct": 0.5254237288135594
         }
-      ]
+      ],
+      "NOTE_entropy_gate_best_ceiling_captured": "MISMATCHED RATIO: this pooled entropy-gate capture divides a gate accuracy measured on the 151 confirmatory problems by a pooled-198 baseline and ceiling. The entropy gate covers only the 151 problems that have logprobs. The confirmatory sibling is the value reported in the paper."
     },
     "backfire_ci_pooled_95": [
       0.494949494949495,
@@ -218,7 +219,8 @@
           "n": 35,
           "fraction_correct": 0.2857142857142857
         }
-      ]
+      ],
+      "NOTE_entropy_gate_best_ceiling_captured": "MISMATCHED RATIO: this pooled entropy-gate capture divides a gate accuracy measured on the 151 confirmatory problems by a pooled-198 baseline and ceiling. The entropy gate covers only the 151 problems that have logprobs. The confirmatory sibling is the value reported in the paper."
     },
     "backfire_ci_pooled_95": [
       0.5909090909090909,

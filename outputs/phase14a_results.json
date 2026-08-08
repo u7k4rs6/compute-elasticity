@@ -67,7 +67,8 @@
           "threshold": 0.11265995685464802,
           "acc": 0.3184,
           "ceiling_capture_n1_baseline": -0.1681,
-          "NOTE": "threshold selected on confirmatory 151 problems"
+          "NOTE": "threshold selected on confirmatory 151 problems",
+          "NOTE_MISMATCHED_BASELINE": "MISMATCHED RATIO: this pooled_198 entropy-gate capture divides a gate accuracy measured on the 151 confirmatory problems by a baseline and ceiling computed over all 198. The entropy gate covers only the 151 problems that have logprobs (exploratory has none), so the numerator and denominator span different problem sets. The confirmatory_151 sibling is the value reported in the paper."
         }
       },
       "Llama-3-8B": {
@@ -83,7 +84,8 @@
           "threshold": 0.13888462559269987,
           "acc": 0.3055,
           "ceiling_capture_n1_baseline": 0.1965,
-          "NOTE": "threshold selected on confirmatory 151 problems"
+          "NOTE": "threshold selected on confirmatory 151 problems",
+          "NOTE_MISMATCHED_BASELINE": "MISMATCHED RATIO: this pooled_198 entropy-gate capture divides a gate accuracy measured on the 151 confirmatory problems by a baseline and ceiling computed over all 198. The entropy gate covers only the 151 problems that have logprobs (exploratory has none), so the numerator and denominator span different problem sets. The confirmatory_151 sibling is the value reported in the paper."
         }
       }
     }
