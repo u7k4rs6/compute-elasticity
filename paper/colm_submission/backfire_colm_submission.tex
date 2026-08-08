@@ -36,7 +36,9 @@ inference-time compute: sample $N$ chains of thought, return the plurality
 answer. On the full GPQA Diamond benchmark (198 graduate-level science
 questions), majority voting reduces per-problem accuracy on a majority of
 problems for two instruction-tuned models from different families: 56.6\% of
-problems for Qwen2.5-7B and 65.7\% for Llama-3-8B. The effect was
+problems for Qwen2.5-7B and 65.7\% for Llama-3-8B, with Qwen the primary
+demonstration and Llama corroborating the direction from a near-chance
+baseline. The effect was
 pre-registered on a 151-problem confirmatory split after being observed on
 47 exploratory problems, and all four confirmatory hypotheses passed. A grid
 oracle that routes each problem to the best $N$ across $\{1,2,4,8,16,32,64\}$
@@ -82,9 +84,10 @@ families, and to show that two cheap gates cannot prevent it.
 \textbf{Contributions:}
 \begin{itemize}
   \item On all 198 GPQA Diamond problems, majority voting backfires on the
-        majority of problems for two model families (56.6\% and 65.7\%). The
-        effect was pre-registered on a 151-problem held-out split and confirmed
-        (all four hypotheses passed).
+        majority of problems for two model families (56.6\% and 65.7\%), with
+        Qwen the primary demonstration and Llama corroborating from a
+        near-chance baseline. The effect was pre-registered on a 151-problem
+        held-out split and confirmed (all four hypotheses passed).
   \item We show the per-problem routing headroom is real: a grid oracle (best
         $N$ per problem across $\{1,2,4,8,16,32,64\}$) marks a 14 to 17 point
         ceiling above $N=1$. A plurality-agreement gate captures 19 to 23\% of
@@ -249,7 +252,8 @@ the fixed-budget baseline is evaluated at the gate's realized mean
 samples-per-problem rather than a flat $N=64$, so the comparison holds total
 inference cost equal. The entropy gate is evaluated entirely within the
 confirmatory 151, since logprobs exist only for that split. Measured
-consistently within it, the gate captures 0.2\% of the grid-oracle headroom
+consistently within it (the threshold was also selected on this set, so these
+are in-sample figures), the gate captures 0.2\% of the grid-oracle headroom
 for Qwen and 31.2\% for Llama, with gate accuracy of 0.318 (Qwen, threshold
 0.113) and 0.306 (Llama, threshold 0.139). Because this capture is computed
 on a different problem set from the agreement-gate figures above, the two
@@ -415,9 +419,10 @@ not the existence of miscalibration.
 \section{Conclusion}
 
 On hard reasoning problems, self-consistency backfires on the majority of
-problems, pre-registered and confirmed across two model families on the full
-GPQA Diamond benchmark. The accuracy this leaves on the table is real but
-unreachable with a verifier-free agreement or entropy gate, because confidence
+problems, pre-registered and confirmed on the full GPQA Diamond benchmark for
+Qwen and corroborated by a second family from a near-chance baseline. The
+accuracy this leaves on the table is real but unreachable with a verifier-free
+agreement or entropy gate, because confidence
 does not track correctness. Whether reasoning-native models escape this is the
 key open question.
 
