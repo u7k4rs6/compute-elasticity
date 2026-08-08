@@ -223,7 +223,9 @@ across all $N$ in $\{1,2,4,8,16,32,64\}$ reaches 0.482 (Qwen) and 0.439
 Llama. This is a more generous bound than a binary $\{N=1, N=64\}$ oracle,
 because it allows any compute level per problem. It marks how much accuracy a
 perfect per-problem routing decision could recover. It is an upper bound, not
-a method (Figure~\ref{fig:pareto}).
+a method (Figure~\ref{fig:pareto}). The question this raises is how much of
+that ceiling is reachable without ground truth, which
+Section~\ref{sec:gates} answers by testing two verifier-free gates.
 
 \begin{figure}[t]
 \begin{center}
