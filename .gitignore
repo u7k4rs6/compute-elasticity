@@ -79,3 +79,13 @@ data/
 !outputs/gate_model2/*.png
 .playwright-mcp/
 CLAUDE.md
+
+# LaTeX build intermediates
+*.aux
+*.bbl
+*.blg
+*.out
+*.synctex.gz
+# anonymized submission build and stale renders (source is tracked)
+paper/colm_submission/backfire_colm_submission.pdf
+paper/backfire_paper_v4.pdf
