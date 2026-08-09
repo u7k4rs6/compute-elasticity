@@ -78,3 +78,4 @@ data/
 !outputs/gate/*.png
 !outputs/gate_model2/*.png
 .playwright-mcp/
+CLAUDE.md
