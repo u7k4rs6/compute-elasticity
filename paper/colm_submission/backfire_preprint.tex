@@ -15,8 +15,6 @@
 
 \title{When Self-Consistency Backfires: Majority Vote Hurts the Majority of Hard Science Problems for Small LLMs}
 
-% Authors must not appear in the submitted version.
-% The submission option handles this automatically, but verify before uploading.
 \author{Utkarsh Bahuguna \\
 Scaler School of Technology \\
 \texttt{utkarshbahuguna10@gmail.com}}
@@ -31,6 +29,12 @@ Scaler School of Technology \\
 \fi
 
 \maketitle
+
+% The style file sets \lhead inside the \vbox in \@maketitle, where the
+% assignment is group-local and discarded. Set it here at top level instead.
+% Wording differs from the camera-ready: this source also builds the arXiv
+% version, where "Accepted at" reads correctly alongside arXiv's own stamp.
+\lhead{Accepted at the COLM 2026 Workshop on Efficient Reasoning}
 
 \begin{abstract}
 Self-consistency (SC) via majority vote is a widely used way to spend
