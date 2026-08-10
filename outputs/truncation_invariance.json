@@ -1,0 +1,40 @@
+{
+  "description": "Backfire classification computed from all stored samples versus from the first 64 per problem. Backfire is mv_gain < 0.",
+  "model": "Qwen2.5-7B",
+  "n_problems": 198,
+  "n_problems_with_extra_samples": 47,
+  "truncate_n": 64,
+  "all_stored_samples": {
+    "n_backfire": 112,
+    "n_zero_gain": 16,
+    "n_positive_gain": 70,
+    "backfire_rate": 0.5657
+  },
+  "truncated_to_64": {
+    "n_backfire": 112,
+    "n_zero_gain": 17,
+    "n_positive_gain": 69,
+    "backfire_rate": 0.5657
+  },
+  "published_pooled": {
+    "n_backfire": 112,
+    "n_zero_gain": 16,
+    "n_positive_gain": 70,
+    "backfire_rate": 0.5657
+  },
+  "n_problems_relabelled": 1,
+  "n_problems_crossing_backfire_boundary": 0,
+  "relabelled": [
+    {
+      "problem_id": "gpqa_diamond_0074",
+      "n_stored": 65,
+      "full_label": "positive",
+      "truncated_label": "zero",
+      "full_mv_gain": 0.015625,
+      "truncated_mv_gain": 0.0
+    }
+  ],
+  "backfire_classification_identical": true,
+  "backfire_rate_identical": true,
+  "NOTE_monte_carlo": "Problems with more than 64 stored samples use the Monte Carlo branch when untruncated. This script seeds per problem rather than sharing one stream as the published run does, so zero-versus-positive labels may differ from the published counts within sampling error."
+}
