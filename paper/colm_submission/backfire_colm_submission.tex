@@ -54,7 +54,8 @@ token-entropy gate leaves accuracy statistically distinguishable from
 fixed-budget voting. The mechanism is direct:
 confidence does not track correctness on these problems. In the
 highest-agreement bin the plurality answer is correct about half the time for
-Qwen, and for Llama accuracy actually decreases with agreement. We
+Qwen, and for Llama that bin is less accurate than its lowest-agreement
+bin. We
 pre-register and confirm these findings on small instruction-tuned models; we
 do not test reasoning-native models, which we flag as the central open
 question.
@@ -98,7 +99,7 @@ families, and to show that two cheap gates cannot prevent it.
         that headroom on the pooled set. Neither it nor a token-entropy gate
         reaches the oracle or beats fixed-budget voting meaningfully.
   \item We give the mechanism: agreement does not track correctness, and for
-        the weaker model it is anti-correlated.
+        the weaker model higher agreement does not indicate higher accuracy.
 \end{itemize}
 
 \section{Setup}
@@ -109,8 +110,8 @@ in biology, chemistry, and physics. We adopt a pre-registered confirmatory
 design: 47 problems are \textbf{exploratory} (the hypotheses below were
 generated from them), and the remaining 151 are a \textbf{confirmatory} test
 set. The hypotheses and thresholds were locked and git-tagged before any
-confirmatory analysis. The repository, with tagged commits, is available at
-\url{https://github.com/u7k4rs6/self-consistency-backfire}. We report
+confirmatory analysis, at tag \texttt{backfire-prereg-v1.0} in the repository
+at \url{https://github.com/u7k4rs6/self-consistency-backfire}. We report
 exploratory, confirmatory, and pooled (198) values throughout, but decide
 PASS/FAIL on the confirmatory set only.
 
@@ -130,12 +131,14 @@ $N$ that maximizes majority-vote accuracy across $\{1,2,4,8,16,32,64\}$ using
 ground truth; it is a theoretical upper bound, not a deployable method. The
 \textbf{agreement gate} returns the probe plurality when its fraction over $k$
 samples is at least $\tau$, else votes at $N=64$. The \textbf{entropy gate}
-routes by a threshold on mean per-token entropy. Both gates are verifier-free;
-ground truth is used only to score the result. Logprobs are available for all
+returns the probe plurality when the mean per-token entropy over $k=4$ probe
+samples falls below a threshold, else votes at $N=64$. Both gates are
+verifier-free; ground truth is used only to score the result. Logprobs are available for all
 151 confirmatory problems but not for the 47 older exploratory ones, so the
-entropy gate is evaluated on the confirmatory set. The entropy gate threshold
-is selected to maximize accuracy on the confirmatory set (Qwen: 0.113, Llama:
-0.139).
+entropy gate is evaluated on the confirmatory set. Its threshold is selected
+on that same set by an argmax over 40 candidate values, maximizing capture
+against the binary $\{N=1, N=64\}$ oracle relative to an
+$\text{MV\_acc}(64)$ baseline (Qwen: 0.113, Llama: 0.139).
 
 \textbf{Uncertainty.} 95\% confidence intervals are problem-level bootstrap
 (1000 iterations, seed 42).
@@ -162,7 +165,11 @@ PH4 & entropy gate captures $\leq$ 10\% of oracle & 0.5\%      & 0.9\%          
 \bottomrule
 \end{tabular}
 \end{center}
-\caption{Confirmatory hypotheses ($n=151$). Thresholds locked and git-tagged before analysis.}
+\caption{Confirmatory hypotheses ($n=151$). Thresholds locked and git-tagged
+before analysis. Captures in this table are measured against the binary
+$\{N=1, N=64\}$ oracle relative to an $\text{MV\_acc}(64)$ baseline, which is
+why they are much smaller than the grid-oracle captures reported in
+Section~\ref{sec:gates}.}
 \label{tab:confirmatory}
 \end{table}
 
@@ -237,7 +244,10 @@ Section~\ref{sec:gates} answers by testing two verifier-free gates.
 \includegraphics[width=\linewidth]{../../outputs/gate_model2/pareto_both.png}
 \end{center}
 \caption{Accuracy vs mean compute: fixed-budget voting, the oracle upper
-bound, and the verifier-free agreement and entropy gates.}
+bound, and the verifier-free agreement and entropy gates. The entropy series is
+computed on the confirmatory 151 only, a harder subset than the pooled 198 used
+for the other series, so its lower position does not by itself indicate a worse
+method.}
 \label{fig:pareto}
 \end{figure}
 
@@ -251,13 +261,21 @@ statistically indistinguishable from fixed-budget voting at $N=64$ (0.369 and
 of available headroom for Qwen and 23.4\% for Llama (headroom is measured
 against the grid oracle of Section~\ref{sec:oracle}, not the binary oracle in
 Table~\ref{tab:confirmatory}): non-trivial fractions of a generous ceiling,
-yet accuracy remains flat. The gate spends $k$ probe
+yet accuracy remains flat. Fixed-budget voting at $N=64$ captures 19.2\% for
+Qwen and 24.3\% for Llama by the same measure, so the gate captures less of
+the headroom than the baseline it is meant to improve on. The negative result
+is therefore sharper than a shortfall against the oracle: routing on agreement
+is worse than not routing at all. This is consistent with PH2 in
+Table~\ref{tab:confirmatory}, where the agreement gate's capture is near zero
+for Qwen and negative for Llama. The gate spends $k$ probe
 samples on every problem, then either returns the probe plurality (if the
 plurality fraction $\geq \tau$) or proceeds to $N=64$; matched compute means
 the fixed-budget baseline is evaluated at the gate's realized mean
 samples-per-problem rather than a flat $N=64$, so the comparison holds total
-inference cost equal. The entropy gate is evaluated entirely within the
-confirmatory 151, since logprobs exist only for that split. Measured
+inference cost equal.
+
+The entropy gate is evaluated entirely within the confirmatory 151, since
+logprobs exist only for that split. Measured
 consistently within it (the threshold was also selected on this set, so these
 are in-sample figures), the gate captures 0.2\% of the grid-oracle headroom
 for Qwen and 31.2\% for Llama, with gate accuracy of 0.318 (Qwen, threshold
@@ -265,18 +283,28 @@ for Qwen and 31.2\% for Llama, with gate accuracy of 0.318 (Qwen, threshold
 on a different problem set from the agreement-gate figures above, the two
 should not be read as like-for-like: the entropy percentages are
 confirmatory-151 values and the agreement percentages are pooled-198 values.
-In absolute terms the entropy gate is likewise statistically indistinguishable
-from fixed-budget voting. Mean per-token entropy modestly predicts which problems
+
+The like-for-like baselines are therefore the confirmatory-151 fixed-budget
+accuracies, and the two models differ. For Qwen these are
+$\text{MV\_acc}(1) = 0.3182$ and $\text{MV\_acc}(64) = 0.3179$, against a gate
+accuracy of 0.3184: the gate matches single-sample accuracy to three decimals,
+so it does nothing rather than actively hurting, and the apparent five-point
+drop against the 0.369 quoted above is entirely the pooled-versus-confirmatory
+mismatch. For Llama they are 0.2518 and 0.3046, against a gate accuracy of
+0.3055: there the gate is level with full voting and well above single-sample.
+One further point: Qwen's confirmatory $\text{MV\_acc}(64)$ sits marginally
+below its $\text{MV\_acc}(1)$, so on this split voting at $N=64$ is very
+slightly worse than not voting at all. The gap is small and we do not lean on
+it; it complements the pooled aggregate reported above (0.342 to 0.369) by
+showing the per-problem backfire effect surfacing faintly in the aggregate.
+
+Mean per-token entropy modestly predicts which problems
 backfire (AUC 0.631 for Qwen, 0.523 for Llama), but predictive signal does
 not translate into routing accuracy because the gate cannot act on that signal
 without misclassifying enough problems to erase the gain. Across the full
 sweep of $k$ and $\tau$, no operating point beats fixed-budget meaningfully
 (Figure~\ref{fig:sweep}). The obvious agreement signal and an uncertainty
 signal both fail.
-
-Localized entropy (computed over final-answer tokens only) was not computable
-from stored data, which retained only the mean scalar; this is a limitation of
-the pipeline rather than a finding.
 
 \begin{figure}[t]
 \begin{center}
@@ -293,8 +321,10 @@ The reason is direct (Table~\ref{tab:calibration}, Figure~\ref{fig:calibration})
 Binning problems by how concentrated the model's answers are, even the
 highest-agreement bin is far from reliable: Qwen's plurality is correct 52.5\%
 of the time there, and Llama's only 28.6\%, lower than its own low-agreement
-bin. Llama's accuracy decreases as agreement rises, an anti-calibration
-pattern. High self-consistency is therefore confidently wrong about as often as
+bin. Llama's accuracy is not monotone in agreement, rising and then falling
+across the three bins, so higher agreement does not indicate higher accuracy
+for it in either direction. High self-consistency is therefore confidently
+wrong about as often as
 confidently right for Qwen, and more often for Llama. A gate that trusts
 agreement is reading a signal that does not carry the information it needs.
 
@@ -303,7 +333,8 @@ agreement is reading a signal that does not carry the information it needs.
 \includegraphics[width=0.6\linewidth]{../../outputs/gate_model2/calibration_both.png}
 \end{center}
 \caption{Fraction of plurality answers correct by agreement bin. Both models
-fall far below the calibration diagonal; Llama trends downward.}
+fall far below the calibration diagonal; Llama's highest-agreement bin is less
+accurate than its lowest, with no monotone trend across bins.}
 \label{fig:calibration}
 \end{figure}
 
