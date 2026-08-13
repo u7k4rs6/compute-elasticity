@@ -1,8 +1,58 @@
-# Compute Elasticity in LLM Reasoning
+[![arXiv](https://img.shields.io/badge/arXiv-2608.11403-b31b1b.svg)](https://arxiv.org/abs/2608.11403)
+[![License](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](LICENSE)
 
-A pilot study measuring how **Qwen2.5-7B-Instruct-Turbo** accuracy on **GPQA Diamond** responds to inference-time compute via best-of-N sampling at N ∈ {1, 2, 4, 8, 16, 32, 64}.
+# When Self-Consistency Backfires
 
-See `PRD.md` for the full specification and `CLAUDE.md` for repository conventions.
+**Majority Vote Hurts the Majority of Hard Science Problems for Small LLMs**
+
+Utkarsh Bahuguna, Scaler School of Technology
+
+Accepted at the **COLM 2026 Workshop on Efficient Reasoning**.
+Paper: [arXiv:2608.11403](https://arxiv.org/abs/2608.11403)
+
+---
+
+## What this is
+
+Self-consistency samples N chains of thought and returns the plurality answer. It is widely treated as a low-risk way to spend inference-time compute: sample more, vote, do at least as well.
+
+On a hard benchmark it is not. Across all 198 GPQA Diamond problems, majority voting at N=64 **reduces** per-problem accuracy relative to a single sample on **56.6%** of problems for Qwen2.5-7B and **65.7%** for Llama-3-8B. Aggregate accuracy barely moves (Qwen 0.342 to 0.369), which is exactly what hides the per-problem harm underneath.
+
+This repository contains the full pipeline, the pre-registration, the analysis, and the falsification suite.
+
+## Headline results
+
+| | Qwen2.5-7B | Llama-3-8B |
+|---|---|---|
+| Backfire rate (pooled, n=198) | 56.6% [49.5, 63.6] | 65.7% [59.1, 71.7] |
+| MV accuracy, N=1 → N=64 | 0.342 → 0.369 | 0.273 → 0.313 |
+| Grid oracle upper bound | 0.482 | 0.439 |
+| Agreement gate (k=8, τ=0.75) | 0.368 | 0.312 |
+| Entropy gate (confirmatory 151) | 0.318 | 0.306 |
+
+Two cheap verifier-free gates were tested to see whether the oracle headroom is reachable without ground truth. Neither moves accuracy more than 0.002 from fixed-budget voting at N=64. The mechanism is direct: confidence does not track correctness on these problems. In Qwen's highest-agreement bin the plurality answer is correct 52.5% of the time, and Llama's highest-agreement bin is *less* accurate than its lowest.
+
+## Pre-registered confirmatory results
+
+Hypotheses and thresholds were locked and git-tagged before any confirmatory analysis, at tag `backfire-prereg-v1.0`. 47 problems are exploratory (hypotheses were generated from them); the remaining 151 are the confirmatory test set. PASS/FAIL is decided on the confirmatory set only.
+
+| H | Prediction (both models) | Qwen2.5-7B | Llama-3-8B | Result |
+|---|---|---|---|---|
+| PH1 | backfire rate ≥ 33% | 60.3% [53.0, 68.2] | 65.6% [58.3, 73.5] | **PASS** |
+| PH2 | agree gate capture ≤ 10% | 0.8% | −1.6% | **PASS** |
+| PH3 | top-agree-bin acc. ≤ 70% | 51.2% (n=43) | 14.3% (n=21) | **PASS** |
+| PH4 | entropy gate capture ≤ 10% | 0.5% | 0.9% | **PASS** |
+
+Captures in this table are measured against the binary {N=1, N=64} oracle relative to an MV_acc(64) baseline. The grid-oracle captures quoted in the paper's Section 4.3 use a more generous ceiling and are reported separately as post-hoc analysis.
+
+## Setup
+
+Both models served on Together AI:
+
+- `Qwen2.5-7B-Instruct-Turbo`
+- `Meta-Llama-3-8B-Instruct-Lite`
+
+N=64 samples per problem, temperature 0.7, single locked prompt template verified byte-identical across all runs by SHA-256. Five-pass answer extraction; parse rate 99.5% (Qwen) and 98.6% (Llama). Confidence intervals are problem-level bootstrap, 1000 iterations, seed 42.
 
 ## Quick start
 
@@ -14,56 +64,46 @@ pip install -r requirements.txt
 pytest tests/ -v --tb=short
 ```
 
-## Phase status
-
-| Phase | Description | Status |
-|-------|-------------|--------|
-| 0 | Bootstrap | ✓ |
-| 1 | Pure-Python modules + unit tests | ✓ |
-| 2 | Pre-registration lock-in | ✓ |
-| 3 | API smoke tests | ✓ |
-| 4 | Gate -1: Embedder validation | ✓ |
-| 5 | Day 0 reconnaissance | ✓ |
-| 6 | Main pilot sampling | ✓ |
-| 7 | Temperature side test | ✓ |
-| 8 | Fitting | ✓ |
-| 9 | Pass 1: confirmatory analysis | ✓ |
-| 10 | Pass 2: exploratory + go/no-go | ✓ |
-
-## Pilot Results
-
-**Overall verdict: GO.** 4 PASS, 1 FAIL, 1 DEFERRED across H1–H6.
-
-Full writeup: [`PILOT_WRITEUP.md`](PILOT_WRITEUP.md). Full results: [`outputs/hypothesis_results.json`](outputs/hypothesis_results.json)
-
-| H | Statement | Verdict | Measured |
-|---|-----------|---------|----------|
-| H1 | R(c) curves fittable above noise | **PASS** | Median residual SE = 0.0107 (threshold < 0.10) |
-| H2 | Multiple curve families win (mode diversity) | **PASS** | 3 families with mean BIC weight ≥ 0.10; 34% of problems have ≥2 close families |
-| H3 | Embedding diversity > entropy for elasticity prediction | **FAIL** | AUC(diversity) = 0.524, AUC(entropy) = 0.650; entropy is the stronger predictor |
-| H4 | Curve distribution differs by domain | DEFERRED | Deferred to full multi-model study |
-| H5 | Non-trivial unimodal subset (≥5% of problems) | **PASS** | 21/47 problems (44.7%). Note: only 1 has a genuine interior peak; see [`outputs/unimodal_sensitivity.json`](outputs/unimodal_sensitivity.json) |
-| H6 | Curve params stable across temperature | **PASS** | Mean 95% bootstrap CI overlap = 1.000 across T ∈ {0.3, 0.7, 1.0} |
-
-**Headline findings:**
-
-- **H3 reframing.** Embedding diversity at N=4 does not outperform per-token entropy at N=1 as an elasticity predictor. Entropy (AUC=0.650) beats diversity (AUC=0.524) by a margin of 0.127, the reverse of H3's direction. This is a clean falsification: the single-sample entropy baseline is a better signal than the 4-sample embedding spread. This becomes a key finding for the full study's feature design.
-
-- **H6 temperature invariance.** 95% bootstrap CIs for fitted curve parameters overlap perfectly (rate = 1.000) across all three temperature pairs for all 10 side-test problems. Curve shape is effectively temperature-invariant over {0.3, 0.7, 1.0} for this model and benchmark.
-
-- **H5 interpretation.** Of the 21 unimodal BIC winners, only 1 problem (gpqa_diamond_0026, c* ≈ 11) shows a genuine interior accuracy peak. The remaining 20 are fitting artifacts: either decaying (peak below the data grid, c* < 4) or saturating (peak beyond grid, c* > 56). See [`outputs/unimodal_sensitivity.json`](outputs/unimodal_sensitivity.json) for the full regime breakdown.
-
-**Total API spend: ~$0.60** of the $15.00 budget. The original PRD estimate ($10–15) overstated actual usage by ~25×; outputs were shorter than expected, and the Pass-5 LLM scorer never had to fire because regex extraction held above 99%.
-
 ## Reproducibility
 
-- **Pre-registration:** [`preregistration.md`](preregistration.md), hypothesis thresholds and methodology locked before data collection, timestamped at tag `pre-pilot-v6.0`.
-- **Falsification suite:** `pytest tests/falsification.py -v`, which reads `outputs/hypothesis_results.json` and asserts each verdict. A pytest failure = hypothesis falsified.
-- **Phase tags** (in order):
-  `phase-0-complete` → `phase-1-complete` → `pre-pilot-v6.0` → `pre-pilot-v6.0.1-single-provider` → `pre-pilot-v6.0.2-turbo-variant` → `phase-4-complete` → `phase-5-complete` → `phase-6-complete` → `phase-7-complete` → `phase-8-complete` → `phase-9-complete`
+- **Pre-registration:** [`preregistration.md`](preregistration.md), locked before data collection, timestamped at tag `backfire-prereg-v1.0`.
+- **Falsification suite:** `pytest tests/falsification.py -v` reads the stored hypothesis results and asserts each verdict. A pytest failure means a hypothesis is falsified.
+- **Truncation invariance:** `scripts/verify_truncation_invariance.py`. Llama has exactly 64 stored samples per problem; for Qwen the 47 exploratory problems carry 65 to 72 from earlier sampling runs. Reclassifying every problem from its first 64 samples leaves the backfire count unchanged at 112 of 198, with no problem crossing the boundary.
 
-  > Phase 2 corresponds to the three `pre-pilot-v6.0.*` tags. Phase 3 (API smoke tests) was committed inline and has no dedicated tag.
+## Known limitations
+
+Stated in full in the paper. The short version:
+
+- Llama's single-sample accuracy (0.273) sits just above the 0.25 random baseline, so Qwen is the primary demonstration and Llama corroborates the direction.
+- One benchmark, two small non-reasoning models. Whether backfire persists for reasoning-native models is the central open question.
+- The entropy gate's threshold was selected in-sample on the confirmatory 151, so its reported capture is optimistic.
+- The pipeline retained only a mean entropy scalar rather than per-token log-probability arrays, which rules out final-answer margin analysis.
+
+## Project history
+
+This repository began as a pilot study on **compute elasticity** (repo formerly `compute-elasticity`), fitting accuracy-versus-compute curves for a single model on a 47-problem subset. That pilot returned GO and its findings redirected the work: the falsification of its H3, which found that single-sample token entropy outperformed 4-sample embedding diversity as a predictor, is what motivated testing entropy as a routing gate here.
+
+The pilot's phase tags remain in the repository:
+
+`phase-0-complete` → `phase-1-complete` → `pre-pilot-v6.0` → `pre-pilot-v6.0.1-single-provider` → `pre-pilot-v6.0.2-turbo-variant` → `phase-4-complete` → ... → `phase-9-complete`
+
+`pre-pilot-v6.0` is the **pilot's** pre-registration and is not the pre-registration for this paper. The paper's pre-registration is `backfire-prereg-v1.0`.
+
+## Citation
+
+```bibtex
+@misc{bahuguna2026backfires,
+  title         = {When Self-Consistency Backfires: Majority Vote Hurts the
+                   Majority of Hard Science Problems for Small LLMs},
+  author        = {Utkarsh Bahuguna},
+  year          = {2026},
+  eprint        = {2608.11403},
+  archivePrefix = {arXiv},
+  primaryClass  = {cs.AI},
+  note          = {Accepted at the COLM 2026 Workshop on Efficient Reasoning}
+}
+```
 
 ## License
 
-Apache 2.0, see `LICENSE`.
+Apache 2.0, see [`LICENSE`](LICENSE).
