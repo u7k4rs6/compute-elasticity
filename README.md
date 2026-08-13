@@ -1,4 +1,5 @@
 [![arXiv](https://img.shields.io/badge/arXiv-2608.11403-b31b1b.svg)](https://arxiv.org/abs/2608.11403)
+[![DOI](https://img.shields.io/badge/DOI-10.48550%2FarXiv.2608.11403-blue.svg)](https://doi.org/10.48550/arXiv.2608.11403)
 [![License](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](LICENSE)
 
 # When Self-Consistency Backfires
@@ -18,7 +19,7 @@ Self-consistency samples N chains of thought and returns the plurality answer. I
 
 On a hard benchmark it is not. Across all 198 GPQA Diamond problems, majority voting at N=64 **reduces** per-problem accuracy relative to a single sample on **56.6%** of problems for Qwen2.5-7B and **65.7%** for Llama-3-8B. Aggregate accuracy barely moves (Qwen 0.342 to 0.369), which is exactly what hides the per-problem harm underneath.
 
-This repository contains the full pipeline, the pre-registration, the analysis, and the falsification suite.
+This repository contains the full pipeline, the pre-registration, the analysis, and the falsification suites.
 
 ## Headline results
 
@@ -57,18 +58,24 @@ N=64 samples per problem, temperature 0.7, single locked prompt template verifie
 ## Quick start
 
 ```bash
+python -m venv .venv && source .venv/bin/activate
+pip install -r requirements.txt
+
 cp .env.example .env
 # Fill in API keys in .env
 
-pip install -r requirements.txt
 pytest tests/ -v --tb=short
 ```
 
+Activate the virtualenv before running anything. `pytest-asyncio` is installed there and not in system Python, so running `python3 -m pytest` outside the venv produces 15 collection failures reading `async def functions are not natively supported`. Those are not broken tests.
+
 ## Reproducibility
 
-- **Pre-registration:** [`preregistration.md`](preregistration.md), locked before data collection, timestamped at tag `backfire-prereg-v1.0`.
-- **Falsification suite:** `pytest tests/falsification.py -v` reads the stored hypothesis results and asserts each verdict. A pytest failure means a hypothesis is falsified.
+- **Pre-registration:** [`preregistration_backfire.md`](preregistration_backfire.md), locked before data collection, timestamped at tag `backfire-prereg-v1.0`.
+- **Confirmatory verdicts:** PH1–PH4 PASS/FAIL is computed by `scripts/run_phase13_analysis.py` and stored in `outputs/gate_model2/confirmatory_results.json`. This is the source for Table 1.
+- **Falsification suite:** `pytest tests/falsification_backfire.py -v` reads that file and asserts each verdict, per model, along with the stored thresholds themselves, so a regenerated result with an edited threshold fails rather than silently validating against a moved line. A pytest failure means a pre-registered hypothesis is falsified. Note this asserts stored values against thresholds; it does not recompute the analysis.
 - **Truncation invariance:** `scripts/verify_truncation_invariance.py`. Llama has exactly 64 stored samples per problem; for Qwen the 47 exploratory problems carry 65 to 72 from earlier sampling runs. Reclassifying every problem from its first 64 samples leaves the backfire count unchanged at 112 of 198, with no problem crossing the boundary.
+- **Pilot suite:** `pytest tests/falsification.py -v` asserts the pilot's H1–H6 against `outputs/hypothesis_results.json`. It predates this paper and does not test PH1–PH4. Note it exits non-zero by design: H3 was genuinely falsified in the pilot, and the suite reports that as a test failure.
 
 ## Known limitations
 
@@ -81,13 +88,13 @@ Stated in full in the paper. The short version:
 
 ## Project history
 
-This repository began as a pilot study on **compute elasticity** (repo formerly `compute-elasticity`), fitting accuracy-versus-compute curves for a single model on a 47-problem subset. That pilot returned GO and its findings redirected the work: the falsification of its H3, which found that single-sample token entropy outperformed 4-sample embedding diversity as a predictor, is what motivated testing entropy as a routing gate here.
+This repository began as a pilot study on **compute elasticity** (repo formerly `compute-elasticity`), fitting accuracy-versus-compute curves for a single model on a 47-problem subset. That pilot returned GO, and its findings redirected the work: the falsification of its H3, which found that single-sample token entropy outperformed 4-sample embedding diversity as a predictor, is what motivated testing entropy as a routing gate here.
 
-The pilot's phase tags remain in the repository:
+The pilot's writeup is retained at [`PILOT_WRITEUP.md`](PILOT_WRITEUP.md) and its phase tags remain in the repository:
 
 `phase-0-complete` → `phase-1-complete` → `pre-pilot-v6.0` → `pre-pilot-v6.0.1-single-provider` → `pre-pilot-v6.0.2-turbo-variant` → `phase-4-complete` → ... → `phase-9-complete`
 
-`pre-pilot-v6.0` is the **pilot's** pre-registration and is not the pre-registration for this paper. The paper's pre-registration is `backfire-prereg-v1.0`.
+`pre-pilot-v6.0` is the **pilot's** pre-registration and is not the pre-registration for this paper. The two are distinct commits: `pre-pilot-v6.0` (2026-05-19) and `backfire-prereg-v1.0` (2026-06-05).
 
 ## Citation
 
@@ -100,6 +107,7 @@ The pilot's phase tags remain in the repository:
   eprint        = {2608.11403},
   archivePrefix = {arXiv},
   primaryClass  = {cs.AI},
+  doi           = {10.48550/arXiv.2608.11403},
   note          = {Accepted at the COLM 2026 Workshop on Efficient Reasoning}
 }
 ```
